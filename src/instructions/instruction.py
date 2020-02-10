@@ -46,6 +46,18 @@ class Nop(Instruction):
     """
 
 
+class Push(Instruction):
+    """
+    Push
+    """
+
+
+class Pop(Instruction):
+    """
+    Pop
+    """
+
+
 class Add(Instruction):
     """
     Add
@@ -84,3 +96,4 @@ class Ret(Instruction):
 
     def execute(self, vm):
         vm.ret()
+

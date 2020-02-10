@@ -12,13 +12,17 @@ import sys
 sys.path.append(os.path.dirname("."))
 
 from parser.parser import Parser
+from binary_code.prototype import ProtoType
 
 
 def script(filename):
     """script"""
     with codecs.open(filename, encoding='utf-8') as f:
         ast = Parser(filename, f.read()).parse_file()
-        print('result: >>', ast.execute())
+        print('ast.execute result: >>', ast.execute())
+        proto = ProtoType()
+        ast.to_bin(proto)
+        print("proto-->>", proto)
 
 
 def print_help():
