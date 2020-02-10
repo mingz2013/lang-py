@@ -29,8 +29,8 @@ class Frame(StackNode):
     一个函数内部的寄存器，或者是堆栈
 
 
-    提供基本的寄存器操作方法，
-    或者栈的基本操作方法
+    提供基本的寄存器操作方法，寄存器式虚拟机
+    或者栈的基本操作方法，栈式虚拟机
 
 
     用于实现：
@@ -66,16 +66,16 @@ class Frame(StackNode):
         """
         取指
         """
-        i = self.proto.code[self.pc]
+        i = self.proto.get_code(self._pc)
         self._pc += 1
         return i
 
-    def get_const(self, idx):
+    def load_const(self, idx):
         """
         获取常量, 放到栈顶
         """
-        c = self.proto.constants[idx]
-        self.stack.push(c)
+        a = self.proto.get_constants(idx)
+        self.stack.push(a)
 
     def add(self):
         a = self.stack.pop()
@@ -99,4 +99,10 @@ class Frame(StackNode):
         a = self.stack.pop()
         b = self.stack.pop()
         c = a * b
+        self.stack.push(c)
+
+    def rem(self):
+        a = self.stack.pop()
+        b = self.stack.pop()
+        c = a % b
         self.stack.push(c)

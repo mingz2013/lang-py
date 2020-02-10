@@ -36,12 +36,12 @@ class VM(object):
 
     def loop(self):
         while True:
-            data = self.cur_call_frame.fetch()
+            data = self.cur_frame.fetch()
             inst = new_instruction(data)
             inst.execute(self)
 
     @property
-    def cur_call_frame(self):
+    def cur_frame(self):
         return self.stack.top_node
 
     @property
@@ -49,7 +49,7 @@ class VM(object):
         return self.stack.top_node.pc
 
     def add_pc(self, n):
-        self.cur_call_frame.add_pc(n)
+        self.cur_frame.add_pc(n)
 
     def call(self, nArgs, nResults):
         """
@@ -77,12 +77,12 @@ class VM(object):
         3 调用结束，最后执行ret指令
 
         """
-        cur_f = self.cur_call_frame
+        cur_f = self.cur_frame
 
-        proto = self.cur_call_frame.pop()
+        proto = self.cur_frame.pop()
         args = []
         for i in range(nArgs):
-            args.append(self.cur_call_frame.pop())
+            args.append(self.cur_frame.pop())
         results = []
         for i in range(nResults):
             results.append(None)
@@ -104,4 +104,4 @@ class VM(object):
         results = f.results
 
         for i in results:
-            self.cur_call_frame.push(i)
+            self.cur_frame.push(i)

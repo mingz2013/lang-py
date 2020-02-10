@@ -12,8 +12,7 @@ Module Description
 class ProtoType(object):
     def __init__(self):
         # bin code
-        self.source_name = ""  # 源文件名
-        self.name = ""  # 函数名
+        self.name = ""  # 函数名, 或者文件名
         self.code = []  # 指令表
         self.constants = []  # 常量表
         self.names = []  # 变量名
@@ -24,22 +23,56 @@ class ProtoType(object):
         # vm
         self.proto = None  # 指向上一级的指针
 
+    def __str__(self):
+        return str({
+            'name': self.name,
+            'code': self.code,
+            'constants': self.constants,
+            'names': self.names,
+            'args': self.args,
+            'local_vars': self.local_vars,
+            'protos': self.protos
+        })
+
+    def __repr__(self):
+        return str({
+            'name': self.name,
+            'code': self.code,
+            'constants': self.constants,
+            'names': self.names,
+            'args': self.args,
+            'local_vars': self.local_vars,
+            'protos': self.protos
+        })
+
     def add_name(self, n):
         self.names.append(n)
         return len(self.names) - 1
+
+    def get_name(self, idx):
+        return self.names[idx]
 
     def add_constant(self, c):
         self.constants.append(c)
         return len(self.constants) - 1
 
+    def get_constant(self, idx):
+        return self.constants[idx]
+
     def add_sub_proto(self, p):
         self.protos.append(p)
         return len(self.protos) - 1
+
+    def get_sub_proto(self, idx):
+        return self.protos[idx]
 
     def add_code(self, *code):
         print("add code<<", *code)
         self.code.append(code)
         return len(self.code) - 1
+
+    def get_code(self, idx):
+        return self.code[idx]
 
     def clone(self):
         """

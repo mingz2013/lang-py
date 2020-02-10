@@ -67,6 +67,8 @@ class Add(Instruction):
         """
 
         """
+        a = vm.pop()
+        b = vm.pop()
 
 
 class Jmp(Instruction):
