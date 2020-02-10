@@ -10,7 +10,7 @@ Module Description
 
 from prototype.prototype import ProtoType
 from vm.frame import Frame
-from instructions.instruction import new_instruction
+from instructions import instruction
 from vm.stack import Stack
 
 
@@ -37,7 +37,7 @@ class VM(object):
     def loop(self):
         while True:
             data = self.cur_frame.fetch()
-            inst = new_instruction(data)
+            inst = instruction.Instruction.from_inst(data)
             inst.execute(self)
 
     @property
