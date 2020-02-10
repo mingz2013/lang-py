@@ -8,7 +8,7 @@ Module Description
 
 """
 
-from vm.call_stack import StackNode
+from vm.stack import StackNode
 
 
 class Stack(object):
@@ -22,7 +22,7 @@ class Stack(object):
         self.data.append(obj)
 
 
-class CallFrame(StackNode):
+class Frame(StackNode):
     """
     Frame
 
@@ -41,7 +41,7 @@ class CallFrame(StackNode):
     """
 
     def __init__(self, proto, args, results):
-        super(CallFrame, self).__init__()
+        super(Frame, self).__init__()
         self._pc = 0  # program counter
         self.proto = proto  # ProtoType, 函数原型，用于从函数原型里面读取常量，指令等
         self.stack = Stack()  # 栈

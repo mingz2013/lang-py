@@ -9,9 +9,9 @@ Module Description
 """
 
 from prototype.prototype import ProtoType
-from vm.call_frame import CallFrame
+from vm.frame import Frame
 from instructions.instruction import new_instruction
-from vm.call_stack import CallStack
+from vm.stack import Stack
 
 
 class VM(object):
@@ -22,14 +22,14 @@ class VM(object):
 
     def __init__(self, filename):
         self.prototype = ProtoType()  # 二进制文件解析后的数据
-        self.stack = CallStack()  # callstack
+        self.stack = Stack()  # callstack
 
     def init(self, args):
         """
         vm call, 初始执行
         """
         results = []
-        f = CallFrame(self.prototype, args, results)
+        f = Frame(self.prototype, args, results)
         self.stack.push(f)
 
         self.loop()
@@ -87,7 +87,7 @@ class VM(object):
         for i in range(nResults):
             results.append(None)
 
-        f = CallFrame(proto, args, results)
+        f = Frame(proto, args, results)
 
         self.stack.push(f)
 
