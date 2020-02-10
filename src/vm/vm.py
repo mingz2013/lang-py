@@ -8,7 +8,7 @@ Module Description
 
 """
 
-from binary_code.binary_file import BinaryFile
+from prototype.prototype import ProtoType
 from vm.call_frame import CallFrame
 from instructions.instruction import new_instruction
 from vm.call_stack import CallStack
@@ -21,7 +21,7 @@ class VM(object):
     """
 
     def __init__(self, filename):
-        self.binary_file = BinaryFile(filename)  # 二进制文件解析后的数据
+        self.prototype = ProtoType()  # 二进制文件解析后的数据
         self.stack = CallStack()  # callstack
 
     def init(self, args):
@@ -29,7 +29,7 @@ class VM(object):
         vm call, 初始执行
         """
         results = []
-        f = CallFrame(self.binary_file.main_func, args, results)
+        f = CallFrame(self.prototype, args, results)
         self.stack.push(f)
 
         self.loop()

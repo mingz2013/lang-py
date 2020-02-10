@@ -9,7 +9,7 @@ __author__ = "zhaojm"
 
 from context import context
 from token import token
-from binary_code.prototype import ProtoType
+from prototype.prototype import ProtoType
 
 
 class Node(object):

@@ -12,7 +12,7 @@ import sys
 sys.path.append(os.path.dirname("."))
 
 from parser.parser import Parser
-from binary_code.prototype import ProtoType
+from prototype.prototype import ProtoType
 
 
 def script(filename):
