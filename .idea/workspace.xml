@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58ef0169-3695-48bb-af48-b938189a6b03" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ast/ast.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/ast.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/instructions/instruction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/instructions/instruction.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +37,29 @@
       <recent name="$PROJECT_DIR$/src/call_stack" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Shell Script.setup.sh">
+    <configuration name="ast" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="lang-py" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/ast" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/ast/ast.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="setup.sh" type="ShConfigurationType" temporary="true">
       <option name="SCRIPT_PATH" value="$PROJECT_DIR$/setup.sh" />
       <option name="SCRIPT_OPTIONS" value="" />
@@ -51,6 +71,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Shell Script.setup.sh" />
+        <item itemvalue="Python.ast" />
       </list>
     </recent_temporary>
   </component>
@@ -77,7 +98,7 @@
       <option name="presentableId" value="Default" />
       <updated>1581316888724</updated>
       <workItem from="1581316892252" duration="13888000" />
-      <workItem from="1581344835489" duration="5548000" />
+      <workItem from="1581344835489" duration="6184000" />
     </task>
     <task id="LOCAL-00001" summary="lang">
       <created>1581317059977</created>
@@ -128,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581344551713</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="lang">
+      <created>1581350402130</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1581350402130</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,21 +168,40 @@
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1581344551603">
+    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1581350401976">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1581344551603" />
+    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1581350401976" />
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1581332931471">
       <screen x="64" y="23" width="1376" height="877" />
     </state>
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/64.23.1376.877@64.23.1376.877" timestamp="1581332931471" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1581344557409">
+    <state width="1398" height="237" key="GridCell.Tab.0.bottom" timestamp="1581351006095">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1581344557409" />
+    <state width="1398" height="237" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581351006095" />
+    <state width="1398" height="237" key="GridCell.Tab.0.center" timestamp="1581351006094">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="237" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1581351006094" />
+    <state width="1398" height="237" key="GridCell.Tab.0.left" timestamp="1581351006093">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="237" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1581351006093" />
+    <state width="1398" height="237" key="GridCell.Tab.0.right" timestamp="1581351006095">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="237" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581351006095" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1581350409252">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1581350409252" />
     <state x="378" y="212" width="837" height="540" key="find.popup" timestamp="1581337250309">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="378" y="212" width="837" height="540" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1581337250309" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/lang_py$ast.coverage" NAME="ast Coverage Results" MODIFIED="1581350998739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/ast" />
   </component>
 </project>

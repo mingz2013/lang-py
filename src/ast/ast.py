@@ -16,6 +16,19 @@ from token import token
 class Node(object):
     """节点基类"""
 
+    def __get_d(self):
+        d = self.__dict__
+
+        d['name'] = self.__class__.__name__
+
+        return d
+
+    def __str__(self):
+        return str(self.__get_d())
+
+    def __repr__(self):
+        return repr(self.__get_d())
+
     def execute(self):
         """exe"""
         raise NotImplemented()
@@ -36,21 +49,21 @@ class EndNode(Node):
         self.tok = tok
         self.lit = lit
 
-    def __str__(self):
-        return str({
-            "name": self.__class__.__name__,
-            "tok": self.tok,
-            "pos": self.pos,
-            "lit": self.lit
-        })
-
-    def __repr__(self):
-        return repr({
-            "name": self.__class__.__name__,
-            "tok": self.tok,
-            "pos": self.pos,
-            "lit": self.lit
-        })
+    # def __str__(self):
+    #     return str({
+    #         "name": self.__class__.__name__,
+    #         "tok": self.tok,
+    #         "pos": self.pos,
+    #         "lit": self.lit
+    #     })
+    #
+    # def __repr__(self):
+    #     return repr({
+    #         "name": self.__class__.__name__,
+    #         "tok": self.tok,
+    #         "pos": self.pos,
+    #         "lit": self.lit
+    #     })
 
 
 class StringLiteral(EndNode):
@@ -134,17 +147,17 @@ class ExpressionList(Atom):
         """execute"""
         self.expression_list.append(expression)
 
-    def __str__(self):
-        return str({
-            "name": self.__class__.__name__,
-            "expression_list": self.expression_list
-        })
-
-    def __repr__(self):
-        return repr({
-            "name": self.__class__.__name__,
-            "expression_list": self.expression_list
-        })
+    # def __str__(self):
+    #     return str({
+    #         "name": self.__class__.__name__,
+    #         "expression_list": self.expression_list
+    #     })
+    #
+    # def __repr__(self):
+    #     return repr({
+    #         "name": self.__class__.__name__,
+    #         "expression_list": self.expression_list
+    #     })
 
     def execute(self):
         """execute"""
@@ -160,17 +173,17 @@ class ListDisplay(Atom):
     def __init__(self, expression_list):
         self.expression_list = expression_list
 
-    def __str__(self):
-        return str({
-            "name": self.__class__.__name__,
-            "expression_list": self.expression_list
-        })
-
-    def __repr__(self):
-        return repr({
-            "name": self.__class__.__name__,
-            "expression_list": self.expression_list
-        })
+    # def __str__(self):
+    #     return str({
+    #         "name": self.__class__.__name__,
+    #         "expression_list": self.expression_list
+    #     })
+    #
+    # def __repr__(self):
+    #     return repr({
+    #         "name": self.__class__.__name__,
+    #         "expression_list": self.expression_list
+    #     })
 
     def execute(self):
         """exe"""
@@ -224,19 +237,19 @@ class Call(Atom):
         self.identifier = identifier
         self.expression_list = expression_list
 
-    def __str__(self):
-        return str({
-            "name": self.__class__.__name__,
-            "identifier": self.identifier,
-            "expression_list": self.expression_list
-        })
-
-    def __repr__(self):
-        return repr({
-            "name": self.__class__.__name__,
-            "identifier": self.identifier,
-            "expression_list": self.expression_list
-        })
+    # def __str__(self):
+    #     return str({
+    #         "name": self.__class__.__name__,
+    #         "identifier": self.identifier,
+    #         "expression_list": self.expression_list
+    #     })
+    #
+    # def __repr__(self):
+    #     return repr({
+    #         "name": self.__class__.__name__,
+    #         "identifier": self.identifier,
+    #         "expression_list": self.expression_list
+    #     })
 
     def execute(self):
         """exe"""
@@ -275,19 +288,19 @@ class UnaryExpression(Expression):
             print('UnaryExpression >> error tok', self.tok)
             return None
 
-    def __str__(self):
-        return str({
-            "name": self.__class__.__name__,
-            "tok": self.tok,
-            "expression": self.expression
-        })
-
-    def __repr__(self):
-        return repr({
-            "name": self.__class__.__name__,
-            "tok": self.tok,
-            "expression": self.expression
-        })
+    # def __str__(self):
+    #     return str({
+    #         "name": self.__class__.__name__,
+    #         "tok": self.tok,
+    #         "expression": self.expression
+    #     })
+    #
+    # def __repr__(self):
+    #     return repr({
+    #         "name": self.__class__.__name__,
+    #         "tok": self.tok,
+    #         "expression": self.expression
+    #     })
 
     def to_bin(self, proto):
         """
@@ -318,19 +331,19 @@ class BinaryOperationExpression(Expression):
         self.left = left
         self.right = right
 
-    def __str__(self):
-        return str({
-            "name": self.__class__.__name__,
-            "left": self.left,
-            "right": self.right
-        })
-
-    def __repr__(self):
-        return repr({
-            "name": self.__class__.__name__,
-            "left": self.left,
-            "right": self.right
-        })
+    # def __str__(self):
+    #     return str({
+    #         "name": self.__class__.__name__,
+    #         "left": self.left,
+    #         "right": self.right
+    #     })
+    #
+    # def __repr__(self):
+    #     return repr({
+    #         "name": self.__class__.__name__,
+    #         "left": self.left,
+    #         "right": self.right
+    #     })
 
     def execute(self):
         """exe"""
@@ -574,17 +587,17 @@ class NotExpression(Expression):
         """exe"""
         return not self.expression.execute()
 
-    def __str__(self):
-        return str({
-            "name": self.__class__.__name__,
-            "expression": self.expression
-        })
-
-    def __repr__(self):
-        return repr({
-            "name": self.__class__.__name__,
-            "expression": self.expression
-        })
+    # def __str__(self):
+    #     return str({
+    #         "name": self.__class__.__name__,
+    #         "expression": self.expression
+    #     })
+    #
+    # def __repr__(self):
+    #     return repr({
+    #         "name": self.__class__.__name__,
+    #         "expression": self.expression
+    #     })
 
     def to_bin(self, proto):
         """"""
@@ -602,17 +615,17 @@ class SimpleStatement(Statement):
     def __init__(self):
         self.small_statements = []
 
-    def __str__(self):
-        return str({
-            "name": self.__class__.__name__,
-            "small_statements": self.small_statements
-        })
-
-    def __repr__(self):
-        return repr({
-            "name": self.__class__.__name__,
-            "small_statements": self.small_statements
-        })
+    # def __str__(self):
+    #     return str({
+    #         "name": self.__class__.__name__,
+    #         "small_statements": self.small_statements
+    #     })
+    #
+    # def __repr__(self):
+    #     return repr({
+    #         "name": self.__class__.__name__,
+    #         "small_statements": self.small_statements
+    #     })
 
     def append_small_statement(self, node):
         """
@@ -645,17 +658,17 @@ class PrintStatement(SimpleStatement):
     def __init__(self, expression_list):
         self.expression_list = expression_list
 
-    def __str__(self):
-        return str({
-            "name": self.__class__.__name__,
-            "expression_list": self.expression_list
-        })
-
-    def __repr__(self):
-        return repr({
-            "name": self.__class__.__name__,
-            "expression_list": self.expression_list
-        })
+    # def __str__(self):
+    #     return str({
+    #         "name": self.__class__.__name__,
+    #         "expression_list": self.expression_list
+    #     })
+    #
+    # def __repr__(self):
+    #     return repr({
+    #         "name": self.__class__.__name__,
+    #         "expression_list": self.expression_list
+    #     })
 
     def execute(self):
         """exe"""
@@ -674,19 +687,19 @@ class AssignmentStatement(SimpleStatement):
         self.identifier = identifier
         self.expression = expression
 
-    def __str__(self):
-        return str({
-            "name": self.__class__.__name__,
-            "identifier": self.identifier,
-            "expression": self.expression
-        })
-
-    def __repr__(self):
-        return repr({
-            "name": self.__class__.__name__,
-            "identifier": self.identifier,
-            "expression": self.expression
-        })
+    # def __str__(self):
+    #     return str({
+    #         "name": self.__class__.__name__,
+    #         "identifier": self.identifier,
+    #         "expression": self.expression
+    #     })
+    #
+    # def __repr__(self):
+    #     return repr({
+    #         "name": self.__class__.__name__,
+    #         "identifier": self.identifier,
+    #         "expression": self.expression
+    #     })
 
     def execute(self):
         """execute"""
@@ -720,21 +733,21 @@ class DefStatement(Statement):
         self.expression_list = expression_list
         self.block = block
 
-    def __str__(self):
-        return str({
-            "name": self.__class__.__name__,
-            'identifier': self.identifier,
-            'expression_list': self.expression_list,
-            'block': self.block
-        })
-
-    def __repr__(self):
-        return str({
-            "name": self.__class__.__name__,
-            'identifier': self.identifier,
-            'expression_list': self.expression_list,
-            'block': self.block
-        })
+    # def __str__(self):
+    #     return str({
+    #         "name": self.__class__.__name__,
+    #         'identifier': self.identifier,
+    #         'expression_list': self.expression_list,
+    #         'block': self.block
+    #     })
+    #
+    # def __repr__(self):
+    #     return str({
+    #         "name": self.__class__.__name__,
+    #         'identifier': self.identifier,
+    #         'expression_list': self.expression_list,
+    #         'block': self.block
+    #     })
 
     def execute(self):
         """
@@ -768,17 +781,17 @@ class ParamList(Node):
     def append_identifier(self, ident):
         self.params.append(ident)
 
-    def __str__(self):
-        return str({
-            "name": self.__class__.__name__,
-            'params': self.params
-        })
-
-    def __repr__(self):
-        return str({
-            "name": self.__class__.__name__,
-            'params': self.params
-        })
+    # def __str__(self):
+    #     return str({
+    #         "name": self.__class__.__name__,
+    #         'params': self.params
+    #     })
+    #
+    # def __repr__(self):
+    #     return str({
+    #         "name": self.__class__.__name__,
+    #         'params': self.params
+    #     })
 
     def execute(self):
         """"""
@@ -794,17 +807,17 @@ class StatementBlock(Node):
     def append_statement(self, node):
         self.statements.append(node)
 
-    def __str__(self):
-        return str({
-            "name": self.__class__.__name__,
-            'statements': self.statements,
-        })
-
-    def __repr__(self):
-        return str({
-            "name": self.__class__.__name__,
-            'statements': self.statements,
-        })
+    # def __str__(self):
+    #     return str({
+    #         "name": self.__class__.__name__,
+    #         'statements': self.statements,
+    #     })
+    #
+    # def __repr__(self):
+    #     return str({
+    #         "name": self.__class__.__name__,
+    #         'statements': self.statements,
+    #     })
 
     def execute(self):
         ret = None
@@ -826,19 +839,19 @@ class ForStatement(Statement):
         self.expression = expression
         self.block = block
 
-    def __str__(self):
-        return str({
-            "name": self.__class__.__name__,
-            'expression': self.expression,
-            'block': self.block
-        })
-
-    def __repr__(self):
-        return str({
-            "name": self.__class__.__name__,
-            'expression': self.expression,
-            'block': self.block
-        })
+    # def __str__(self):
+    #     return str({
+    #         "name": self.__class__.__name__,
+    #         'expression': self.expression,
+    #         'block': self.block
+    #     })
+    #
+    # def __repr__(self):
+    #     return str({
+    #         "name": self.__class__.__name__,
+    #         'expression': self.expression,
+    #         'block': self.block
+    #     })
 
     def execute(self):
         ret = None
@@ -860,19 +873,19 @@ class IfStatement(Statement):
 
         self.else_block = None
 
-    def __str__(self):
-        return str({
-            "name": self.__class__.__name__,
-            'elifs': self.elifs,
-            'else_block': self.else_block
-        })
-
-    def __repr__(self):
-        return str({
-            "name": self.__class__.__name__,
-            'elifs': self.elifs,
-            'else_block': self.else_block
-        })
+    # def __str__(self):
+    #     return str({
+    #         "name": self.__class__.__name__,
+    #         'elifs': self.elifs,
+    #         'else_block': self.else_block
+    #     })
+    #
+    # def __repr__(self):
+    #     return str({
+    #         "name": self.__class__.__name__,
+    #         'elifs': self.elifs,
+    #         'else_block': self.else_block
+    #     })
 
     def append_elif(self, expression, block):
         self.elifs.append({
@@ -899,17 +912,17 @@ class File(Node):
     def __init__(self):
         self.statements = []  # 语句集合
 
-    def __str__(self):
-        return str({
-            "name": self.__class__.__name__,
-            "statements": self.statements
-        })
-
-    def __repr__(self):
-        return repr({
-            "name": self.__class__.__name__,
-            "statements": self.statements
-        })
+    # def __str__(self):
+    #     return str({
+    #         "name": self.__class__.__name__,
+    #         "statements": self.statements
+    #     })
+    #
+    # def __repr__(self):
+    #     return repr({
+    #         "name": self.__class__.__name__,
+    #         "statements": self.statements
+    #     })
 
     def append_statements(self, statement):
         """append statements"""
@@ -929,3 +942,9 @@ class File(Node):
     def to_bin(self, proto):
         for s in self.statements:
             s.to_bin(proto)
+
+
+if __name__ == '__main__':
+    f = File()
+    # print(str(f.__dict__))
+    print(f)
