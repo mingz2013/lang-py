@@ -111,7 +111,8 @@ class Parser(object):
         print("function_def_statement....", self.tok, self.lit)
         self.skip(token.kw_def)
 
-        ident = self.tok
+        # ident = self.tok
+        ident = ast.Identifier(self.pos, self.tok, self.lit)
 
         self.next_token()
 

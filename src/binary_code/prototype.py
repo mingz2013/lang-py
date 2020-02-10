@@ -36,7 +36,8 @@ class ProtoType(object):
         self.protos.append(p)
         return len(self.protos) - 1
 
-    def add_code(self, code):
+    def add_code(self, *code):
+        print("add code<<", *code)
         self.code.append(code)
         return len(self.code) - 1
 

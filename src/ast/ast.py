@@ -23,6 +23,7 @@ class Node(object):
         """
         to bin
         """
+        print(self)
         raise NotImplemented()
 
 
@@ -60,7 +61,7 @@ class StringLiteral(EndNode):
 
     def to_bin(self, proto):
         idx = proto.add_constant(self.lit[1:-1])
-        return idx
+        proto.add_code('load const', idx, self.lit)
 
 
 class DigitLiteral(EndNode):
@@ -76,7 +77,7 @@ class Integer(DigitLiteral):
 
     def to_bin(self, proto):
         idx = proto.add_constant(int(self.lit))
-        return idx
+        proto.add_code('load const', idx, self.lit)
 
 
 class FloatNumber(DigitLiteral):
@@ -88,7 +89,7 @@ class FloatNumber(DigitLiteral):
 
     def to_bin(self, proto):
         idx = proto.add_constant(float(self.lit))
-        return idx
+        proto.add_code('load const', idx, self.lit)
 
 
 class Identifier(EndNode):
@@ -102,7 +103,7 @@ class Identifier(EndNode):
 
     def to_bin(self, proto):
         idx = proto.add_name(self.lit)
-        return idx
+        proto.add_code('load name', idx, self.lit)
 
 
 class Atom(Node):
@@ -165,9 +166,8 @@ class ListDisplay(Atom):
         """
 
         """
-        for e in self.expression_list:
-            e.to_bin(proto)
-        proto.add_code('build_list', len(self.expression_list))
+        self.expression_list.to_bin(proto)
+        proto.add_code('make list')
 
 
 class ParenthForm(Atom):
@@ -193,6 +193,9 @@ class ParenthForm(Atom):
     def execute(self):
         """exe"""
         return self.expression.execute()
+
+    def to_bin(self, proto):
+        return self.expression.to_bin(proto)
 
 
 class Call(Atom):
@@ -635,9 +638,8 @@ class PrintStatement(SimpleStatement):
         return None
 
     def to_bin(self, proto):
-        for i in self.expression_list:
-            i.to_bin(proto)
-        proto.add_code("print", len(self.expression_list))
+        self.expression_list.to_bin(proto)
+        proto.add_code("print")
 
 
 class AssignmentStatement(SimpleStatement):
@@ -725,8 +727,8 @@ class DefStatement(Statement):
 
         proto.add_sub_proto(p)
 
-        proto.add_constant(p.name, p)
-
+        proto.add_constant(p.name)
+        proto.add_code('store const')
         proto.add_code("make function")
 
 
