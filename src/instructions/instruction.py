@@ -6,96 +6,240 @@
 
 Module Description
 
+
+定义字节码
+
+
+opcode 0-7 8
+
+idx 8-15 8
+
+16bit
+
+
+
 """
 
 
-def new_instruction(opcode):
-    """
-    factory
-    """
-    opcode_map = {
-        0x11: Nop,
-    }
-    return opcode_map.get(opcode)
+class Executes(object):
+    def __init__(self):
+        pass
 
+    def lc(self, opcode, vm):
+        vm.cur_frame.load_const(opcode.idx)
 
-class Instruction(object):
-    """
+    def sc(self, opcode, vm):
+        vm.cur_frame.store_const(opcode.idx)
 
-    """
+    def ln(self, opcode, vm):
+        vm.cur_frame.load_name(opcode.idx)
 
-    def __init__(self, opcode):
-        self.opcode = opcode  # 指令原始数据
-        self.name = None  # name
-        self.op_mode = None  # 操作码类型
+    def sn(self, opcode, vm):
+        vm.cur_frame.store_name(opcode.idx)
 
-    def fetch_operands(self):
-        """
-        从字节码中提取操作数
-        """
+    def nop(self, opcode, vm):
+        """"""
 
-    def execute(self, vm):
-        """
-        执行
-        """
+    def add(self, opcode, vm):
+        vm.cur_frame.add()
 
+    def sub(self, opcode, vm):
+        vm.cur_frame.sub()
 
-class Nop(Instruction):
-    """
-    Nop，
-    """
+    def mul(self, opcode, vm):
+        vm.cur_frame.mul()
 
+    def div(self, opcode, vm):
+        vm.cur_frame.div()
 
-class Push(Instruction):
-    """
-    Push
-    """
+    def rem(self, opcode, vm):
+        vm.cur_frame.rem()
 
+    def jmp(self, opcode, vm):
+        vm.add_pc(opcode.idx)
 
-class Pop(Instruction):
-    """
-    Pop
-    """
-
-
-class Add(Instruction):
-    """
-    Add
-    """
-
-    def execute(self, vm):
-        """
-
-        """
-        a = vm.pop()
-        b = vm.pop()
-
-
-class Jmp(Instruction):
-    """
-    跳转
-    """
-
-    def execute(self, vm):
-        offset = self.opcode << 0xffff
-        vm.add_pc(offset)
-
-
-class Call(Instruction):
-    """
-    call
-    """
-
-    def execute(self, vm):
-        nArgs, nResults = self.opcode << 0xff, self.opcode << 0xffff
+    def call(self, opcode, vm):
+        nArgs, nResults = opcode << 0xff, opcode << 0xffff
         vm.call(nArgs, nResults)
 
-
-class Ret(Instruction):
-    """
-    return
-    """
-
-    def execute(self, vm):
+    def ret(self, opcode, vm):
         vm.ret()
 
+
+opcodes = [
+    ('opcode', 'type', 'name', 'desc'),
+
+    (0b00000000, 0b0, 'nop', ''),
+
+    (0b00000000, 0b0, 'add', ''),
+    (0b00000000, 0b0, 'sub', ''),
+    (0b00000000, 0b0, 'mul', ''),
+    (0b00000000, 0b0, 'div', ''),
+    (0b00000000, 0b0, 'rem', ''),
+
+    (0b00000000, 0b0, 'call', ''),
+    (0b00000000, 0b0, 'ret', ''),
+
+    (0b00000000, 0b1, 'lc', 'load const'),
+    (0b00000000, 0b1, 'sc', 'store const'),
+    (0b00000000, 0b1, 'ln', 'load name'),
+    (0b00000000, 0b1, 'sn', 'store name'),
+
+    (0b00000000, 0b1, 'j', 'jmp'),
+
+]
+
+
+def LoadConst(idx):
+    """
+
+    """
+    return None
+
+
+def LoadName(idx):
+    """
+
+    """
+    return None
+
+
+def StoreName(idx):
+    return None
+
+
+def MakeList(length):
+    """
+
+    """
+    return None
+
+
+def MakeFunction():
+    return None
+
+
+def CallFunction(length):
+    """
+
+    """
+    return None
+
+
+def Ret():
+    return None
+
+
+def Push(obj):
+    """
+
+    """
+    return None
+
+
+def Pop():
+    return None
+
+
+def Add():
+    return None
+
+
+def Sub():
+    return None
+
+
+def Mul():
+    return None
+
+
+def Div():
+    return None
+
+
+def Rem():
+    return None
+
+
+def Eq():
+    """
+    Equal
+    """
+    return None
+
+
+def Neq():
+    """
+    not equal
+    """
+    return None
+
+
+def Lt():
+    """
+    less than
+    """
+    return None
+
+
+def Lte():
+    """
+    less than or equal
+    """
+    return None
+
+
+def Gt():
+    """
+    greater than
+    """
+    return None
+
+
+def Gte():
+    """
+    greator than or equal
+    """
+    return None
+
+
+def Is():
+    """
+    is
+    """
+    return None
+
+
+def In():
+    """
+    in
+    """
+    return None
+
+
+def Or():
+    """
+    or
+    """
+    return None
+
+
+def And():
+    """
+    And
+    """
+    return None
+
+
+def Not():
+    """
+    not
+    """
+    return None
+
+
+def Print(length):
+    """
+    print
+    """
+    return None

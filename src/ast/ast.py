@@ -8,8 +8,9 @@ __date__ = "16/12/2017"
 __author__ = "zhaojm"
 
 from context import context
-from token import token
+from instructions import instruction
 from prototype.prototype import ProtoType
+from token import token
 
 
 class Node(object):
@@ -61,7 +62,10 @@ class StringLiteral(EndNode):
 
     def to_bin(self, proto):
         idx = proto.add_constant(self.lit[1:-1])
-        proto.add_code('load const', idx, self.lit)
+
+        inst = instruction.LoadConst(idx)
+
+        proto.add_code(inst)
 
 
 class DigitLiteral(EndNode):
@@ -77,7 +81,9 @@ class Integer(DigitLiteral):
 
     def to_bin(self, proto):
         idx = proto.add_constant(int(self.lit))
-        proto.add_code('load const', idx, self.lit)
+        inst = instruction.LoadConst(idx)
+
+        proto.add_code(inst)
 
 
 class FloatNumber(DigitLiteral):
@@ -89,7 +95,9 @@ class FloatNumber(DigitLiteral):
 
     def to_bin(self, proto):
         idx = proto.add_constant(float(self.lit))
-        proto.add_code('load const', idx, self.lit)
+        inst = instruction.LoadConst(idx)
+
+        proto.add_code(inst)
 
 
 class Identifier(EndNode):
@@ -103,7 +111,10 @@ class Identifier(EndNode):
 
     def to_bin(self, proto):
         idx = proto.add_name(self.lit)
-        proto.add_code('load name', idx, self.lit)
+
+        inst = instruction.LoadName(idx)
+
+        proto.add_code(inst)
 
 
 class Atom(Node):
@@ -115,6 +126,9 @@ class ExpressionList(Atom):
 
     def __init__(self):
         self.expression_list = []
+
+    def __len__(self):
+        return len(self.expression_list)
 
     def append_expression(self, expression):
         """execute"""
@@ -167,7 +181,12 @@ class ListDisplay(Atom):
 
         """
         self.expression_list.to_bin(proto)
-        proto.add_code('make list')
+
+        length = len(self.expression_list)
+
+        inst = instruction.MakeList(length)
+
+        proto.add_code(inst)
 
 
 class ParenthForm(Atom):
@@ -226,10 +245,13 @@ class Call(Atom):
         return func(self.expression_list.execute())
 
     def to_bin(self, proto):
-        proto.add_code('load_name', self.identifier.lit)
+        self.identifier.to_bin(proto)
+
         for e in self.expression_list:
             e.to_bin(proto)
-        proto.add_code('call_function')
+
+        inst = instruction.CallFunction(len(self.expression_list))
+        proto.add_code(inst)
 
 
 class Expression(Node):
@@ -272,7 +294,13 @@ class UnaryExpression(Expression):
 
         """
         self.expression.to_bin(proto)
-        proto.add_code(self.tok)
+
+        inst = instruction.Push(0)
+        proto.add_code(inst)
+        if self.tok == token.tk_plus:
+            proto.add_code(instruction.Add())
+        elif self.tok == token.tk_minus_sign:
+            proto.add_code(instruction.Sub())
 
 
 class NegativeExpression(UnaryExpression):
@@ -308,10 +336,6 @@ class BinaryOperationExpression(Expression):
         """exe"""
         raise NotImplemented()
 
-    def to_bin(self, proto):
-        """"""
-        # proto.add_code()
-
 
 class RelationalExpression(BinaryOperationExpression):
     """加减类运算表达式"""
@@ -332,7 +356,8 @@ class PlusExpression(BinaryOperationExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code("add")
+
+        proto.add_code(instruction.Add())
 
 
 class MinusSignExpression(RelationalExpression):
@@ -346,7 +371,7 @@ class MinusSignExpression(RelationalExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code("minus")
+        proto.add_code(instruction.Sub())
 
 
 class StarExpression(RelationalExpression):
@@ -360,7 +385,7 @@ class StarExpression(RelationalExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code("star")
+        proto.add_code(instruction.Mul())
 
 
 class DivideExpression(MultiplicativeExpression):
@@ -374,7 +399,7 @@ class DivideExpression(MultiplicativeExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code("div")
+        proto.add_code(instruction.Div())
 
 
 class RemainderExpression(BinaryOperationExpression):
@@ -388,7 +413,7 @@ class RemainderExpression(BinaryOperationExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code("rem")
+        proto.add_code(instruction.Rem())
 
 
 class ComparisonExpression(BinaryOperationExpression):
@@ -406,7 +431,7 @@ class EqualExpression(ComparisonExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code("equal")
+        proto.add_code(instruction.Eq())
 
 
 class NotEqualExpression(ComparisonExpression):
@@ -420,7 +445,7 @@ class NotEqualExpression(ComparisonExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code("notequal")
+        proto.add_code(instruction.Neq())
 
 
 class LessThanExpression(ComparisonExpression):
@@ -434,7 +459,7 @@ class LessThanExpression(ComparisonExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code("lessthan")
+        proto.add_code(instruction.Lt())
 
 
 class LessThanOrEqualExpression(ComparisonExpression):
@@ -448,7 +473,7 @@ class LessThanOrEqualExpression(ComparisonExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code("leethanorequal")
+        proto.add_code(instruction.Lte())
 
 
 class GreaterThanExpression(ComparisonExpression):
@@ -462,7 +487,7 @@ class GreaterThanExpression(ComparisonExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code("greaterthan")
+        proto.add_code(instruction.Gt())
 
 
 class GreaterThanOrEqualExpression(ComparisonExpression):
@@ -476,7 +501,7 @@ class GreaterThanOrEqualExpression(ComparisonExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code("greaterthanorequal")
+        proto.add_code(instruction.Gte())
 
 
 class IsExpression(ComparisonExpression):
@@ -490,7 +515,7 @@ class IsExpression(ComparisonExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code("is")
+        proto.add_code(instruction.Is())
 
 
 class InExpression(ComparisonExpression):
@@ -504,7 +529,7 @@ class InExpression(ComparisonExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code("in")
+        proto.add_code(instruction.In())
 
 
 class BooleanExpression(BinaryOperationExpression):
@@ -522,7 +547,7 @@ class OrExpression(BooleanExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code("or")
+        proto.add_code(instruction.Or())
 
 
 class AndExpression(BooleanExpression):
@@ -536,7 +561,7 @@ class AndExpression(BooleanExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code("and")
+        proto.add_code(instruction.And())
 
 
 class NotExpression(Expression):
@@ -564,7 +589,7 @@ class NotExpression(Expression):
     def to_bin(self, proto):
         """"""
         self.expression.to_bin(proto)
-        proto.add_code("not")
+        proto.add_code(instruction.Not())
 
 
 class Statement(Node):
@@ -639,42 +664,42 @@ class PrintStatement(SimpleStatement):
 
     def to_bin(self, proto):
         self.expression_list.to_bin(proto)
-        proto.add_code("print")
+        proto.add_code(instruction.Print(len(self.expression_list)))
 
 
 class AssignmentStatement(SimpleStatement):
     """赋值语句"""
 
-    def __init__(self, ident, expression):
-        self.ident = ident
+    def __init__(self, identifier, expression):
+        self.identifier = identifier
         self.expression = expression
 
     def __str__(self):
         return str({
             "name": self.__class__.__name__,
-            "ident": self.ident,
+            "identifier": self.identifier,
             "expression": self.expression
         })
 
     def __repr__(self):
         return repr({
             "name": self.__class__.__name__,
-            "ident": self.ident,
+            "identifier": self.identifier,
             "expression": self.expression
         })
 
     def execute(self):
         """execute"""
-        context.Symtab.add_var(self.ident.lit, self.expression.execute())
+        context.Symtab.add_var(self.identifier.lit, self.expression.execute())
         return None
 
     def to_bin(self, proto):
         """
 
         """
+        idx = self.identifier.to_bin(proto)
         self.expression.to_bin(proto)
-        idx = proto.add_constant(self.ident.lit)
-        proto.add_code('store_name', idx)
+        proto.add_code(instruction.StoreName(idx))
 
 
 class ExpressionStatement(SimpleStatement):
@@ -690,15 +715,15 @@ class DefStatement(Statement):
     定义语句，函数定义
     """
 
-    def __init__(self, ident, expression_list, block):
-        self.ident = ident
+    def __init__(self, identifier, expression_list, block):
+        self.identifier = identifier
         self.expression_list = expression_list
         self.block = block
 
     def __str__(self):
         return str({
             "name": self.__class__.__name__,
-            'ident': self.ident,
+            'identifier': self.identifier,
             'expression_list': self.expression_list,
             'block': self.block
         })
@@ -706,7 +731,7 @@ class DefStatement(Statement):
     def __repr__(self):
         return str({
             "name": self.__class__.__name__,
-            'ident': self.ident,
+            'identifier': self.identifier,
             'expression_list': self.expression_list,
             'block': self.block
         })
@@ -720,7 +745,7 @@ class DefStatement(Statement):
 
     def to_bin(self, proto):
         p = ProtoType()
-        p.name = self.ident.lit
+        p.name = self.identifier.lit
         p.args = self.expression_list
 
         self.block.to_bin(p)
@@ -866,6 +891,7 @@ class IfStatement(Statement):
 
     def to_bin(self, proto):
         """"""
+
 
 class File(Node):
     """root"""
