@@ -46,7 +46,7 @@ class VM(object):
 
     @property
     def pc(self):
-        return self.stack.top_node.pc
+        return self.cur_frame.pc
 
     def add_pc(self, n):
         self.cur_frame.add_pc(n)
