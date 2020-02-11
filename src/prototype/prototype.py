@@ -14,7 +14,7 @@ class ProtoType(object):
     def __get_d(self):
         d = self.__dict__
 
-        d['name'] = self.__class__.__name__
+        # d['name'] = self.__class__.__name__
 
         return d
 
@@ -58,8 +58,8 @@ class ProtoType(object):
     def get_sub_proto(self, idx):
         return self.protos[idx]
 
-    def add_code(self, *code):
-        print("add code<<", *code)
+    def add_code(self, code):
+        print("add code<<", code)
         self.code.append(code)
         return len(self.code) - 1
 

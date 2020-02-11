@@ -136,7 +136,7 @@ class Executes(object):
 e = Executes()
 
 opcodes = [
-    ('idx 8bit ', 'opcode 7bit', 'type 1bit', 'name', 'do', 'desc'),
+    # ('idx 8bit ', 'opcode 7bit', 'type 1bit', 'name', 'do', 'desc'),
 
     (0b00000000, 0b0000000, 0b0, 'nop', e.nop, ''),
 
@@ -157,24 +157,23 @@ opcodes = [
     (0b00000000, 0b0001100, 0b1, 'j', e.j, 'jmp'),
 
     (0b00000000, 0b0001101, 0b1, 'ml', e.ml, 'make list'),
-
     (0b00000000, 0b0001110, 0b1, 'mf', e.mf, 'make function'),
 
     (0b00000000, 0b0001111, 0b1, 'push', e.push, 'push'),
-    (0b00000000, 0b0010000, 0b1, 'pop', e.pop, 'pop'),
+    (0b00000000, 0b0010000, 0b0, 'pop', e.pop, 'pop'),
 
-    (0b00000000, 0b0010001, 0b1, 'eq', e.eq, 'equal'),
-    (0b00000000, 0b0010010, 0b1, 'neq', e.neq, 'not equal'),
-    (0b00000000, 0b0010011, 0b1, 'lt', e.lt, 'less than'),
-    (0b00000000, 0b0010100, 0b1, 'lte', e.lte, 'less than or equal'),
-    (0b00000000, 0b0010101, 0b1, 'gt', e.gt, 'greater than'),
-    (0b00000000, 0b0010110, 0b1, 'gte', e.gte, 'greater than or equal'),
+    (0b00000000, 0b0010001, 0b0, 'eq', e.eq, 'equal'),
+    (0b00000000, 0b0010010, 0b0, 'neq', e.neq, 'not equal'),
+    (0b00000000, 0b0010011, 0b0, 'lt', e.lt, 'less than'),
+    (0b00000000, 0b0010100, 0b0, 'lte', e.lte, 'less than or equal'),
+    (0b00000000, 0b0010101, 0b0, 'gt', e.gt, 'greater than'),
+    (0b00000000, 0b0010110, 0b0, 'gte', e.gte, 'greater than or equal'),
 
-    (0b00000000, 0b0010111, 0b1, 'is', e.is_, 'is'),
-    (0b00000000, 0b0011000, 0b1, 'in', e.in_, 'in'),
-    (0b00000000, 0b0011001, 0b1, 'or', e.or_, 'or'),
-    (0b00000000, 0b0011010, 0b1, 'and', e.and_, 'and'),
-    (0b00000000, 0b0011011, 0b1, 'not', e.not_, 'not'),
+    (0b00000000, 0b0010111, 0b0, 'is', e.is_, 'is'),
+    (0b00000000, 0b0011000, 0b0, 'in', e.in_, 'in'),
+    (0b00000000, 0b0011001, 0b0, 'or', e.or_, 'or'),
+    (0b00000000, 0b0011010, 0b0, 'and', e.and_, 'and'),
+    (0b00000000, 0b0011011, 0b0, 'not', e.not_, 'not'),
 
     (0b00000000, 0b0011100, 0b1, 'print', e.print, 'print'),
 ]
@@ -207,21 +206,22 @@ class Instruction(int):
     @classmethod
     def from_inst(cls, inst):
         assert isinstance(inst, int)
-        assert inst.bit_length() == 16
+        assert inst.bit_length() <= 16
         return cls(inst)
 
     @classmethod
     def build_type_0(cls, opcode):
         assert isinstance(opcode, int)
-        assert opcode.bit_length() == 7
+        assert opcode.bit_length() <= 7
         return cls(opcode << 1 + 0b0)
 
     @classmethod
     def build_type_1(cls, opcode, idx):
+        print("build_type_1<<", opcode, idx)
         assert isinstance(opcode, int)
-        assert opcode.bit_length() == 7
+        assert opcode.bit_length() <= 7
         assert isinstance(idx, int)
-        assert idx.bit_length() == 8
+        assert idx.bit_length() <= 8
 
         return cls(idx << 8 + opcode << 1 + 0b1)
 
@@ -345,7 +345,7 @@ def PUSH(obj):
     """
 
     """
-    return builder.push()
+    return builder.push(obj)
 
 
 def POP():

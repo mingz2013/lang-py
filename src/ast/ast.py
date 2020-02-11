@@ -113,6 +113,8 @@ class Identifier(EndNode):
 
         proto.add_code(inst)
 
+        return idx
+
 
 class Atom(Node):
     """原子"""
