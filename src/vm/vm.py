@@ -16,7 +16,6 @@ from vm.stack import Stack
 
 class VM(object):
     """
-    VM
     Virtual Machine
     """
 
