@@ -28,8 +28,10 @@ class VM(object):
         """
         vm call, 初始执行
         """
-        results = []
-        f = Frame(self.prototype, args, results)
+        f = Frame(self.prototype)
+        for a in args:
+            f.push(a)
+
         self.stack.push(f)
 
         self.loop()
@@ -51,7 +53,7 @@ class VM(object):
     def add_pc(self, n):
         self.frame.add_pc(n)
 
-    def call(self, nArgs, nResults):
+    def call(self, idx):
         """
 
         对于调用者函数：
@@ -77,21 +79,17 @@ class VM(object):
         3 调用结束，最后执行ret指令
 
         """
-        cur_f = self.frame
 
         proto = self.frame.pop()
-        args = []
-        for i in range(nArgs):
-            args.append(self.frame.pop())
-        results = []
-        for i in range(nResults):
-            results.append(None)
+        f = Frame(proto)
 
-        f = Frame(proto, args, results)
+        for i in range(idx):
+            a = self.frame.pop()
+            f.push(a)
 
         self.stack.push(f)
 
-    def ret(self):
+    def ret(self, idx):
         """
         函数返回的时候，
         1 取出结果列表
@@ -101,10 +99,9 @@ class VM(object):
         """
         f = self.stack.pop()
 
-        results = f.results
-
-        for i in results:
-            self.frame.push(i)
+        for i in range(idx):
+            a = f.pop()
+            self.frame.push(a)
 
     def j(self, idx):
         self.add_pc(idx)

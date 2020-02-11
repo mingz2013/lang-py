@@ -10,6 +10,20 @@ Module Description
 
 
 class ProtoType(object):
+
+    def __get_d(self):
+        d = self.__dict__
+
+        d['name'] = self.__class__.__name__
+
+        return d
+
+    def __str__(self):
+        return str(self.__get_d())
+
+    def __repr__(self):
+        return repr(self.__get_d())
+
     def __init__(self):
         # bin code
         self.name = ""  # 函数名, 或者文件名
@@ -22,28 +36,6 @@ class ProtoType(object):
 
         # vm
         self.proto = None  # 指向上一级的指针
-
-    def __str__(self):
-        return str({
-            'name': self.name,
-            'code': self.code,
-            'constants': self.constants,
-            'names': self.names,
-            'args': self.args,
-            'local_vars': self.local_vars,
-            'protos': self.protos
-        })
-
-    def __repr__(self):
-        return str({
-            'name': self.name,
-            'code': self.code,
-            'constants': self.constants,
-            'names': self.names,
-            'args': self.args,
-            'local_vars': self.local_vars,
-            'protos': self.protos
-        })
 
     def add_name(self, n):
         self.names.append(n)
