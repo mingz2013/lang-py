@@ -71,6 +71,8 @@ class ProtoType(object):
         return len(self.code) - 1
 
     def get_code(self, idx):
+        if idx >= len(self.code):
+            return -1
         return self.code[idx]
 
     def clone(self):

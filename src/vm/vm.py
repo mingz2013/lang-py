@@ -38,6 +38,9 @@ class VM(object):
     def loop(self):
         while True:
             data = self.frame.fetch()
+            if data == -1:
+                print("loop.over...")
+                break
             inst = Instruction.from_inst(data)
             inst.execute(self)
 
