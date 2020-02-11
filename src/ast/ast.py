@@ -107,12 +107,16 @@ class Identifier(EndNode):
         return context.Symtab.get_var(self.lit).init_data
 
     def to_bin(self, proto):
-        idx = proto.add_name(self.lit)
+        idx = self.get_idx(proto)
 
         inst = instruction.LN(idx)
 
         proto.add_code(inst)
 
+        return idx
+
+    def get_idx(self, proto):
+        idx = proto.add_name(self.lit)
         return idx
 
 
@@ -221,8 +225,8 @@ class UnaryExpression(Expression):
         elif self.tok == token.tk_minus_sign:
             return -self.expression.execute()
         else:
-            print('UnaryExpression >> error tok', self.tok)
-            return None
+            raise Exception('UnaryExpression >> error tok', self.tok)
+            # return None
 
     def to_bin(self, proto):
         """
@@ -568,8 +572,10 @@ class AssignmentStatement(SimpleStatement):
         """
 
         """
-        idx = self.identifier.to_bin(proto)
         self.expression.to_bin(proto)
+
+        idx = self.identifier.get_idx(proto)
+
         proto.add_code(instruction.SN(idx))
 
 

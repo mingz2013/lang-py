@@ -74,8 +74,8 @@ class Frame(StackNode):
         a = self.stack.pop()
         b = self.stack.pop()
         if type(a) != type(b):
-            # raise Exception(a, b, 'not type equal')
-            return
+            raise Exception(a, b, 'not type equal')
+            # return
         c = a + b
         self.stack.push(c)
 
@@ -83,8 +83,8 @@ class Frame(StackNode):
         a = self.stack.pop()
         b = self.stack.pop()
         if type(a) != type(b):
-            # raise Exception(a, b, 'not type equal')
-            return
+            raise Exception(a, b, 'not type equal')
+            # return
         c = a - b
 
         self.stack.push(c)
@@ -136,6 +136,11 @@ class Frame(StackNode):
         """
 
         """
+        l = []
+        for i in range(idx):
+            a = self.stack.pop()
+            l.append(a)
+        self.stack.push(l)
 
     def mf(self, idx):
         """"""
@@ -193,6 +198,7 @@ class Frame(StackNode):
         """"""
         a = self.stack.pop()
         b = self.stack.pop()
+        print("in_", a, b)
         c = a in b
         self.stack.push(c)
 

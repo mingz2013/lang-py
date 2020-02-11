@@ -254,6 +254,7 @@ class Instruction(int):
             return "{name} {idx}".format(name=self.name, idx=self.idx)
 
     def execute(self, vm):
+        print("Instruction.execute <<", self)
         return opcode_map[self.opcode][4](self, vm)
 
 

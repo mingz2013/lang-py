@@ -31,23 +31,27 @@ class ProtoType(object):
         self.constants = []  # 常量表
         self.names = []  # 变量名
         self.args = []  # 参数表
-        self.local_vars = []  # 局部变量表
+        self.local_vars = {}  # 局部变量表
         self.protos = []  # 子函数原型表
 
         # vm
         self.proto = None  # 指向上一级的指针
 
     def add_name(self, n):
+        if n in self.names:
+            return self.names.index(n)
         self.names.append(n)
         return len(self.names) - 1
 
     def store_name(self, idx, a):
-        pass
+        self.local_vars[idx] = a
 
     def load_name(self, idx):
-        return self.names[idx]
+        return self.local_vars[idx]
 
     def add_constant(self, c):
+        if c in self.constants:
+            return self.constants.index(c)
         self.constants.append(c)
         return len(self.constants) - 1
 
