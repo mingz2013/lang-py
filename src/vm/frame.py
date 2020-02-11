@@ -71,39 +71,41 @@ class Frame(StackNode):
         self.stack.push(obj)
 
     def add(self):
-        a = self.stack.pop()
         b = self.stack.pop()
+        a = self.stack.pop()
         if type(a) != type(b):
-            raise Exception(a, b, 'not type equal')
+            print("not type equal", a, b)
+            # raise Exception(a, b, 'not type equal')
             # return
         c = a + b
         self.stack.push(c)
 
     def sub(self):
-        a = self.stack.pop()
         b = self.stack.pop()
+        a = self.stack.pop()
         if type(a) != type(b):
-            raise Exception(a, b, 'not type equal')
+            print("not type equal", a, b)
+            # raise Exception(a, b, 'not type equal')
             # return
         c = a - b
 
         self.stack.push(c)
 
     def div(self):
-        a = self.stack.pop()
         b = self.stack.pop()
+        a = self.stack.pop()
         c = a / b
         self.stack.push(c)
 
     def mul(self):
-        a = self.stack.pop()
         b = self.stack.pop()
+        a = self.stack.pop()
         c = a * b
         self.stack.push(c)
 
     def rem(self):
-        a = self.stack.pop()
         b = self.stack.pop()
+        a = self.stack.pop()
         c = a % b
         self.stack.push(c)
 
@@ -140,6 +142,7 @@ class Frame(StackNode):
         for i in range(idx):
             a = self.stack.pop()
             l.append(a)
+        reversed(l)
         self.stack.push(l)
 
     def mf(self, idx):
@@ -147,72 +150,72 @@ class Frame(StackNode):
 
     def eq(self):
         """"""
-        a = self.stack.pop()
         b = self.stack.pop()
+        a = self.stack.pop()
         c = a == b
         self.stack.push(c)
 
     def neq(self):
         """"""
-        a = self.stack.pop()
         b = self.stack.pop()
+        a = self.stack.pop()
         c = a != b
         self.stack.push(c)
 
     def lt(self):
         """"""
-        a = self.stack.pop()
         b = self.stack.pop()
+        a = self.stack.pop()
         c = a < b
         self.stack.push(c)
 
     def lte(self):
         """"""
-        a = self.stack.pop()
         b = self.stack.pop()
+        a = self.stack.pop()
         c = a <= b
         self.stack.push(c)
 
     def gt(self):
         """"""
-        a = self.stack.pop()
         b = self.stack.pop()
+        a = self.stack.pop()
         c = a > b
         self.stack.push(c)
 
     def gte(self):
         """"""
-        a = self.stack.pop()
         b = self.stack.pop()
+        a = self.stack.pop()
         c = a >= b
         self.stack.push(c)
 
     def is_(self):
         """"""
-        a = self.stack.pop()
         b = self.stack.pop()
+        a = self.stack.pop()
         c = a is b
         self.stack.push(c)
 
     def in_(self):
         """"""
-        a = self.stack.pop()
         b = self.stack.pop()
+        a = self.stack.pop()
         print("in_", a, b)
         c = a in b
         self.stack.push(c)
 
     def or_(self):
         """"""
-        a = self.stack.pop()
         b = self.stack.pop()
+        a = self.stack.pop()
         c = a or b
         self.stack.push(c)
 
     def and_(self):
         """"""
-        a = self.stack.pop()
         b = self.stack.pop()
+        a = self.stack.pop()
         c = a and b
         self.stack.push(c)
 
@@ -225,4 +228,5 @@ class Frame(StackNode):
     def print(self, idx):
         """"""""
         args = [self.stack.pop() for i in range(idx)]
+        reversed(args)
         print(*args)

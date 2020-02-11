@@ -240,7 +240,7 @@ class Instruction(int):
 
     @property
     def idx(self):
-        return self >> 9
+        return self >> 8
 
     @property
     def name(self):

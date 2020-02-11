@@ -58,6 +58,7 @@ class StringLiteral(EndNode):
         return self.lit[1:-1]  # 去掉双引号
 
     def to_bin(self, proto):
+        # print("to_bin<<", self)
         idx = proto.add_constant(self.lit[1:-1])
 
         inst = instruction.LC(idx)
@@ -77,6 +78,7 @@ class Integer(DigitLiteral):
         return int(self.lit)
 
     def to_bin(self, proto):
+        # print("to_bin<<", self)
         idx = proto.add_constant(int(self.lit))
         inst = instruction.LC(idx)
 
@@ -91,6 +93,7 @@ class FloatNumber(DigitLiteral):
         return float(self.lit)
 
     def to_bin(self, proto):
+        # print("to_bin<<", self)
         idx = proto.add_constant(float(self.lit))
         inst = instruction.LC(idx)
 
@@ -107,6 +110,7 @@ class Identifier(EndNode):
         return context.Symtab.get_var(self.lit).init_data
 
     def to_bin(self, proto):
+        # print("to_bin<<", self)
         idx = self.get_idx(proto)
 
         inst = instruction.LN(idx)
@@ -142,6 +146,7 @@ class ExpressionList(Atom):
         return [expression.execute() for expression in self.expression_list]
 
     def to_bin(self, proto):
+        # print("to_bin<<", self)
         return [expression.to_bin(proto) for expression in self.expression_list]
 
 
@@ -159,6 +164,7 @@ class ListDisplay(Atom):
         """
 
         """
+        # print("to_bin<<", self)
         self.expression_list.to_bin(proto)
 
         length = len(self.expression_list)
@@ -181,6 +187,7 @@ class ParenthForm(Atom):
         return self.expression.execute()
 
     def to_bin(self, proto):
+        # print("to_bin<<", self)
         return self.expression.to_bin(proto)
 
 
@@ -232,6 +239,7 @@ class UnaryExpression(Expression):
         """
 
         """
+        # print("to_bin<<", self)
         self.expression.to_bin(proto)
 
         inst = instruction.PUSH(0)
@@ -279,6 +287,7 @@ class PlusExpression(BinaryOperationExpression):
 
     def to_bin(self, proto):
         """"""
+        # print("to_bin<<", self)
         self.left.to_bin(proto)
         self.right.to_bin(proto)
 
@@ -294,6 +303,7 @@ class MinusSignExpression(RelationalExpression):
 
     def to_bin(self, proto):
         """"""
+        # print("to_bin<<", self)
         self.left.to_bin(proto)
         self.right.to_bin(proto)
         proto.add_code(instruction.SUB())
@@ -308,6 +318,7 @@ class StarExpression(RelationalExpression):
 
     def to_bin(self, proto):
         """"""
+        # print("to_bin<<", self)
         self.left.to_bin(proto)
         self.right.to_bin(proto)
         proto.add_code(instruction.MUL())
@@ -322,6 +333,7 @@ class DivideExpression(MultiplicativeExpression):
 
     def to_bin(self, proto):
         """"""
+        # print("to_bin<<", self)
         self.left.to_bin(proto)
         self.right.to_bin(proto)
         proto.add_code(instruction.DIV())
@@ -336,6 +348,7 @@ class RemainderExpression(BinaryOperationExpression):
 
     def to_bin(self, proto):
         """"""
+        # print("to_bin<<", self)
         self.left.to_bin(proto)
         self.right.to_bin(proto)
         proto.add_code(instruction.REM())
@@ -354,6 +367,7 @@ class EqualExpression(ComparisonExpression):
 
     def to_bin(self, proto):
         """"""
+        # print("to_bin<<", self)
         self.left.to_bin(proto)
         self.right.to_bin(proto)
         proto.add_code(instruction.EQ())
@@ -368,6 +382,7 @@ class NotEqualExpression(ComparisonExpression):
 
     def to_bin(self, proto):
         """"""
+        # print("to_bin<<", self)
         self.left.to_bin(proto)
         self.right.to_bin(proto)
         proto.add_code(instruction.NEQ())
@@ -382,6 +397,7 @@ class LessThanExpression(ComparisonExpression):
 
     def to_bin(self, proto):
         """"""
+        # print("to_bin<<", self)
         self.left.to_bin(proto)
         self.right.to_bin(proto)
         proto.add_code(instruction.LT())
@@ -396,6 +412,7 @@ class LessThanOrEqualExpression(ComparisonExpression):
 
     def to_bin(self, proto):
         """"""
+        # print("to_bin<<", self)
         self.left.to_bin(proto)
         self.right.to_bin(proto)
         proto.add_code(instruction.LTE())
@@ -410,6 +427,7 @@ class GreaterThanExpression(ComparisonExpression):
 
     def to_bin(self, proto):
         """"""
+        # print("to_bin<<", self)
         self.left.to_bin(proto)
         self.right.to_bin(proto)
         proto.add_code(instruction.GT())
@@ -424,6 +442,7 @@ class GreaterThanOrEqualExpression(ComparisonExpression):
 
     def to_bin(self, proto):
         """"""
+        # print("to_bin<<", self)
         self.left.to_bin(proto)
         self.right.to_bin(proto)
         proto.add_code(instruction.GTE())
@@ -438,6 +457,7 @@ class IsExpression(ComparisonExpression):
 
     def to_bin(self, proto):
         """"""
+        # print("to_bin<<", self)
         self.left.to_bin(proto)
         self.right.to_bin(proto)
         proto.add_code(instruction.IS())
@@ -452,6 +472,7 @@ class InExpression(ComparisonExpression):
 
     def to_bin(self, proto):
         """"""
+        # print("to_bin<<", self)
         self.left.to_bin(proto)
         self.right.to_bin(proto)
         proto.add_code(instruction.IN())
@@ -470,6 +491,7 @@ class OrExpression(BooleanExpression):
 
     def to_bin(self, proto):
         """"""
+        # print("to_bin<<", self)
         self.left.to_bin(proto)
         self.right.to_bin(proto)
         proto.add_code(instruction.OR())
@@ -484,6 +506,7 @@ class AndExpression(BooleanExpression):
 
     def to_bin(self, proto):
         """"""
+        # print("to_bin<<", self)
         self.left.to_bin(proto)
         self.right.to_bin(proto)
         proto.add_code(instruction.AND())
@@ -501,6 +524,7 @@ class NotExpression(Expression):
 
     def to_bin(self, proto):
         """"""
+        # print("to_bin<<", self)
         self.expression.to_bin(proto)
         proto.add_code(instruction.NOT())
 
@@ -532,6 +556,7 @@ class SimpleStatement(Statement):
         return result
 
     def to_bin(self, proto):
+        # print("to_bin<<", self)
         for s in self.small_statements:
             s.to_bin(proto)
 
@@ -552,6 +577,7 @@ class PrintStatement(SimpleStatement):
         return None
 
     def to_bin(self, proto):
+        # print("to_bin<<", self)
         self.expression_list.to_bin(proto)
         proto.add_code(instruction.PRINT(len(self.expression_list)))
 
@@ -572,6 +598,7 @@ class AssignmentStatement(SimpleStatement):
         """
 
         """
+        # print("to_bin<<", self)
         self.expression.to_bin(proto)
 
         idx = self.identifier.get_idx(proto)
@@ -605,6 +632,7 @@ class DefStatement(Statement):
         return None
 
     def to_bin(self, proto):
+        # print("to_bin<<", self)
         p = ProtoType()
         p.name = self.identifier.lit
         p.proto = proto
@@ -635,6 +663,7 @@ class ParamList(Node):
 
     def to_bin(self, proto):
         """"""
+        print("to_bin<<", self)
 
 
 class StatementBlock(Node):
@@ -651,6 +680,7 @@ class StatementBlock(Node):
         return ret
 
     def to_bin(self, proto):
+        # print("to_bin<<", self)
         for s in self.statements:
             s.to_bin(proto)
 
@@ -672,6 +702,7 @@ class ForStatement(Statement):
 
     def to_bin(self, proto):
         """"""
+        print("to_bin<<", self)
 
 
 class IfStatement(Statement):
@@ -701,6 +732,7 @@ class IfStatement(Statement):
 
     def to_bin(self, proto):
         """"""
+        print("to_bin<<", self)
 
 
 class File(Node):
@@ -725,6 +757,7 @@ class File(Node):
         return result
 
     def to_bin(self, proto):
+        # print("to_bin<<", self)
         for s in self.statements:
             s.to_bin(proto)
 
