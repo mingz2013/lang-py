@@ -608,9 +608,9 @@ class DefStatement(Statement):
 
         proto.add_sub_proto(p)
 
-        proto.add_constant(p.name)
-        proto.add_code('store const')
-        proto.add_code("make function")
+        idx = proto.add_constant(p.name)
+        proto.add_code(instruction.SN(idx))
+        proto.add_code(instruction.MF(idx))
 
 
 class ParamList(Node):

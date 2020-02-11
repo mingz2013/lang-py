@@ -73,13 +73,20 @@ class Frame(StackNode):
     def add(self):
         a = self.stack.pop()
         b = self.stack.pop()
+        if type(a) != type(b):
+            # raise Exception(a, b, 'not type equal')
+            return
         c = a + b
         self.stack.push(c)
 
     def sub(self):
         a = self.stack.pop()
         b = self.stack.pop()
+        if type(a) != type(b):
+            # raise Exception(a, b, 'not type equal')
+            return
         c = a - b
+
         self.stack.push(c)
 
     def div(self):
@@ -105,7 +112,7 @@ class Frame(StackNode):
         load const
         获取常量, 放到栈顶
         """
-        a = self.proto.get_constants(idx)
+        a = self.proto.load_constant(idx)
         self.stack.push(a)
 
     def sc(self, idx):
@@ -117,13 +124,13 @@ class Frame(StackNode):
         """
 
         """
-        a = self.proto.get_name(idx)
+        a = self.proto.load_name(idx)
         self.stack.push(a)
 
     def sn(self, idx):
         """"""
         a = self.stack.pop()
-        self.proto.set_name(idx, a)
+        self.proto.store_name(idx, a)
 
     def ml(self, idx):
         """

@@ -21,7 +21,7 @@ class VM(object):
     """
 
     def __init__(self, filename):
-        self.prototype = ProtoType()  # 二进制文件解析后的数据
+        self.prototype = ProtoType(filename)  # 二进制文件解析后的数据
         self.stack = Stack()  # callstack
 
     def init(self, args):
@@ -143,8 +143,8 @@ class VM(object):
     def mf(self, idx):
         self.frame.mf(idx)
 
-    def push(self):
-        self.frame.push()
+    def push(self, idx):
+        self.frame.push(idx)
 
     def pop(self):
         self.frame.pop()

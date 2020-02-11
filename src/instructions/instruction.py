@@ -79,9 +79,11 @@ class Executes(object):
 
     def push(self, inst, vm):
         """"""
+        vm.push(inst.idx)
 
     def pop(self, inst, vm):
         """"""
+        vm.pop()
 
     def eq(self, inst, vm):
         """"""
@@ -186,7 +188,7 @@ opcode_map = {opcode[1]: opcode for opcode in opcodes}
 class Instruction(int):
 
     def __str__(self):
-        return str(self.view())
+        return str(self.view)
 
     def to_bytearray(self):
         """"""
@@ -228,26 +230,31 @@ class Instruction(int):
 
         return cls((idx << 8) + (opcode << 1) + 0b1)
 
+    @property
     def type(self):
         return self & 0b1
 
+    @property
     def opcode(self):
         return (self >> 1) & 0b1111111
 
+    @property
     def idx(self):
         return self >> 9
 
+    @property
     def name(self):
-        return opcode_map[self.opcode()][3]
+        return opcode_map[self.opcode][3]
 
+    @property
     def view(self):
-        if self.type() == 0b0:
-            return self.name()
-        elif self.type() == 0b1:
-            return "{name} {idx}".format(name=self.name(), idx=self.idx())
+        if self.type == 0b0:
+            return self.name
+        elif self.type == 0b1:
+            return "{name} {idx}".format(name=self.name, idx=self.idx)
 
     def execute(self, vm):
-        return opcode_map[self.opcode()][4](self.opcode(), vm)
+        return opcode_map[self.opcode][4](self, vm)
 
 
 class Builder(object):
@@ -348,8 +355,8 @@ def ML(length):
     return builder.ml(length)
 
 
-def MF():
-    return builder.mf()
+def MF(idx):
+    return builder.mf(idx)
 
 
 def PUSH(obj):

@@ -13,14 +13,14 @@ sys.path.append(os.path.dirname("."))
 
 from parser.parser import Parser
 from prototype.prototype import ProtoType
-
+from vm.vm import VM
 
 def script(filename):
     """script"""
     with codecs.open(filename, encoding='utf-8') as f:
         ast = Parser(filename, f.read()).parse_file()
 
-        # print('ast.execute result: >>', ast.execute())
+        print('ast.execute result: >>', ast.execute())
 
         proto = ProtoType(filename)
         proto.name = filename
@@ -28,6 +28,10 @@ def script(filename):
         ast.to_bin(proto)
 
         print("proto-->>", proto)
+
+        vm = VM(filename)
+        vm.prototype = proto
+        vm.init([])
 
 
 def print_help():

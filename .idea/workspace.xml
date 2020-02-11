@@ -3,8 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="58ef0169-3695-48bb-af48-b938189a6b03" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ast/ast.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/ast.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/instructions/instruction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/instructions/instruction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prototype/prototype.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/prototype/prototype.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/script.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vm/frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/vm/frame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vm/vm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/vm/vm.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +105,7 @@
       <updated>1581316888724</updated>
       <workItem from="1581316892252" duration="13888000" />
       <workItem from="1581344835489" duration="17421000" />
-      <workItem from="1581403356441" duration="2142000" />
+      <workItem from="1581403356441" duration="3476000" />
     </task>
     <task id="LOCAL-00001" summary="lang">
       <created>1581317059977</created>
@@ -222,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581404539470</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="lang">
+      <created>1581405608779</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1581405608779</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,10 +245,10 @@
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1581404539350">
+    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1581405608658">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1581404539350" />
+    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1581405608658" />
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1581332931471">
       <screen x="64" y="23" width="1376" height="877" />
     </state>
@@ -258,14 +269,14 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="237" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581388902525" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1581404546197">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1581405616106">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1581404546197" />
-    <state x="378" y="212" width="837" height="540" key="find.popup" timestamp="1581404118561">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1581405616106" />
+    <state x="378" y="212" width="837" height="540" key="find.popup" timestamp="1581406654892">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="378" y="212" width="837" height="540" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1581404118561" />
+    <state x="378" y="212" width="837" height="540" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1581406654892" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/lang_py$ast.coverage" NAME="ast Coverage Results" MODIFIED="1581350998739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/ast" />

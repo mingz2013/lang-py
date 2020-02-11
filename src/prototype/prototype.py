@@ -41,21 +41,24 @@ class ProtoType(object):
         self.names.append(n)
         return len(self.names) - 1
 
-    def get_name(self, idx):
+    def store_name(self, idx, a):
+        pass
+
+    def load_name(self, idx):
         return self.names[idx]
 
     def add_constant(self, c):
         self.constants.append(c)
         return len(self.constants) - 1
 
-    def get_constant(self, idx):
+    def load_constant(self, idx):
         return self.constants[idx]
 
     def add_sub_proto(self, p):
         self.protos.append(p)
         return len(self.protos) - 1
 
-    def get_sub_proto(self, idx):
+    def load_sub_proto(self, idx):
         return self.protos[idx]
 
     def add_code(self, code):
