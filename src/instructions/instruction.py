@@ -47,11 +47,10 @@ class Executes(object):
         vm.rem()
 
     def call(self, inst, vm):
-        nArgs, nResults = inst << 0xff, inst << 0xffff
-        vm.call(nArgs, nResults)
+        vm.call(inst.idx)
 
     def ret(self, inst, vm):
-        vm.ret()
+        vm.ret(inst.idx)
 
     def lc(self, inst, vm):
         vm.lc(inst.idx)
@@ -146,8 +145,8 @@ opcodes = [
     (0b00000000, 0b0000100, 0b0, 'div', e.div, ''),
     (0b00000000, 0b0000101, 0b0, 'rem', e.rem, ''),
 
-    (0b00000000, 0b0000110, 0b0, 'call', e.call, ''),
-    (0b00000000, 0b0000111, 0b0, 'ret', e.ret, ''),
+    (0b00000000, 0b0000110, 0b1, 'call', e.call, ''),
+    (0b00000000, 0b0000111, 0b1, 'ret', e.ret, ''),
 
     (0b00000000, 0b0001000, 0b1, 'lc', e.lc, 'load const'),
     (0b00000000, 0b0001001, 0b1, 'sc', e.sc, 'store const'),
@@ -178,13 +177,16 @@ opcodes = [
     (0b00000000, 0b0011100, 0b1, 'print', e.print, 'print'),
 ]
 
-opcode_map = {opcode[0]: opcode for opcode in opcodes}
+opcode_map = {opcode[1]: opcode for opcode in opcodes}
 
 
 # opcode_map_2 = {opcode[3]: opcode for opcode in opcodes}
 
 
 class Instruction(int):
+
+    def __str__(self):
+        return str(self.view())
 
     def to_bytearray(self):
         """"""
@@ -211,9 +213,10 @@ class Instruction(int):
 
     @classmethod
     def build_type_0(cls, opcode):
+        print("build_type_0<<", opcode)
         assert isinstance(opcode, int)
         assert opcode.bit_length() <= 7
-        return cls(opcode << 1 + 0b0)
+        return cls((opcode << 1) + 0b0)
 
     @classmethod
     def build_type_1(cls, opcode, idx):
@@ -223,19 +226,25 @@ class Instruction(int):
         assert isinstance(idx, int)
         assert idx.bit_length() <= 8
 
-        return cls(idx << 8 + opcode << 1 + 0b1)
+        return cls((idx << 8) + (opcode << 1) + 0b1)
 
     def type(self):
         return self & 0b1
 
     def opcode(self):
-        return self >> 1 & 0b1111111
+        return (self >> 1) & 0b1111111
 
     def idx(self):
         return self >> 9
 
     def name(self):
         return opcode_map[self.opcode()][3]
+
+    def view(self):
+        if self.type() == 0b0:
+            return self.name()
+        elif self.type() == 0b1:
+            return "{name} {idx}".format(name=self.name(), idx=self.idx())
 
     def execute(self, vm):
         return opcode_map[self.opcode()][4](self.opcode(), vm)
@@ -257,6 +266,8 @@ class Builder(object):
             return self.build_type_0
         elif t == 0b1:
             return self.build_type_1
+        else:
+            raise Exception("error type", t)
 
     def build_type_0(self, opcode):
         return Instruction.build_type_0(opcode)

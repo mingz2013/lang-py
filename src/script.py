@@ -20,7 +20,7 @@ def script(filename):
     with codecs.open(filename, encoding='utf-8') as f:
         ast = Parser(filename, f.read()).parse_file()
 
-        print('ast.execute result: >>', ast.execute())
+        # print('ast.execute result: >>', ast.execute())
 
         proto = ProtoType(filename)
         proto.name = filename

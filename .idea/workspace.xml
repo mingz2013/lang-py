@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="58ef0169-3695-48bb-af48-b938189a6b03" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/ast.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/ast.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/prototype/prototype.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/prototype/prototype.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/instructions/instruction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/instructions/instruction.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/script.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/script.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -102,7 +101,7 @@
       <updated>1581316888724</updated>
       <workItem from="1581316892252" duration="13888000" />
       <workItem from="1581344835489" duration="17421000" />
-      <workItem from="1581403356441" duration="1093000" />
+      <workItem from="1581403356441" duration="2142000" />
     </task>
     <task id="LOCAL-00001" summary="lang">
       <created>1581317059977</created>
@@ -216,7 +215,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581403980197</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="lang">
+      <created>1581404539470</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1581404539470</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,10 +234,10 @@
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1581403980058">
+    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1581404539350">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1581403980058" />
+    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1581404539350" />
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog" timestamp="1581332931471">
       <screen x="64" y="23" width="1376" height="877" />
     </state>
@@ -252,10 +258,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="237" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581388902525" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1581403986977">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1581404546197">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1581403986977" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1581404546197" />
     <state x="378" y="212" width="837" height="540" key="find.popup" timestamp="1581404118561">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
