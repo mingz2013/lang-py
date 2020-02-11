@@ -49,12 +49,6 @@ class Frame(StackNode):
         self.args = args  # 参数
         self.results = results  # 结果
 
-    def pop(self):
-        return self.stack.pop()
-
-    def push(self, obj):
-        self.stack.push(obj)
-
     @property
     def pc(self):
         return self._pc
@@ -70,12 +64,11 @@ class Frame(StackNode):
         self._pc += 1
         return i
 
-    def load_const(self, idx):
-        """
-        获取常量, 放到栈顶
-        """
-        a = self.proto.get_constants(idx)
-        self.stack.push(a)
+    def pop(self):
+        return self.stack.pop()
+
+    def push(self, obj):
+        self.stack.push(obj)
 
     def add(self):
         a = self.stack.pop()
@@ -106,3 +99,117 @@ class Frame(StackNode):
         b = self.stack.pop()
         c = a % b
         self.stack.push(c)
+
+    def lc(self, idx):
+        """
+        load const
+        获取常量, 放到栈顶
+        """
+        a = self.proto.get_constants(idx)
+        self.stack.push(a)
+
+    def sc(self, idx):
+        """
+
+        """
+
+    def ln(self, idx):
+        """
+
+        """
+        a = self.proto.get_name(idx)
+        self.stack.push(a)
+
+    def sn(self, idx):
+        """"""
+        a = self.stack.pop()
+        self.proto.set_name(idx, a)
+
+    def ml(self, idx):
+        """
+
+        """
+
+    def mf(self, idx):
+        """"""
+
+    def eq(self):
+        """"""
+        a = self.stack.pop()
+        b = self.stack.pop()
+        c = a == b
+        self.stack.push(c)
+
+    def neq(self):
+        """"""
+        a = self.stack.pop()
+        b = self.stack.pop()
+        c = a != b
+        self.stack.push(c)
+
+    def lt(self):
+        """"""
+        a = self.stack.pop()
+        b = self.stack.pop()
+        c = a < b
+        self.stack.push(c)
+
+    def lte(self):
+        """"""
+        a = self.stack.pop()
+        b = self.stack.pop()
+        c = a <= b
+        self.stack.push(c)
+
+    def gt(self):
+        """"""
+        a = self.stack.pop()
+        b = self.stack.pop()
+        c = a > b
+        self.stack.push(c)
+
+    def gte(self):
+        """"""
+        a = self.stack.pop()
+        b = self.stack.pop()
+        c = a >= b
+        self.stack.push(c)
+
+    def is_(self):
+        """"""
+        a = self.stack.pop()
+        b = self.stack.pop()
+        c = a is b
+        self.stack.push(c)
+
+    def in_(self):
+        """"""
+        a = self.stack.pop()
+        b = self.stack.pop()
+        c = a in b
+        self.stack.push(c)
+
+    def or_(self):
+        """"""
+        a = self.stack.pop()
+        b = self.stack.pop()
+        c = a or b
+        self.stack.push(c)
+
+    def and_(self):
+        """"""
+        a = self.stack.pop()
+        b = self.stack.pop()
+        c = a and b
+        self.stack.push(c)
+
+    def not_(self):
+        """"""
+        a = self.stack.pop()
+        c = not a
+        self.stack.push(c)
+
+    def print(self, idx):
+        """"""""
+        args = [self.stack.pop() for i in range(idx)]
+        print(*args)

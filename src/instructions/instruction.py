@@ -29,21 +29,22 @@ class Executes(object):
 
     def nop(self, inst, vm):
         """"""
+        vm.nop()
 
     def add(self, inst, vm):
-        vm.cur_frame.add()
+        vm.add()
 
     def sub(self, inst, vm):
-        vm.cur_frame.sub()
+        vm.sub()
 
     def mul(self, inst, vm):
-        vm.cur_frame.mul()
+        vm.mul()
 
     def div(self, inst, vm):
-        vm.cur_frame.div()
+        vm.div()
 
     def rem(self, inst, vm):
-        vm.cur_frame.rem()
+        vm.rem()
 
     def call(self, inst, vm):
         nArgs, nResults = inst << 0xff, inst << 0xffff
@@ -53,27 +54,29 @@ class Executes(object):
         vm.ret()
 
     def lc(self, inst, vm):
-        vm.cur_frame.load_const(inst.idx)
+        vm.lc(inst.idx)
 
     def sc(self, inst, vm):
-        vm.cur_frame.store_const(inst.idx)
+        vm.sc(inst.idx)
 
     def ln(self, inst, vm):
-        vm.cur_frame.load_name(inst.idx)
+        vm.ln(inst.idx)
 
     def sn(self, inst, vm):
-        vm.cur_frame.store_name(inst.idx)
+        vm.sn(inst.idx)
 
     def j(self, inst, vm):
-        vm.add_pc(inst.idx)
+        vm.j(inst.idx)
 
     def ml(self, inst, vm):
         """
         make list
         """
+        vm.ml(inst.idx)
 
     def mf(self, inst, vm):
         """make function"""
+        vm.mf(inst.idx)
 
     def push(self, inst, vm):
         """"""
@@ -83,39 +86,51 @@ class Executes(object):
 
     def eq(self, inst, vm):
         """"""
+        vm.eq()
 
     def neq(self, inst, vm):
         """"""
+        vm.neq()
 
     def lt(self, inst, vm):
         """"""
+        vm.lt()
 
     def lte(self, inst, vm):
         """"""
+        vm.lte()
 
     def gt(self, inst, vm):
         """"""
+        vm.gt()
 
     def gte(self, inst, vm):
         """"""
+        vm.gte()
 
     def is_(self, inst, vm):
         """"""
+        vm.is_()
 
     def in_(self, inst, vm):
         """"""
+        vm.in_()
 
     def or_(self, inst, vm):
         """"""
+        vm.or_()
 
     def and_(self, inst, vm):
         """"""
+        vm.and_()
 
     def not_(self, inst, vm):
         """"""
+        vm.not_()
 
     def print(self, inst, vm):
         """"""
+        vm.print(inst.idx)
 
 
 e = Executes()
@@ -253,155 +268,168 @@ class Builder(object):
 builder = Builder()
 
 
-def LoadConst(idx):
-    """
-
-    """
-    return builder.lc(idx)
+def NOP():
+    """"""
+    return builder.nop()
 
 
-def LoadName(idx):
-    """
-
-    """
-    return builder.ln(idx)
+def ADD():
+    return builder.add()
 
 
-def StoreName(idx):
-    return builder.sn(idx)
+def SUB():
+    return builder.sub()
 
 
-def MakeList(length):
-    """
-
-    """
-    return builder.ml(length)
+def MUL():
+    return builder.mul()
 
 
-def MakeFunction():
-    return builder.mf()
+def DIV():
+    return builder.div()
 
 
-def CallFunction(length):
+def REM():
+    return builder.rem()
+
+
+def CALL(length):
     """
 
     """
     return builder.call(length)
 
 
-def Ret():
+def RET():
     return builder.ret()
 
 
-def Push(obj):
+def LC(idx):
+    """
+
+    """
+    return builder.lc(idx)
+
+
+def SC(idx):
+    return builder.SC(idx)
+
+
+def LN(idx):
+    """
+
+    """
+    return builder.ln(idx)
+
+
+def SN(idx):
+    return builder.sn(idx)
+
+
+def J(idx):
+    return builder.j(idx)
+
+
+def ML(length):
+    """
+
+    """
+    return builder.ml(length)
+
+
+def MF():
+    return builder.mf()
+
+
+def PUSH(obj):
     """
 
     """
     return builder.push()
 
 
-def Pop():
+def POP():
     return builder.pop()
 
 
-def Add():
-    return builder.add()
-
-
-def Sub():
-    return builder.sub()
-
-
-def Mul():
-    return builder.mul()
-
-
-def Div():
-    return builder.div()
-
-
-def Rem():
-    return builder.rem()
-
-
-def Eq():
+def EQ():
     """
     Equal
     """
     return builder.eq()
 
 
-def Neq():
+def NEQ():
     """
     not equal
     """
     return builder.neq()
 
 
-def Lt():
+def LT():
     """
     less than
     """
     return builder.lt()
 
 
-def Lte():
+def LTE():
     """
     less than or equal
     """
     return builder.lte()
 
 
-def Gt():
+def GT():
     """
     greater than
     """
     return builder.gt()
 
 
-def Gte():
+def GTE():
     """
     greator than or equal
     """
     return builder.gte()
 
 
-def Is():
+def IS():
     """
     is
     """
     return builder['is']()
 
 
-def In():
+def IN():
     """
     in
     """
     return builder['in']()
 
 
-def Or():
+def OR():
     """
     or
     """
     return builder['or']()
 
 
-def And():
+def AND():
     """
     And
     """
     return builder['and']()
 
 
-def Not():
+def NOT():
     """
     not
     """
     return builder['not']()
 
 
-def Print(length):
+def PRINT(length):
     """
     print
     """

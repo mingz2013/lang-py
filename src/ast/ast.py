@@ -49,22 +49,6 @@ class EndNode(Node):
         self.tok = tok
         self.lit = lit
 
-    # def __str__(self):
-    #     return str({
-    #         "name": self.__class__.__name__,
-    #         "tok": self.tok,
-    #         "pos": self.pos,
-    #         "lit": self.lit
-    #     })
-    #
-    # def __repr__(self):
-    #     return repr({
-    #         "name": self.__class__.__name__,
-    #         "tok": self.tok,
-    #         "pos": self.pos,
-    #         "lit": self.lit
-    #     })
-
 
 class StringLiteral(EndNode):
     """字符串字面值"""
@@ -76,7 +60,7 @@ class StringLiteral(EndNode):
     def to_bin(self, proto):
         idx = proto.add_constant(self.lit[1:-1])
 
-        inst = instruction.LoadConst(idx)
+        inst = instruction.LC(idx)
 
         proto.add_code(inst)
 
@@ -94,7 +78,7 @@ class Integer(DigitLiteral):
 
     def to_bin(self, proto):
         idx = proto.add_constant(int(self.lit))
-        inst = instruction.LoadConst(idx)
+        inst = instruction.LC(idx)
 
         proto.add_code(inst)
 
@@ -108,7 +92,7 @@ class FloatNumber(DigitLiteral):
 
     def to_bin(self, proto):
         idx = proto.add_constant(float(self.lit))
-        inst = instruction.LoadConst(idx)
+        inst = instruction.LC(idx)
 
         proto.add_code(inst)
 
@@ -125,7 +109,7 @@ class Identifier(EndNode):
     def to_bin(self, proto):
         idx = proto.add_name(self.lit)
 
-        inst = instruction.LoadName(idx)
+        inst = instruction.LN(idx)
 
         proto.add_code(inst)
 
@@ -147,18 +131,6 @@ class ExpressionList(Atom):
         """execute"""
         self.expression_list.append(expression)
 
-    # def __str__(self):
-    #     return str({
-    #         "name": self.__class__.__name__,
-    #         "expression_list": self.expression_list
-    #     })
-    #
-    # def __repr__(self):
-    #     return repr({
-    #         "name": self.__class__.__name__,
-    #         "expression_list": self.expression_list
-    #     })
-
     def execute(self):
         """execute"""
         return [expression.execute() for expression in self.expression_list]
@@ -173,18 +145,6 @@ class ListDisplay(Atom):
     def __init__(self, expression_list):
         self.expression_list = expression_list
 
-    # def __str__(self):
-    #     return str({
-    #         "name": self.__class__.__name__,
-    #         "expression_list": self.expression_list
-    #     })
-    #
-    # def __repr__(self):
-    #     return repr({
-    #         "name": self.__class__.__name__,
-    #         "expression_list": self.expression_list
-    #     })
-
     def execute(self):
         """exe"""
         return self.expression_list.execute()
@@ -197,7 +157,7 @@ class ListDisplay(Atom):
 
         length = len(self.expression_list)
 
-        inst = instruction.MakeList(length)
+        inst = instruction.ML(length)
 
         proto.add_code(inst)
 
@@ -209,18 +169,6 @@ class ParenthForm(Atom):
 
     def __init__(self, expression):
         self.expression = expression
-
-    def __str__(self):
-        return str({
-            "name": self.__class__.__name__,
-            "expression": self.expression
-        })
-
-    def __repr__(self):
-        return repr({
-            "name": self.__class__.__name__,
-            "expression": self.expression
-        })
 
     def execute(self):
         """exe"""
@@ -237,20 +185,6 @@ class Call(Atom):
         self.identifier = identifier
         self.expression_list = expression_list
 
-    # def __str__(self):
-    #     return str({
-    #         "name": self.__class__.__name__,
-    #         "identifier": self.identifier,
-    #         "expression_list": self.expression_list
-    #     })
-    #
-    # def __repr__(self):
-    #     return repr({
-    #         "name": self.__class__.__name__,
-    #         "identifier": self.identifier,
-    #         "expression_list": self.expression_list
-    #     })
-
     def execute(self):
         """exe"""
         func = self.identifier.execute()
@@ -263,7 +197,7 @@ class Call(Atom):
         for e in self.expression_list:
             e.to_bin(proto)
 
-        inst = instruction.CallFunction(len(self.expression_list))
+        inst = instruction.CALL(len(self.expression_list))
         proto.add_code(inst)
 
 
@@ -288,32 +222,18 @@ class UnaryExpression(Expression):
             print('UnaryExpression >> error tok', self.tok)
             return None
 
-    # def __str__(self):
-    #     return str({
-    #         "name": self.__class__.__name__,
-    #         "tok": self.tok,
-    #         "expression": self.expression
-    #     })
-    #
-    # def __repr__(self):
-    #     return repr({
-    #         "name": self.__class__.__name__,
-    #         "tok": self.tok,
-    #         "expression": self.expression
-    #     })
-
     def to_bin(self, proto):
         """
 
         """
         self.expression.to_bin(proto)
 
-        inst = instruction.Push(0)
+        inst = instruction.PUSH(0)
         proto.add_code(inst)
         if self.tok == token.tk_plus:
-            proto.add_code(instruction.Add())
+            proto.add_code(instruction.ADD())
         elif self.tok == token.tk_minus_sign:
-            proto.add_code(instruction.Sub())
+            proto.add_code(instruction.SUB())
 
 
 class NegativeExpression(UnaryExpression):
@@ -330,20 +250,6 @@ class BinaryOperationExpression(Expression):
     def __init__(self, left, right):
         self.left = left
         self.right = right
-
-    # def __str__(self):
-    #     return str({
-    #         "name": self.__class__.__name__,
-    #         "left": self.left,
-    #         "right": self.right
-    #     })
-    #
-    # def __repr__(self):
-    #     return repr({
-    #         "name": self.__class__.__name__,
-    #         "left": self.left,
-    #         "right": self.right
-    #     })
 
     def execute(self):
         """exe"""
@@ -370,7 +276,7 @@ class PlusExpression(BinaryOperationExpression):
         self.left.to_bin(proto)
         self.right.to_bin(proto)
 
-        proto.add_code(instruction.Add())
+        proto.add_code(instruction.ADD())
 
 
 class MinusSignExpression(RelationalExpression):
@@ -384,7 +290,7 @@ class MinusSignExpression(RelationalExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code(instruction.Sub())
+        proto.add_code(instruction.SUB())
 
 
 class StarExpression(RelationalExpression):
@@ -398,7 +304,7 @@ class StarExpression(RelationalExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code(instruction.Mul())
+        proto.add_code(instruction.MUL())
 
 
 class DivideExpression(MultiplicativeExpression):
@@ -412,7 +318,7 @@ class DivideExpression(MultiplicativeExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code(instruction.Div())
+        proto.add_code(instruction.DIV())
 
 
 class RemainderExpression(BinaryOperationExpression):
@@ -426,7 +332,7 @@ class RemainderExpression(BinaryOperationExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code(instruction.Rem())
+        proto.add_code(instruction.REM())
 
 
 class ComparisonExpression(BinaryOperationExpression):
@@ -444,7 +350,7 @@ class EqualExpression(ComparisonExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code(instruction.Eq())
+        proto.add_code(instruction.EQ())
 
 
 class NotEqualExpression(ComparisonExpression):
@@ -458,7 +364,7 @@ class NotEqualExpression(ComparisonExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code(instruction.Neq())
+        proto.add_code(instruction.NEQ())
 
 
 class LessThanExpression(ComparisonExpression):
@@ -472,7 +378,7 @@ class LessThanExpression(ComparisonExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code(instruction.Lt())
+        proto.add_code(instruction.LT())
 
 
 class LessThanOrEqualExpression(ComparisonExpression):
@@ -486,7 +392,7 @@ class LessThanOrEqualExpression(ComparisonExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code(instruction.Lte())
+        proto.add_code(instruction.LTE())
 
 
 class GreaterThanExpression(ComparisonExpression):
@@ -500,7 +406,7 @@ class GreaterThanExpression(ComparisonExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code(instruction.Gt())
+        proto.add_code(instruction.GT())
 
 
 class GreaterThanOrEqualExpression(ComparisonExpression):
@@ -514,7 +420,7 @@ class GreaterThanOrEqualExpression(ComparisonExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code(instruction.Gte())
+        proto.add_code(instruction.GTE())
 
 
 class IsExpression(ComparisonExpression):
@@ -528,7 +434,7 @@ class IsExpression(ComparisonExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code(instruction.Is())
+        proto.add_code(instruction.IS())
 
 
 class InExpression(ComparisonExpression):
@@ -542,7 +448,7 @@ class InExpression(ComparisonExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code(instruction.In())
+        proto.add_code(instruction.IN())
 
 
 class BooleanExpression(BinaryOperationExpression):
@@ -560,7 +466,7 @@ class OrExpression(BooleanExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code(instruction.Or())
+        proto.add_code(instruction.OR())
 
 
 class AndExpression(BooleanExpression):
@@ -574,7 +480,7 @@ class AndExpression(BooleanExpression):
         """"""
         self.left.to_bin(proto)
         self.right.to_bin(proto)
-        proto.add_code(instruction.And())
+        proto.add_code(instruction.AND())
 
 
 class NotExpression(Expression):
@@ -587,22 +493,10 @@ class NotExpression(Expression):
         """exe"""
         return not self.expression.execute()
 
-    # def __str__(self):
-    #     return str({
-    #         "name": self.__class__.__name__,
-    #         "expression": self.expression
-    #     })
-    #
-    # def __repr__(self):
-    #     return repr({
-    #         "name": self.__class__.__name__,
-    #         "expression": self.expression
-    #     })
-
     def to_bin(self, proto):
         """"""
         self.expression.to_bin(proto)
-        proto.add_code(instruction.Not())
+        proto.add_code(instruction.NOT())
 
 
 class Statement(Node):
@@ -614,18 +508,6 @@ class SimpleStatement(Statement):
 
     def __init__(self):
         self.small_statements = []
-
-    # def __str__(self):
-    #     return str({
-    #         "name": self.__class__.__name__,
-    #         "small_statements": self.small_statements
-    #     })
-    #
-    # def __repr__(self):
-    #     return repr({
-    #         "name": self.__class__.__name__,
-    #         "small_statements": self.small_statements
-    #     })
 
     def append_small_statement(self, node):
         """
@@ -658,18 +540,6 @@ class PrintStatement(SimpleStatement):
     def __init__(self, expression_list):
         self.expression_list = expression_list
 
-    # def __str__(self):
-    #     return str({
-    #         "name": self.__class__.__name__,
-    #         "expression_list": self.expression_list
-    #     })
-    #
-    # def __repr__(self):
-    #     return repr({
-    #         "name": self.__class__.__name__,
-    #         "expression_list": self.expression_list
-    #     })
-
     def execute(self):
         """exe"""
         print("PrintStatement.execute print >>>", self.expression_list.execute())
@@ -677,7 +547,7 @@ class PrintStatement(SimpleStatement):
 
     def to_bin(self, proto):
         self.expression_list.to_bin(proto)
-        proto.add_code(instruction.Print(len(self.expression_list)))
+        proto.add_code(instruction.PRINT(len(self.expression_list)))
 
 
 class AssignmentStatement(SimpleStatement):
@@ -686,20 +556,6 @@ class AssignmentStatement(SimpleStatement):
     def __init__(self, identifier, expression):
         self.identifier = identifier
         self.expression = expression
-
-    # def __str__(self):
-    #     return str({
-    #         "name": self.__class__.__name__,
-    #         "identifier": self.identifier,
-    #         "expression": self.expression
-    #     })
-    #
-    # def __repr__(self):
-    #     return repr({
-    #         "name": self.__class__.__name__,
-    #         "identifier": self.identifier,
-    #         "expression": self.expression
-    #     })
 
     def execute(self):
         """execute"""
@@ -712,7 +568,7 @@ class AssignmentStatement(SimpleStatement):
         """
         idx = self.identifier.to_bin(proto)
         self.expression.to_bin(proto)
-        proto.add_code(instruction.StoreName(idx))
+        proto.add_code(instruction.SN(idx))
 
 
 class ExpressionStatement(SimpleStatement):
@@ -732,22 +588,6 @@ class DefStatement(Statement):
         self.identifier = identifier
         self.expression_list = expression_list
         self.block = block
-
-    # def __str__(self):
-    #     return str({
-    #         "name": self.__class__.__name__,
-    #         'identifier': self.identifier,
-    #         'expression_list': self.expression_list,
-    #         'block': self.block
-    #     })
-    #
-    # def __repr__(self):
-    #     return str({
-    #         "name": self.__class__.__name__,
-    #         'identifier': self.identifier,
-    #         'expression_list': self.expression_list,
-    #         'block': self.block
-    #     })
 
     def execute(self):
         """
@@ -781,18 +621,6 @@ class ParamList(Node):
     def append_identifier(self, ident):
         self.params.append(ident)
 
-    # def __str__(self):
-    #     return str({
-    #         "name": self.__class__.__name__,
-    #         'params': self.params
-    #     })
-    #
-    # def __repr__(self):
-    #     return str({
-    #         "name": self.__class__.__name__,
-    #         'params': self.params
-    #     })
-
     def execute(self):
         """"""
 
@@ -806,18 +634,6 @@ class StatementBlock(Node):
 
     def append_statement(self, node):
         self.statements.append(node)
-
-    # def __str__(self):
-    #     return str({
-    #         "name": self.__class__.__name__,
-    #         'statements': self.statements,
-    #     })
-    #
-    # def __repr__(self):
-    #     return str({
-    #         "name": self.__class__.__name__,
-    #         'statements': self.statements,
-    #     })
 
     def execute(self):
         ret = None
@@ -839,20 +655,6 @@ class ForStatement(Statement):
         self.expression = expression
         self.block = block
 
-    # def __str__(self):
-    #     return str({
-    #         "name": self.__class__.__name__,
-    #         'expression': self.expression,
-    #         'block': self.block
-    #     })
-    #
-    # def __repr__(self):
-    #     return str({
-    #         "name": self.__class__.__name__,
-    #         'expression': self.expression,
-    #         'block': self.block
-    #     })
-
     def execute(self):
         ret = None
         while self.expression.execute():
@@ -872,20 +674,6 @@ class IfStatement(Statement):
         self.elifs = []
 
         self.else_block = None
-
-    # def __str__(self):
-    #     return str({
-    #         "name": self.__class__.__name__,
-    #         'elifs': self.elifs,
-    #         'else_block': self.else_block
-    #     })
-    #
-    # def __repr__(self):
-    #     return str({
-    #         "name": self.__class__.__name__,
-    #         'elifs': self.elifs,
-    #         'else_block': self.else_block
-    #     })
 
     def append_elif(self, expression, block):
         self.elifs.append({
@@ -911,18 +699,6 @@ class File(Node):
 
     def __init__(self):
         self.statements = []  # 语句集合
-
-    # def __str__(self):
-    #     return str({
-    #         "name": self.__class__.__name__,
-    #         "statements": self.statements
-    #     })
-    #
-    # def __repr__(self):
-    #     return repr({
-    #         "name": self.__class__.__name__,
-    #         "statements": self.statements
-    #     })
 
     def append_statements(self, statement):
         """append statements"""

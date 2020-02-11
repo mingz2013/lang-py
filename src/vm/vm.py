@@ -8,9 +8,9 @@ Module Description
 
 """
 
+from instructions import instruction
 from prototype.prototype import ProtoType
 from vm.frame import Frame
-from instructions import instruction
 from vm.stack import Stack
 
 
@@ -36,20 +36,20 @@ class VM(object):
 
     def loop(self):
         while True:
-            data = self.cur_frame.fetch()
+            data = self.frame.fetch()
             inst = instruction.Instruction.from_inst(data)
             inst.execute(self)
 
     @property
-    def cur_frame(self):
+    def frame(self):
         return self.stack.top_node
 
     @property
     def pc(self):
-        return self.cur_frame.pc
+        return self.frame.pc
 
     def add_pc(self, n):
-        self.cur_frame.add_pc(n)
+        self.frame.add_pc(n)
 
     def call(self, nArgs, nResults):
         """
@@ -77,12 +77,12 @@ class VM(object):
         3 调用结束，最后执行ret指令
 
         """
-        cur_f = self.cur_frame
+        cur_f = self.frame
 
-        proto = self.cur_frame.pop()
+        proto = self.frame.pop()
         args = []
         for i in range(nArgs):
-            args.append(self.cur_frame.pop())
+            args.append(self.frame.pop())
         results = []
         for i in range(nResults):
             results.append(None)
@@ -104,4 +104,86 @@ class VM(object):
         results = f.results
 
         for i in results:
-            self.cur_frame.push(i)
+            self.frame.push(i)
+
+    def j(self, idx):
+        self.add_pc(idx)
+
+    def nop(self):
+        """"""
+        pass
+
+    def add(self):
+        self.frame.add()
+
+    def sub(self):
+        self.frame.sub()
+
+    def mul(self):
+        self.frame.mul()
+
+    def div(self):
+        self.frame.div()
+
+    def rem(self):
+        self.frame.rem()
+
+    def lc(self, idx):
+        self.frame.lc(idx)
+
+    def sc(self, idx):
+        self.frame.sc(idx)
+
+    def ln(self, idx):
+        self.frame.ln(idx)
+
+    def sn(self, idx):
+        self.frame.sn(idx)
+
+    def ml(self, idx):
+        self.frame.ml(idx)
+
+    def mf(self, idx):
+        self.frame.mf(idx)
+
+    def push(self):
+        self.frame.push()
+
+    def pop(self):
+        self.frame.pop()
+
+    def eq(self):
+        self.frame.eq()
+
+    def neq(self):
+        self.frame.neq()
+
+    def lt(self):
+        self.frame.lt()
+
+    def lte(self):
+        self.frame.lte()
+
+    def gt(self):
+        self.frame.gt()
+
+    def gte(self):
+        self.frame.gte()
+
+    def is_(self):
+        self.frame.is_()
+
+    def in_(self):
+        self.frame.in_()
+
+    def or_(self):
+        self.frame.or_()
+
+    def and_(self):
+        self.frame.and_()
+
+    def not_(self):
+        self.frame.not_()
+
+    def print(self, idx):
+        self.frame.print(idx)
