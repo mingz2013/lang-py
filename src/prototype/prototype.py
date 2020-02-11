@@ -43,6 +43,9 @@ class ProtoType(object):
         self.names.append(n)
         return len(self.names) - 1
 
+    def get_name(self, idx):
+        return self.names[idx]
+
     def store_name(self, idx, a):
         self.local_vars[idx] = a
 

@@ -137,46 +137,46 @@ class Executes(object):
 e = Executes()
 
 opcodes = [
-    # ('idx 8bit ', 'opcode 7bit', 'type 1bit', 'name', 'do', 'desc'),
+    # ('idx 8bit ', 'opcode 7bit', 'type 1bit', 'name', 'do', 'desc', 'idx type'),
 
-    (0b00000000, 0b0000000, 0b0, 'nop', e.nop, ''),
+    (0b00000000, 0b0000000, 0b0, 'nop', e.nop, '', ''),
 
-    (0b00000000, 0b0000001, 0b0, 'add', e.add, ''),
-    (0b00000000, 0b0000010, 0b0, 'sub', e.sub, ''),
-    (0b00000000, 0b0000011, 0b0, 'mul', e.mul, ''),
-    (0b00000000, 0b0000100, 0b0, 'div', e.div, ''),
-    (0b00000000, 0b0000101, 0b0, 'rem', e.rem, ''),
+    (0b00000000, 0b0000001, 0b0, 'add', e.add, '', ''),
+    (0b00000000, 0b0000010, 0b0, 'sub', e.sub, '', ''),
+    (0b00000000, 0b0000011, 0b0, 'mul', e.mul, '', ''),
+    (0b00000000, 0b0000100, 0b0, 'div', e.div, '', ''),
+    (0b00000000, 0b0000101, 0b0, 'rem', e.rem, '', ''),
 
-    (0b00000000, 0b0000110, 0b1, 'call', e.call, ''),
-    (0b00000000, 0b0000111, 0b1, 'ret', e.ret, ''),
+    (0b00000000, 0b0000110, 0b1, 'call', e.call, '', ''),
+    (0b00000000, 0b0000111, 0b1, 'ret', e.ret, '', ''),
 
-    (0b00000000, 0b0001000, 0b1, 'lc', e.lc, 'load const'),
-    (0b00000000, 0b0001001, 0b1, 'sc', e.sc, 'store const'),
-    (0b00000000, 0b0001010, 0b1, 'ln', e.ln, 'load name'),
-    (0b00000000, 0b0001011, 0b1, 'sn', e.sn, 'store name'),
+    (0b00000000, 0b0001000, 0b1, 'lc', e.lc, 'load const', 'const'),
+    (0b00000000, 0b0001001, 0b1, 'sc', e.sc, 'store const', 'const'),
+    (0b00000000, 0b0001010, 0b1, 'ln', e.ln, 'load name', 'name'),
+    (0b00000000, 0b0001011, 0b1, 'sn', e.sn, 'store name', 'name'),
 
-    (0b00000000, 0b0001100, 0b1, 'j', e.j, 'jmp'),
+    (0b00000000, 0b0001100, 0b1, 'j', e.j, 'jmp', ''),
 
-    (0b00000000, 0b0001101, 0b1, 'ml', e.ml, 'make list'),
-    (0b00000000, 0b0001110, 0b1, 'mf', e.mf, 'make function'),
+    (0b00000000, 0b0001101, 0b1, 'ml', e.ml, 'make list', ''),
+    (0b00000000, 0b0001110, 0b1, 'mf', e.mf, 'make function', ''),
 
-    (0b00000000, 0b0001111, 0b1, 'push', e.push, 'push'),
-    (0b00000000, 0b0010000, 0b0, 'pop', e.pop, 'pop'),
+    (0b00000000, 0b0001111, 0b1, 'push', e.push, 'push', ''),
+    (0b00000000, 0b0010000, 0b0, 'pop', e.pop, 'pop', ''),
 
-    (0b00000000, 0b0010001, 0b0, 'eq', e.eq, 'equal'),
-    (0b00000000, 0b0010010, 0b0, 'neq', e.neq, 'not equal'),
-    (0b00000000, 0b0010011, 0b0, 'lt', e.lt, 'less than'),
-    (0b00000000, 0b0010100, 0b0, 'lte', e.lte, 'less than or equal'),
-    (0b00000000, 0b0010101, 0b0, 'gt', e.gt, 'greater than'),
-    (0b00000000, 0b0010110, 0b0, 'gte', e.gte, 'greater than or equal'),
+    (0b00000000, 0b0010001, 0b0, 'eq', e.eq, 'equal', ''),
+    (0b00000000, 0b0010010, 0b0, 'neq', e.neq, 'not equal', ''),
+    (0b00000000, 0b0010011, 0b0, 'lt', e.lt, 'less than', ''),
+    (0b00000000, 0b0010100, 0b0, 'lte', e.lte, 'less than or equal', ''),
+    (0b00000000, 0b0010101, 0b0, 'gt', e.gt, 'greater than', ''),
+    (0b00000000, 0b0010110, 0b0, 'gte', e.gte, 'greater than or equal', ''),
 
-    (0b00000000, 0b0010111, 0b0, 'is', e.is_, 'is'),
-    (0b00000000, 0b0011000, 0b0, 'in', e.in_, 'in'),
-    (0b00000000, 0b0011001, 0b0, 'or', e.or_, 'or'),
-    (0b00000000, 0b0011010, 0b0, 'and', e.and_, 'and'),
-    (0b00000000, 0b0011011, 0b0, 'not', e.not_, 'not'),
+    (0b00000000, 0b0010111, 0b0, 'is', e.is_, 'is', ''),
+    (0b00000000, 0b0011000, 0b0, 'in', e.in_, 'in', ''),
+    (0b00000000, 0b0011001, 0b0, 'or', e.or_, 'or', ''),
+    (0b00000000, 0b0011010, 0b0, 'and', e.and_, 'and', ''),
+    (0b00000000, 0b0011011, 0b0, 'not', e.not_, 'not', ''),
 
-    (0b00000000, 0b0011100, 0b1, 'print', e.print, 'print'),
+    (0b00000000, 0b0011100, 0b1, 'print', e.print, 'print', ''),
 ]
 
 opcode_map = {opcode[1]: opcode for opcode in opcodes}
@@ -253,8 +253,33 @@ class Instruction(int):
         elif self.type == 0b1:
             return "{name} {idx}".format(name=self.name, idx=self.idx)
 
+    @property
+    def idx_type(self):
+        return opcode_map[self.opcode][6]
+
+    def view_2(self, vm):
+        if self.type == 0b0:
+            return self.name
+        elif self.type == 0b1:
+
+            if self.name == 'lc':
+                a = vm.frame.proto.load_constant(self.idx)
+                return "{name} {idx}({a})".format(name=self.name, idx=self.idx, a=a)
+
+            elif self.name == 'sn':
+                n = vm.frame.proto.get_name(self.idx)
+                a = vm.frame.top()
+                return "{name} {idx}({n}) (top {a})".format(name=self.name, idx=self.idx, a=a, n=n)
+            elif self.name == 'ln':
+                n = vm.frame.proto.get_name(self.idx)
+                a = vm.frame.proto.load_name(self.idx)
+                return "{name} {idx}({n} {a}) (top)".format(name=self.name, idx=self.idx, a=a, n=n)
+
+            return "{name} {idx}".format(name=self.name, idx=self.idx)
+
     def execute(self, vm):
-        print("Instruction.execute <<", self)
+        # print("Instruction.execute <<", self)
+        print("Instruction.execute <<", self.view_2(vm))
         return opcode_map[self.opcode][4](self, vm)
 
 

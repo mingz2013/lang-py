@@ -240,10 +240,9 @@ class UnaryExpression(Expression):
 
         """
         # print("to_bin<<", self)
+        proto.add_code(instruction.PUSH(0))
         self.expression.to_bin(proto)
 
-        inst = instruction.PUSH(0)
-        proto.add_code(inst)
         if self.tok == token.tk_plus:
             proto.add_code(instruction.ADD())
         elif self.tok == token.tk_minus_sign:

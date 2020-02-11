@@ -21,6 +21,9 @@ class Stack(object):
     def push(self, obj):
         self.data.append(obj)
 
+    def top(self):
+        return self.data[-1]
+
 
 class Frame(StackNode):
     """
@@ -63,6 +66,9 @@ class Frame(StackNode):
 
     def j(self, n):
         self._pc += n
+
+    def top(self):
+        return self.stack.top()
 
     def pop(self):
         return self.stack.pop()
@@ -142,7 +148,7 @@ class Frame(StackNode):
         for i in range(idx):
             a = self.stack.pop()
             l.append(a)
-        reversed(l)
+        l.reverse()
         self.stack.push(l)
 
     def mf(self, idx):
@@ -201,7 +207,7 @@ class Frame(StackNode):
         """"""
         b = self.stack.pop()
         a = self.stack.pop()
-        print("in_", a, b)
+        # print("in_", a, b)
         c = a in b
         self.stack.push(c)
 
@@ -227,6 +233,7 @@ class Frame(StackNode):
 
     def print(self, idx):
         """"""""
+        print("print<< ", idx)
         args = [self.stack.pop() for i in range(idx)]
         reversed(args)
         print(*args)
