@@ -189,7 +189,6 @@ class Scanner(object):
                 tok = token.tk_not_equal
                 lit = self.src[pos: self.offset]
 
-
             elif ch == '<':
                 tok = token.tk_less_than
 
@@ -198,7 +197,6 @@ class Scanner(object):
                     tok = token.tk_less_than_or_equal
                     lit = self.src[pos: self.offset]
 
-
             elif ch == '>':
                 tok = token.tk_greater_than
 
@@ -206,8 +204,6 @@ class Scanner(object):
                     self.next_ch()
                     tok = token.tk_greater_than_or_equal
                     lit = self.src[pos: self.offset]
-
-
 
             elif ch == '=':
                 tok = token.tk_assign
