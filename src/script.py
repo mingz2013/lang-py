@@ -15,6 +15,7 @@ from parser.parser import Parser
 from prototype.prototype import ProtoType
 from vm.vm import VM
 
+
 def script(filename):
     """script"""
     with codecs.open(filename, encoding='utf-8') as f:
