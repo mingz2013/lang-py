@@ -19,9 +19,14 @@ def script(filename):
     """script"""
     with codecs.open(filename, encoding='utf-8') as f:
         ast = Parser(filename, f.read()).parse_file()
+
         print('ast.execute result: >>', ast.execute())
-        proto = ProtoType()
+
+        proto = ProtoType(filename)
+        proto.name = filename
+
         ast.to_bin(proto)
+
         print("proto-->>", proto)
 
 

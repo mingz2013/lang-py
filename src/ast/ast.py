@@ -601,7 +601,8 @@ class DefStatement(Statement):
     def to_bin(self, proto):
         p = ProtoType()
         p.name = self.identifier.lit
-        p.args = self.expression_list
+        p.proto = proto
+        self.expression_list.to_bin(p)
 
         self.block.to_bin(p)
 

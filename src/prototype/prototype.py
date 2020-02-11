@@ -14,7 +14,7 @@ class ProtoType(object):
     def __get_d(self):
         d = self.__dict__
 
-        # d['name'] = self.__class__.__name__
+        d['__class_name__'] = self.__class__.__name__
 
         return d
 
@@ -24,9 +24,9 @@ class ProtoType(object):
     def __repr__(self):
         return repr(self.__get_d())
 
-    def __init__(self):
+    def __init__(self, name=None):
         # bin code
-        self.name = ""  # 函数名, 或者文件名
+        self.name = name  # 函数名, 或者文件名
         self.code = []  # 指令表
         self.constants = []  # 常量表
         self.names = []  # 变量名
