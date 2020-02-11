@@ -215,14 +215,14 @@ class Instruction(int):
 
     @classmethod
     def build_type_0(cls, opcode):
-        print("build_type_0<<", opcode)
+        # print("build_type_0<<", opcode)
         assert isinstance(opcode, int)
         assert opcode.bit_length() <= 7
         return cls((opcode << 1) + 0b0)
 
     @classmethod
     def build_type_1(cls, opcode, idx):
-        print("build_type_1<<", opcode, idx)
+        # print("build_type_1<<", opcode, idx)
         assert isinstance(opcode, int)
         assert opcode.bit_length() <= 7
         assert isinstance(idx, int)

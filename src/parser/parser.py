@@ -80,7 +80,7 @@ class Parser(object):
         """语句"""
         print("statement...")
         node = self.compound_statement()
-        print("statement...>>", node)
+        # print("statement...>>", node)
         return node
 
     def compound_statement(self):
@@ -100,7 +100,7 @@ class Parser(object):
 
         self.skip_newlines()
 
-        print("statement...>>", node)
+        # print("compound_statement...>>", node)
 
         return node
 
@@ -269,7 +269,7 @@ class Parser(object):
         小语句
         :return:
         """
-        print("simple_statement...")
+        print("small_statement...")
 
         if self.tok == token.kw_print:
             node = self.print_statement()
@@ -284,7 +284,7 @@ class Parser(object):
                     node2 = self.expression_statement()
                     node = ast.AssignmentStatement(node, node2)
 
-        print("simple_statement...>>", node)
+        print("small_statement...>>", node)
         return node
 
     def print_statement(self):
