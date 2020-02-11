@@ -50,8 +50,8 @@ class VM(object):
     def pc(self):
         return self.frame.pc
 
-    def add_pc(self, n):
-        self.frame.add_pc(n)
+    # def add_pc(self, n):
+    #     self.frame.add_pc(n)
 
     def call(self, idx):
         """
@@ -104,7 +104,7 @@ class VM(object):
             self.frame.push(a)
 
     def j(self, idx):
-        self.add_pc(idx)
+        self.frame.j(idx)
 
     def nop(self):
         """"""

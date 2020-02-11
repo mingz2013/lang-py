@@ -53,9 +53,6 @@ class Frame(StackNode):
     def pc(self):
         return self._pc
 
-    def add_pc(self, n):
-        self._pc += n
-
     def fetch(self):
         """
         取指
@@ -63,6 +60,9 @@ class Frame(StackNode):
         i = self.proto.get_code(self._pc)
         self._pc += 1
         return i
+
+    def j(self, n):
+        self._pc += n
 
     def pop(self):
         return self.stack.pop()
