@@ -8,7 +8,7 @@ Module Description
 
 """
 
-from instructions import instruction
+from instructions.instruction import Instruction
 from prototype.prototype import ProtoType
 from vm.frame import Frame
 from vm.stack import Stack
@@ -38,7 +38,7 @@ class VM(object):
     def loop(self):
         while True:
             data = self.frame.fetch()
-            inst = instruction.Instruction.from_inst(data)
+            inst = Instruction.from_inst(data)
             inst.execute(self)
 
     @property
