@@ -68,3 +68,11 @@ for a > 0 {
 }
 
 print(a);
+
+
+
+def f(a){
+    print(a);
+}
+
+f("111");

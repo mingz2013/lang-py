@@ -14,7 +14,7 @@ sys.path.append(os.path.dirname("."))
 from parser.parser import Parser
 from prototype.prototype import ProtoType
 from vm.vm import VM
-from vm.closure import Closure
+
 
 def script(filename):
     """script"""
@@ -22,7 +22,7 @@ def script(filename):
         print('=' * 100)
         ast = Parser(filename, f.read()).parse_file()
         print('=' * 100)
-        print('ast.execute result: >>', ast.execute())
+        # print('ast.execute result: >>', ast.execute())
         print('=' * 100)
 
         proto = ProtoType(None, filename)

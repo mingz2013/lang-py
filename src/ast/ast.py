@@ -201,13 +201,11 @@ class Call(Atom):
     def execute(self):
         """exe"""
         func = self.identifier.execute()
-
         return func(self.expression_list.execute())
 
     def to_bin(self, proto):
 
-        for e in self.expression_list:
-            e.to_bin(proto)
+        self.expression_list.to_bin(proto)
 
         self.identifier.to_bin(proto)  # 加载了原型到栈顶
 
