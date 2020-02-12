@@ -10,6 +10,7 @@ Module Description
 
 from instructions.instruction import Instruction
 from prototype.prototype import ProtoType
+from vm.closure import Closure
 from vm.frame import Frame
 from vm.stack import Stack
 
@@ -20,14 +21,17 @@ class VM(object):
     """
 
     def __init__(self, filename):
-        self.prototype = ProtoType(filename)  # 二进制文件解析后的数据
+        self.proto = ProtoType(filename)  # 二进制文件解析后的数据
         self.stack = Stack()  # callstack
 
     def init(self, args):
         """
         vm call, 初始执行
         """
-        f = Frame(self.prototype)
+
+        c = Closure(None, self.proto)
+
+        f = Frame(c)
         for a in args:
             f.push(a)
 
@@ -83,7 +87,9 @@ class VM(object):
         """
 
         proto = self.frame.pop()
-        f = Frame(proto)
+        super_ = self.frame.closure
+        closure = Closure(super_, proto)
+        f = Frame(closure)
 
         for i in range(idx):
             a = self.frame.pop()

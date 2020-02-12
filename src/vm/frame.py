@@ -43,14 +43,20 @@ class Frame(StackNode):
 
     """
 
-    def __init__(self, proto):
+    def __init__(self, closure):
         super(Frame, self).__init__()
         self._pc = 0  # program counter
-        self.proto = proto  # ProtoType, 函数原型，用于从函数原型里面读取常量，指令等
+        # self.proto = proto  # ProtoType, 函数原型，用于从函数原型里面读取常量，指令等
+        self.closure = closure  # 闭包
+
         self.stack = Stack()  # 栈
 
-        self.args = []  # 参数
-        self.results = []  # 结果
+        # self.args = []  # 参数
+        # self.results = []  # 结果
+
+    @property
+    def proto(self):
+        return self.closure.proto
 
     @property
     def pc(self):
@@ -135,13 +141,13 @@ class Frame(StackNode):
         """
 
         """
-        a = self.proto.load_name(idx)
+        a = self.closure.load_name(idx)
         self.stack.push(a)
 
     def sn(self, idx):
         """"""
         a = self.stack.pop()
-        self.proto.store_name(idx, a)
+        self.closure.store_name(idx, a)
 
     def ml(self, idx):
         """

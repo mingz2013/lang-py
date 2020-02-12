@@ -283,7 +283,7 @@ class Instruction(object):
                 return "{name} {idx}({n}) (top {a})".format(name=self.name, idx=self.idx, a=a, n=n)
             elif self.name == 'ln':
                 n = vm.frame.proto.get_name(self.idx)
-                a = vm.frame.proto.load_name(self.idx)
+                a = vm.frame.closure.load_name(self.idx)
                 return "{name} {idx}({n} {a}) (top)".format(name=self.name, idx=self.idx, a=a, n=n)
 
             return "{name} {idx}".format(name=self.name, idx=self.idx)
