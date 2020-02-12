@@ -207,10 +207,11 @@ class Call(Atom):
 
         self.expression_list.to_bin(proto)
 
-        self.identifier.to_bin(proto)  # 加载了原型到栈顶
+        self.identifier.to_bin(proto)  # 加载了原型idx
 
-        # inst = instruction.LP() # 加载原型到栈顶
-        # proto.add_code(inst)
+        inst = instruction.LP()  # 加载原型到栈顶
+        proto.add_code(inst)
+
         inst = instruction.CALL(len(self.expression_list))
         proto.add_code(inst)
 
@@ -640,11 +641,13 @@ class DefStatement(Statement):
 
         self.block.to_bin(p)
 
-        proto.add_sub_proto(p)
+        idx = proto.add_sub_proto(p)
+
+        proto.add_code(instruction.PUSH(idx))
+        # proto.add_code(instruction.MF(idx))
 
         idx = proto.add_name(p.name)
         proto.add_code(instruction.SN(idx))
-        proto.add_code(instruction.MF(idx))
 
 
 class ParamList(Node):

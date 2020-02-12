@@ -85,10 +85,11 @@ class VM(object):
         3 调用结束，最后执行ret指令
 
         """
-
-        proto = self.frame.pop()
-        super_ = self.frame.closure
-        closure = Closure(super_, proto)
+        print("vm.call.....", idx)
+        closure = self.frame.pop()
+        # print("proto...", proto)
+        # super_ = self.frame.closure
+        # closure = Closure(super_, proto)
         f = Frame(closure)
 
         for i in range(idx):
@@ -147,6 +148,9 @@ class VM(object):
 
     def sn(self, idx):
         self.frame.sn(idx)
+
+    def lp(self):
+        self.frame.lp()
 
     def ml(self, idx):
         self.frame.ml(idx)

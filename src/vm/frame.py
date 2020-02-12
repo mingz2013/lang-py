@@ -9,7 +9,7 @@ Module Description
 """
 
 from vm.stack import StackNode
-
+from vm.closure import Closure
 
 class Stack(object):
     def __init__(self):
@@ -149,6 +149,12 @@ class Frame(StackNode):
         a = self.stack.pop()
         self.closure.store_name(idx, a)
 
+    def lp(self):
+        idx = self.stack.pop()
+        p = self.proto.load_sub_proto(idx)
+        c = Closure(self.closure, p)
+        self.stack.push(c)
+
     def ml(self, idx):
         """
 
@@ -162,6 +168,7 @@ class Frame(StackNode):
 
     def mf(self, idx):
         """"""
+        raise Exception("un mf")
 
     def eq(self):
         """"""
