@@ -67,6 +67,9 @@ class Frame(StackNode):
     def j(self, n):
         self._pc += n
 
+    def jif(self, n):
+        self._pc += n
+
     def top(self):
         return self.stack.top()
 

@@ -51,7 +51,8 @@ def a(b){
     c;
 }
 
-
+print("before if", a);
+a = 0;
 if a {
     print("1");
 }elif b{
@@ -65,3 +66,5 @@ for a > 0 {
     print(a);
     a = a - 1;
 }
+
+print(a);

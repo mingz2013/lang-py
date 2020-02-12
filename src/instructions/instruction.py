@@ -67,6 +67,9 @@ class Executes(object):
     def j(self, inst, vm):
         vm.j(inst.idx)
 
+    def jif(self, inst, vm):
+        vm.jif(inst.idx)
+
     def ml(self, inst, vm):
         """
         make list
@@ -156,27 +159,28 @@ opcodes = [
     (0b00000000, 0b0001011, 0b1, 'sn', e.sn, 'store name', 'name'),
 
     (0b00000000, 0b0001100, 0b1, 'j', e.j, 'jmp', ''),
+    (0b00000000, 0b0001101, 0b1, 'jif', e.jif, 'jmp if false', ''),
 
-    (0b00000000, 0b0001101, 0b1, 'ml', e.ml, 'make list', ''),
-    (0b00000000, 0b0001110, 0b1, 'mf', e.mf, 'make function', ''),
+    (0b00000000, 0b0001110, 0b1, 'ml', e.ml, 'make list', ''),
+    (0b00000000, 0b0001111, 0b1, 'mf', e.mf, 'make function', ''),
 
-    (0b00000000, 0b0001111, 0b1, 'push', e.push, 'push', ''),
-    (0b00000000, 0b0010000, 0b0, 'pop', e.pop, 'pop', ''),
+    (0b00000000, 0b0010000, 0b1, 'push', e.push, 'push', ''),
+    (0b00000000, 0b0010001, 0b0, 'pop', e.pop, 'pop', ''),
 
-    (0b00000000, 0b0010001, 0b0, 'eq', e.eq, 'equal', ''),
-    (0b00000000, 0b0010010, 0b0, 'neq', e.neq, 'not equal', ''),
-    (0b00000000, 0b0010011, 0b0, 'lt', e.lt, 'less than', ''),
-    (0b00000000, 0b0010100, 0b0, 'lte', e.lte, 'less than or equal', ''),
-    (0b00000000, 0b0010101, 0b0, 'gt', e.gt, 'greater than', ''),
-    (0b00000000, 0b0010110, 0b0, 'gte', e.gte, 'greater than or equal', ''),
+    (0b00000000, 0b0010010, 0b0, 'eq', e.eq, 'equal', ''),
+    (0b00000000, 0b0010011, 0b0, 'neq', e.neq, 'not equal', ''),
+    (0b00000000, 0b0010100, 0b0, 'lt', e.lt, 'less than', ''),
+    (0b00000000, 0b0010101, 0b0, 'lte', e.lte, 'less than or equal', ''),
+    (0b00000000, 0b0010110, 0b0, 'gt', e.gt, 'greater than', ''),
+    (0b00000000, 0b0010111, 0b0, 'gte', e.gte, 'greater than or equal', ''),
 
-    (0b00000000, 0b0010111, 0b0, 'is', e.is_, 'is', ''),
-    (0b00000000, 0b0011000, 0b0, 'in', e.in_, 'in', ''),
-    (0b00000000, 0b0011001, 0b0, 'or', e.or_, 'or', ''),
-    (0b00000000, 0b0011010, 0b0, 'and', e.and_, 'and', ''),
-    (0b00000000, 0b0011011, 0b0, 'not', e.not_, 'not', ''),
+    (0b00000000, 0b0011000, 0b0, 'is', e.is_, 'is', ''),
+    (0b00000000, 0b0011001, 0b0, 'in', e.in_, 'in', ''),
+    (0b00000000, 0b0011010, 0b0, 'or', e.or_, 'or', ''),
+    (0b00000000, 0b0011011, 0b0, 'and', e.and_, 'and', ''),
+    (0b00000000, 0b0011100, 0b0, 'not', e.not_, 'not', ''),
 
-    (0b00000000, 0b0011100, 0b1, 'print', e.print, 'print', ''),
+    (0b00000000, 0b0011101, 0b1, 'print', e.print, 'print', ''),
 ]
 
 opcode_map = {opcode[1]: opcode for opcode in opcodes}
@@ -185,14 +189,21 @@ opcode_map = {opcode[1]: opcode for opcode in opcodes}
 # opcode_map_2 = {opcode[3]: opcode for opcode in opcodes}
 
 
-class Instruction(int):
+class Instruction(object):
+    def __init__(self, x):
+        # print(type(x))
+        assert isinstance(x, int)
+        self._data = x
 
     def __str__(self):
         return str(self.view)
 
+    def bit_length(self):
+        return self._data.bit_length()
+
     def to_bytearray(self):
         """"""
-        bb = struct.pack('<i', self)
+        bb = struct.pack('<i', self._data)
         bbb = bytearray(bb)
         return bbb
 
@@ -209,9 +220,9 @@ class Instruction(int):
 
     @classmethod
     def from_inst(cls, inst):
-        assert isinstance(inst, int)
+        assert isinstance(inst, Instruction)
         assert inst.bit_length() <= 16
-        return cls(inst)
+        return cls(inst.data)
 
     @classmethod
     def build_type_0(cls, opcode):
@@ -232,15 +243,15 @@ class Instruction(int):
 
     @property
     def type(self):
-        return self & 0b1
+        return self._data & 0b1
 
     @property
     def opcode(self):
-        return (self >> 1) & 0b1111111
+        return (self._data >> 1) & 0b1111111
 
     @property
     def idx(self):
-        return self >> 8
+        return self._data >> 8
 
     @property
     def name(self):
@@ -276,6 +287,14 @@ class Instruction(int):
                 return "{name} {idx}({n} {a}) (top)".format(name=self.name, idx=self.idx, a=a, n=n)
 
             return "{name} {idx}".format(name=self.name, idx=self.idx)
+
+    @property
+    def data(self):
+        return self._data
+
+    def fix(self, inst):
+        assert isinstance(inst, Instruction)
+        self._data = inst.data
 
     def execute(self, vm):
         # print("Instruction.execute <<", self)
@@ -373,6 +392,12 @@ def SN(idx):
 def J(idx):
     return builder.j(idx)
 
+
+def JIF(idx):
+    """
+    jmp is false
+    """
+    return builder.jif(idx)
 
 def ML(length):
     """

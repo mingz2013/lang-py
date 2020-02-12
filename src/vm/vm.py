@@ -108,6 +108,9 @@ class VM(object):
     def j(self, idx):
         self.frame.j(idx)
 
+    def jif(self, idx):
+        self.frame.jif(idx)
+
     def nop(self):
         """"""
         pass

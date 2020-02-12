@@ -78,6 +78,10 @@ class ProtoType(object):
             return -1
         return self.code[idx]
 
+    @property
+    def code_len(self):
+        return len(self.code)
+
     def clone(self):
         """
         clone

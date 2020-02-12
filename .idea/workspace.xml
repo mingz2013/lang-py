@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="58ef0169-3695-48bb-af48-b938189a6b03" name="Default Changelist" comment="lang">
+    <list default="true" id="58ef0169-3695-48bb-af48-b938189a6b03" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/vm/function.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ast/ast.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/ast.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/instructions/instruction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/instructions/instruction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/script.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prototype/prototype.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/prototype/prototype.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vm/frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/vm/frame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vm/vm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/vm/vm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/0.6.script" beforeDir="false" afterPath="$PROJECT_DIR$/test/0.6.script" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,10 +48,24 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/doc/uml" />
+      <recent name="$PROJECT_DIR$/doc" />
       <recent name="$PROJECT_DIR$/src/call_stack" />
     </key>
   </component>
-  <component name="RunManager" selected="Shell Script.setup.sh">
+  <component name="RunManager" selected="Makefile.Makefile (1)">
+    <configuration name="Makefile (1)" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
+    <configuration name="Makefile" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/Makefile" target="" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
     <configuration name="ast" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="lang-py" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -73,6 +98,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Makefile.Makefile (1)" />
+        <item itemvalue="Makefile.Makefile" />
+        <item itemvalue="Makefile.Makefile" />
         <item itemvalue="Shell Script.setup.sh" />
         <item itemvalue="Python.ast" />
       </list>
@@ -102,7 +130,10 @@
       <updated>1581316888724</updated>
       <workItem from="1581316892252" duration="13888000" />
       <workItem from="1581344835489" duration="17421000" />
-      <workItem from="1581403356441" duration="14074000" />
+      <workItem from="1581403356441" duration="15956000" />
+      <workItem from="1581430325089" duration="622000" />
+      <workItem from="1581478697672" duration="828000" />
+      <workItem from="1581493365390" duration="5944000" />
     </task>
     <task id="LOCAL-00001" summary="lang">
       <created>1581317059977</created>
@@ -307,7 +338,21 @@
       <option name="project" value="LOCAL" />
       <updated>1581418137900</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="lang">
+      <created>1581419798166</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1581419798166</updated>
+    </task>
+    <task id="LOCAL-00031" summary="lang">
+      <created>1581420994101</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1581420994101</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,39 +365,39 @@
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1581418543167">
+    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1581420993991">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1581418543167" />
+    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1581420993991" />
     <state x="38" y="79" width="1240" height="700" key="DiffContextDialog" timestamp="1581416124829">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="38" y="79" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1581416124829" />
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/64.23.1376.877@64.23.1376.877" timestamp="1581332931471" />
-    <state width="1398" height="237" key="GridCell.Tab.0.bottom" timestamp="1581388902525">
+    <state width="1398" height="361" key="GridCell.Tab.0.bottom" timestamp="1581500619822">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="237" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581388902525" />
-    <state width="1398" height="237" key="GridCell.Tab.0.center" timestamp="1581388902524">
+    <state width="1398" height="361" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581500619822" />
+    <state width="1398" height="361" key="GridCell.Tab.0.center" timestamp="1581500619820">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="237" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1581388902524" />
-    <state width="1398" height="237" key="GridCell.Tab.0.left" timestamp="1581388902524">
+    <state width="1398" height="361" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1581500619820" />
+    <state width="1398" height="361" key="GridCell.Tab.0.left" timestamp="1581500619818">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="237" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1581388902524" />
-    <state width="1398" height="237" key="GridCell.Tab.0.right" timestamp="1581388902525">
+    <state width="1398" height="361" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1581500619818" />
+    <state width="1398" height="361" key="GridCell.Tab.0.right" timestamp="1581500619820">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="237" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581388902525" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1581418143637">
+    <state width="1398" height="361" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581500619820" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1581421000459">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1581418143637" />
-    <state x="378" y="212" width="837" height="540" key="find.popup" timestamp="1581406654892">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1581421000459" />
+    <state x="378" y="212" width="837" height="540" key="find.popup" timestamp="1581422266918">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="378" y="212" width="837" height="540" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1581406654892" />
+    <state x="378" y="212" width="837" height="540" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1581422266918" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/lang_py$ast.coverage" NAME="ast Coverage Results" MODIFIED="1581350998739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/ast" />

@@ -703,6 +703,26 @@ class ForStatement(Statement):
         """"""
         print("to_bin<<", self)
 
+        # 当前的pc
+        begin = proto.code_len
+
+        # 解析条件语句
+        self.expression.to_bin(proto)
+
+        # 生成跳转语句， 如果False就跳转
+        jmp_to_end = instruction.JIF(0)
+        pc = proto.add_code(jmp_to_end)
+
+        # 解析块
+        self.block.to_bin(proto)
+
+        # 跳转回begin
+        jmp_to_begin = instruction.J(begin - proto.code_len)
+        proto.add_code(jmp_to_begin)
+
+        # 修复跳转到结束的指令
+        jmp_to_end.fix(instruction.JIF(proto.code_len - pc))
+
 
 class IfStatement(Statement):
     """
@@ -730,8 +750,39 @@ class IfStatement(Statement):
         return self.else_block.execute()
 
     def to_bin(self, proto):
-        """"""
+        """
+
+        """
         print("to_bin<<", self)
+
+        jmp_to_end_s = []
+
+        for elif_obj in self.elifs:
+            # 解析表达式
+            elif_obj['expression'].to_bin(proto)
+
+            # 如果False，跳转到下一个表达式判断
+
+            jmp_to_next = instruction.JIF(0)
+            pc = proto.add_code(jmp_to_next)
+
+            # 解析块语句
+            elif_obj['block'].to_bin(proto)
+
+            # 跳转到结束
+            jmp_to_end = instruction.J(0)
+            cur_pc = proto.add_code(jmp_to_end)
+            jmp_to_end_s.append((jmp_to_end, cur_pc))
+
+            # 修复跳转到下一条语句
+            jmp_to_next.fix(instruction.JIF(proto.code_len - pc))
+
+        # 解析else块语句
+        self.else_block.to_bin(proto)
+
+        # 修复所有的跳转到结束的语句
+        for jmp_to_end in jmp_to_end_s:
+            jmp_to_end[0].fix(instruction.J(proto.code_len - jmp_to_end[1]))
 
 
 class File(Node):
