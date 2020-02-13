@@ -12,11 +12,11 @@
 
 
 
-|区间 | len | 表意 | desc |
-|:---|:----|:-----|:-----|
-|0   |1bit |type  | 表示是否需要idx参数
-|1-8 |7bit |opcode|
-|9-16|8bit |idx   |
+|interval | len | name | desc |
+|:--------|:----|:-----|:-----|
+|[0, 1)   |1bit |type  | 表示是否需要idx参数
+|[1, 8)   |7bit |opcode|
+|[8, 15)  |8bit |idx   |
 
 
 
