@@ -16,7 +16,7 @@ class Var(object):
     def __get_d(self):
         d = self.__dict__
 
-        d['name'] = self.__class__.__name__
+        d['__class_name__'] = self.__class__.__name__
 
         return d
 

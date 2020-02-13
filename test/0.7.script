@@ -1,0 +1,40 @@
+a = 1;
+a = "111"
+
+print(a);
+
+
+def f(b){
+    print(b)
+    }
+
+f(222);
+
+
+
+def ff(a, b){
+print(a, b)
+return
+}
+
+ff(1, 1)
+
+print(a)
+
+
+
+
+def a(){
+    b = 1111111
+    def c(){
+        def d(){
+            print(b)
+        }
+        d()
+    }
+    c()
+}
+a()
+
+
+

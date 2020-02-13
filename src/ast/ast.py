@@ -19,7 +19,7 @@ class Node(object):
     def __get_d(self):
         d = self.__dict__
 
-        d['name'] = self.__class__.__name__
+        d['__class_name__'] = self.__class__.__name__
 
         return d
 
@@ -121,6 +121,10 @@ class Identifier(EndNode):
 
     def get_idx(self, proto):
         idx = proto.add_name(self.lit)
+        return idx
+
+    def get_idx_local(self, proto):
+        idx = proto.add_name(self.lit, local_must=True)
         return idx
 
 
@@ -657,7 +661,7 @@ class DefStatement(Statement):
         p.name = self.identifier.lit
         p.proto = proto
         if self.param_list:
-            self.param_list.to_bin(p)
+            self.param_list.to_bin_local(p)
 
         self.block.to_bin(p)
 
@@ -693,6 +697,10 @@ class ParamList(Node):
         for i in self.params:
             idx = i.get_idx(proto)
             # proto.add_code(instruction.SN(idx))
+
+    def to_bin_local(self, proto):
+        for i in self.params:
+            idx = i.get_idx_local(proto)
 
 class StatementBlock(Node):
     def __init__(self):

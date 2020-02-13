@@ -95,6 +95,7 @@ class VM(object):
         for i in range(idx):
             a = self.frame.pop()
             f.push(a)
+            f.sn(i)
 
         self.stack.push(f)
 

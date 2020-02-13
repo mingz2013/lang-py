@@ -118,11 +118,11 @@ class Parser(object):
 
         self.skip(token.tk_left_parenthesis)
 
-        if self.tok == token.tk_right_parenthesis:
-            param_list = None
-        else:
-            param_list = self.param_list()
-            self.next_token()
+        # if self.tok == token.tk_right_parenthesis:
+        #     param_list = None
+        # else:
+        param_list = self.param_list()
+        # self.next_token()
 
         self.skip(token.tk_right_parenthesis)
 
@@ -142,17 +142,19 @@ class Parser(object):
 
         if self.tok == token.tk_identifier:
             node.append_identifier(ast.Identifier(self.pos, self.tok, self.lit))
-
+            self.next_token()
             while self.tok == token.tk_comma:
                 self.skip(token.tk_comma)
 
                 if self.tok == token.tk_identifier:
-                    node.append_identifier(self.tok)
+                    node.append_identifier(ast.Identifier(self.pos, self.tok, self.lit))
+                    self.next_token()
                 else:
-                    self.error("param error")
+                    break
+                    # self.error("param error")
         else:
             pass
-
+        print("param_list...>", node)
         return node
 
     def statement_block(self):
