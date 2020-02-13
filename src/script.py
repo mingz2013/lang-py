@@ -20,9 +20,13 @@ def script(filename):
     """script"""
     with codecs.open(filename, encoding='utf-8') as f:
         print('=' * 100)
+
         ast = Parser(filename, f.read()).parse_file()
+
         print('=' * 100)
+
         # print('ast.execute result: >>', ast.execute())
+
         print('=' * 100)
 
         proto = ProtoType(None, filename)
@@ -31,10 +35,12 @@ def script(filename):
         ast.to_bin(proto)
 
         print("proto-->>", proto)
+
         print('=' * 100)
 
         vm = VM(filename)
         vm.proto = proto
+
         vm.init([])
 
 
