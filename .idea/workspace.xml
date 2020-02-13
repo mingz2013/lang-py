@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58ef0169-3695-48bb-af48-b938189a6b03" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/ast.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/ast.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vm/closure.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/vm/closure.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vm/frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/vm/frame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/instruction.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/instruction.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/todos.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/todos.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +138,7 @@
       <workItem from="1581524445913" duration="206000" />
       <workItem from="1581553583789" duration="1952000" />
       <workItem from="1581558184938" duration="9074000" />
-      <workItem from="1581578124807" duration="4074000" />
+      <workItem from="1581578124807" duration="4321000" />
     </task>
     <task id="LOCAL-00001" summary="lang">
       <created>1581317059977</created>
@@ -479,7 +476,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581584757867</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="lang">
+      <created>1581586192902</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1581586192902</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -496,10 +500,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="437" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1581563541117" />
-    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1581584757742">
+    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1581586192780">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1581584757742" />
+    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1581586192780" />
     <state x="38" y="79" width="1240" height="700" key="DiffContextDialog" timestamp="1581561232174">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -525,10 +529,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="542" y="168" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1581561234359" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1581584763916">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1581586199566">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1581584763916" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1581586199566" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1581558134969">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

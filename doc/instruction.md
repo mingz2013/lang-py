@@ -2,8 +2,10 @@
 ## 实现功能说明
 
 
-基于之前做的条件判断脚本，https://github.com/mingz2013/py.cond
-
+基于之前做的条件判断脚本，
+- https://github.com/mingz2013/py.cond
+- https://github.com/mingz2013/py.script
+- https://github.com/mingz2013/vm-py
 
 本项目，主要目的，是实现一个功能完备的编程语言。
 
@@ -52,7 +54,6 @@ src->词法分析器，生成token流 -> 语法分析，生成AST -> AST执行 -
 
 ## 内置函数
 - print()  用于打印输出
-- time() 用于标记字符串是时间格式，应当解析成时间，eg: time("2019-10-10 10:00:00")
 
 
 
@@ -60,3 +61,13 @@ src->词法分析器，生成token流 -> 语法分析，生成AST -> AST执行 -
 执行脚本前，
 - env可以初始化一些全局的配置，用作当前环境
 - env可以绑定一些全局变量，用于引用业务逻辑上的数据
+
+
+## 目前实现的功能
+- 词法分析
+- 语法分析
+- ast
+- 指令集
+- bytecode
+- vm
+- 闭包
