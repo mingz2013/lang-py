@@ -37,4 +37,18 @@ def a(){
 a()
 
 
-
+def a(b){
+    print(b)
+}
+a("aaaa")
+def a(b){
+    print(b)
+    return
+}
+a("aaaa")
+def a(b){
+    print(b)
+    return b
+}
+b = a("aaaa")
+print(b)
