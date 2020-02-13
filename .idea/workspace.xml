@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="58ef0169-3695-48bb-af48-b938189a6b03" name="Default Changelist" comment="">
+    <list default="true" id="58ef0169-3695-48bb-af48-b938189a6b03" name="Default Changelist" comment="lang">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/doc/parser.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/parser.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/doc/scanner.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/scanner.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/doc/token.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/token.md" afterDir="false" />
@@ -406,14 +407,14 @@
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1581554506846">
+    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1581558162430">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1581554506846" />
-    <state x="38" y="79" width="1240" height="700" key="DiffContextDialog" timestamp="1581416124829">
+    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1581558162430" />
+    <state x="38" y="79" width="1240" height="700" key="DiffContextDialog" timestamp="1581558177772">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="38" y="79" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1581416124829" />
+    <state x="38" y="79" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1581558177772" />
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/64.23.1376.877@64.23.1376.877" timestamp="1581332931471" />
     <state width="1398" height="227" key="GridCell.Tab.0.bottom" timestamp="1581524652575">
       <screen x="0" y="0" width="1440" height="900" />
@@ -431,10 +432,18 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="227" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581524652575" />
+    <state x="542" y="168" key="RollbackChangesDialog" timestamp="1581558179248">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="542" y="168" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1581558179248" />
     <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1581554513845">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1581554513845" />
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1581558134969">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1581558134969" />
     <state x="378" y="212" width="837" height="540" key="find.popup" timestamp="1581553710373">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
