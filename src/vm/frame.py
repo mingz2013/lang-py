@@ -11,6 +11,7 @@ Module Description
 from vm.stack import StackNode
 from vm.closure import Closure
 
+
 class Stack(object):
     def __init__(self):
         self.data = []

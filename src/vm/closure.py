@@ -19,11 +19,7 @@ class Closure(object):
     def __init__(self, super, proto):
         self.super = super  # 调用链的实现，有了这条调用链，就可以找到往上所有的环境，从而找到对应的数据
         self.proto = proto
-        # self.upvalues = self.proto.upvalues
         self.local_vars = copy.deepcopy(proto.vars)  # 局部变量表
-
-        # vm
-        # self.proto = None  # 指向上一级的指针
 
     def store_name(self, idx, a):
         var = self.local_vars[idx]

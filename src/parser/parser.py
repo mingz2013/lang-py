@@ -218,8 +218,6 @@ class Parser(object):
 
         return node
 
-
-
     def simple_statement(self):
         """
         简单语句

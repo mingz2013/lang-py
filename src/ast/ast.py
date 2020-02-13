@@ -705,6 +705,7 @@ class ParamList(Node):
         for i in self.params:
             idx = i.get_idx_local(proto)
 
+
 class StatementBlock(Node):
     def __init__(self):
         self.statements = []
