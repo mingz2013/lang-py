@@ -65,3 +65,15 @@ def a(){
     return 1
 }
 print(a())
+
+
+
+def a(){
+    def b(){
+        print("b")
+    }
+    return b
+}
+
+b = a()
+b()
