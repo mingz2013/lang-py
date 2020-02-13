@@ -202,6 +202,9 @@ class Instruction(object):
     def __str__(self):
         return str(self.view)
 
+    def __repr__(self):
+        return repr(self.view)
+
     def bit_length(self):
         return self._data.bit_length()
 

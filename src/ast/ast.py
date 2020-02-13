@@ -689,7 +689,7 @@ class ParamList(Node):
 
     def to_bin(self, proto):
         """"""
-        print("to_bin<<", self)
+        # print("to_bin<<", self)
         for i in self.params:
             idx = i.get_idx(proto)
             # proto.add_code(instruction.SN(idx))
