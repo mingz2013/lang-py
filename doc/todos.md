@@ -2,15 +2,18 @@
 
 任重而道远，继续努力
 
+- [X] token定义
 - [X] 词法分析
 - [X] 语法分析
 - [X] ast
 - [X] 指令集
 - [X] bytecode
 - [X] vm
-- [X] 闭包
-- [ ] 实现continue
-- [ ] 实现break
+    - [X] 栈式机
+    - [X] 调用栈
+    - [X] 闭包
+- [ ] 实现continue语句
+- [ ] 实现break语句
 - [ ] 实现 . 调用语法
 - [ ] 实现this关键字
 - [ ] 实现module
@@ -18,6 +21,19 @@
 - [ ] 实现函数多返回值
 - [ ] 实现调用python原生函数
 - [ ] 实现标准库
+    - [ ] 协程库
+    - [ ] CLI
+    - [ ] IO
+    - [ ] net
+    - [ ] list
+    - [ ] dict
+    - [ ] math
+    - [ ] sys
+    - [ ] string
+    - [ ] dis
+    - [ ] utf8
+    - [ ] bin
+    
 - [ ] 完善文档
 - [ ] 改用visitor模式
 - [ ] 完善ast exec
@@ -26,4 +42,5 @@
 - [ ] ast优化
 - [ ] 调试信息保存
 - [ ] 调试功能
-- [ ] CLI
+
+
