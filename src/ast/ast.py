@@ -187,6 +187,7 @@ class ParenthForm(Atom):
         return self.expression.execute()
 
     def to_bin(self, proto):
+        """"""
         # print("to_bin<<", self)
         return self.expression.to_bin(proto)
 
@@ -658,8 +659,8 @@ class ParamList(Node):
     def __init__(self):
         self.params = []
 
-    def append_identifier(self, ident):
-        self.params.append(ident)
+    def append_identifier(self, identifier):
+        self.params.append(identifier)
 
     def execute(self):
         """"""
@@ -667,7 +668,9 @@ class ParamList(Node):
     def to_bin(self, proto):
         """"""
         print("to_bin<<", self)
-
+        for i in self.params:
+            idx = i.get_idx(proto)
+            # proto.add_code(instruction.SN(idx))
 
 class StatementBlock(Node):
     def __init__(self):

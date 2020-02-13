@@ -18,11 +18,12 @@
 <print关键字> ::= "print"
 
 <def关键字> ::= "def"
+<return关键字> ::= "return"
 
 <if关键字> ::= "if"
 <elif关键字> ::= "elif"
 <else关键字> ::= "else"
-<return关键字> ::= "return"
+
 
 <for关键字> ::= "for"
 <continue关键字> ::= "continue"
@@ -42,11 +43,11 @@
 <kw_print> ::= "print"
 
 <kw_def> ::= "def"
+<kw_return> ::= "return"
 
 <kw_if> ::= "if"
 <kw_elif> ::= "elif"
 <kw_else> ::= "else"
-<kw_return> ::= "return"
 
 <kw_for> ::= "for"
 <kw_continue> ::= "continue"
