@@ -1,13 +1,15 @@
 # todos
 
+任重而道远，继续努力
 
 - 实现continue
 - 实现break
 - 实现 . 调用语法
 - 实现this关键字
-- 实现调用python函数
+- 实现多赋值
+- 实现函数多返回值
+- 实现调用python原生函数
 - 实现标准库
 - 完善文档
 - 改用visitor模式
 - 完善ast exec
-
