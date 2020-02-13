@@ -73,6 +73,7 @@ print(a);
 
 def f(a){
     print(a);
+    return
 }
 
 f("111");

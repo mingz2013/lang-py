@@ -581,7 +581,7 @@ class ReturnStatement(SmallStatement):
         if self.expression:
             self.expression.to_bin(proto)
         else:
-            proto.add_code(instruction.PUSH(None))
+            proto.add_code(instruction.PUSH(0))
         proto.add_code(instruction.RET())
 
 
@@ -661,7 +661,7 @@ class DefStatement(Statement):
 
         self.block.to_bin(p)
 
-        if p.code_len == 0 or p.get_code(p.code_len - 1) != instruction.RET().opcode:
+        if p.code_len == 0 or p.get_code(p.code_len - 1).opcode != instruction.RET().opcode:
             p.add_code(instruction.RET())
 
         idx = proto.add_sub_proto(p)
