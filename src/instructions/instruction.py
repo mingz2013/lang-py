@@ -363,7 +363,6 @@ def REM():
     return builder.rem()
 
 
-
 def CALL(length):
     """
 
@@ -410,6 +409,7 @@ def JIF(idx):
     jmp is false
     """
     return builder.jif(idx)
+
 
 def ML(length):
     """
@@ -515,3 +515,24 @@ def PRINT(length):
     print
     """
     return builder.print(length)
+
+
+def __print_md():
+    f = lambda idx, opcode, type, name, do, desc, idx_type: \
+        '{idx}|{opcode}|{type}|{name}|{do}|{desc}|{idx_type}'.format(
+            idx=format(idx, '#08b'), opcode=format(opcode, '#07b'), type=bin(type), name=name, do='vm', desc=desc,
+            idx_type=idx_type)
+
+    title = '|'.join(['idx 8bit ', 'opcode 7bit', 'type 1bit', 'name', 'do', 'desc', 'idx type'])
+    table = '|'.join([':----'] * 7)
+
+    lines = [title, table]
+
+    lines += [f(*op) for op in opcodes]
+
+    md = '\n'.join(lines)
+    print(md)
+
+
+if __name__ == '__main__':
+    __print_md()

@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58ef0169-3695-48bb-af48-b938189a6b03" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/doc/opcode.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/opcode.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/prototype.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/prototype.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/todos.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/todos.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/vm.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/vm.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/instructions/instruction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/instructions/instruction.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,13 +47,7 @@
       <recent name="$PROJECT_DIR$/src/call_stack" />
     </key>
   </component>
-  <component name="RunManager" selected="Makefile.Makefile">
-    <configuration name="Makefile (1)" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/Makefile" target="" workingDirectory="" arguments="">
-        <envs />
-      </makefile>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.instruction">
     <configuration name="Makefile (2)" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/Makefile" target="" workingDirectory="" arguments="">
         <envs />
@@ -91,6 +82,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="instruction" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="lang-py" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/instructions" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/instructions/instruction.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="setup.sh" type="ShConfigurationType" temporary="true">
       <option name="SCRIPT_PATH" value="$PROJECT_DIR$/setup.sh" />
       <option name="SCRIPT_OPTIONS" value="" />
@@ -101,11 +114,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.instruction" />
         <item itemvalue="Makefile.Makefile" />
         <item itemvalue="Makefile.Makefile" />
         <item itemvalue="Makefile.Makefile" />
         <item itemvalue="Makefile.Makefile (2)" />
-        <item itemvalue="Makefile.Makefile (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -141,21 +154,7 @@
       <workItem from="1581524445913" duration="206000" />
       <workItem from="1581553583789" duration="1952000" />
       <workItem from="1581558184938" duration="9074000" />
-      <workItem from="1581578124807" duration="5742000" />
-    </task>
-    <task id="LOCAL-00003" summary="lang">
-      <created>1581333940310</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1581333940310</updated>
-    </task>
-    <task id="LOCAL-00004" summary="lang">
-      <created>1581334705095</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1581334705095</updated>
+      <workItem from="1581578124807" duration="7907000" />
     </task>
     <task id="LOCAL-00005" summary="lang">
       <created>1581337349772</created>
@@ -486,7 +485,21 @@
       <option name="project" value="LOCAL" />
       <updated>1581587091691</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="lang">
+      <created>1581588036866</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1581588036866</updated>
+    </task>
+    <task id="LOCAL-00053" summary="lang">
+      <created>1581588146936</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1581588146936</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -503,39 +516,39 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="437" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1581563541117" />
-    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1581588036740">
+    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1581588146830">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1581588036740" />
+    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1581588146830" />
     <state x="38" y="79" width="1240" height="700" key="DiffContextDialog" timestamp="1581561232174">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="38" y="79" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1581561232174" />
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/64.23.1376.877@64.23.1376.877" timestamp="1581332931471" />
-    <state width="1398" height="292" key="GridCell.Tab.0.bottom" timestamp="1581572221525">
+    <state width="1398" height="216" key="GridCell.Tab.0.bottom" timestamp="1581590651325">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="292" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581572221525" />
-    <state width="1398" height="292" key="GridCell.Tab.0.center" timestamp="1581572221524">
+    <state width="1398" height="216" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581590651325" />
+    <state width="1398" height="216" key="GridCell.Tab.0.center" timestamp="1581590651324">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="292" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1581572221524" />
-    <state width="1398" height="292" key="GridCell.Tab.0.left" timestamp="1581572221524">
+    <state width="1398" height="216" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1581590651324" />
+    <state width="1398" height="216" key="GridCell.Tab.0.left" timestamp="1581590651324">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="292" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1581572221524" />
-    <state width="1398" height="292" key="GridCell.Tab.0.right" timestamp="1581572221525">
+    <state width="1398" height="216" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1581590651324" />
+    <state width="1398" height="216" key="GridCell.Tab.0.right" timestamp="1581590651325">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="292" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581572221525" />
+    <state width="1398" height="216" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581590651325" />
     <state x="542" y="168" key="RollbackChangesDialog" timestamp="1581561234359">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="542" y="168" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1581561234359" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1581588042469">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1581588152393">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1581588042469" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1581588152393" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1581558134969">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -547,5 +560,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/lang_py$ast.coverage" NAME="ast Coverage Results" MODIFIED="1581350998739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/ast" />
+    <SUITE FILE_PATH="coverage/lang_py$instruction.coverage" NAME="instruction Coverage Results" MODIFIED="1581590651315" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/instructions" />
   </component>
 </project>
