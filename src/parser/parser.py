@@ -118,9 +118,11 @@ class Parser(object):
 
         self.skip(token.tk_left_parenthesis)
 
-        param_list = self.param_list()
-
-        self.next_token()
+        if self.tok == token.tk_right_parenthesis:
+            param_list = None
+        else:
+            param_list = self.param_list()
+            self.next_token()
 
         self.skip(token.tk_right_parenthesis)
 
@@ -139,7 +141,7 @@ class Parser(object):
         node = ast.ParamList()
 
         if self.tok == token.tk_identifier:
-            node.append_identifier(self.tok)
+            node.append_identifier(ast.Identifier(self.pos, self.tok, self.lit))
 
             while self.tok == token.tk_comma:
                 self.skip(token.tk_comma)
@@ -214,26 +216,7 @@ class Parser(object):
 
         return node
 
-    def return_statement(self):
-        """
 
-        :return:
-        """
-        return None
-
-    def continue_statement(self):
-        """
-
-        :return:
-        """
-        return None
-
-    def break_statement(self):
-        """
-
-        :return:
-        """
-        return None
 
     def simple_statement(self):
         """
@@ -273,6 +256,8 @@ class Parser(object):
 
         if self.tok == token.kw_print:
             node = self.print_statement()
+        elif self.tok == token.kw_return:
+            node = self.return_statement()
         else:
 
             node = self.expression_statement()
@@ -286,6 +271,33 @@ class Parser(object):
 
         print("small_statement...>>", node)
         return node
+
+    def return_statement(self):
+        """
+
+        :return:
+        """
+        self.skip(token.kw_return)
+        if self.tok == token.tk_semicolon or self.tok == token.tk_newline:
+            node = None
+        else:
+            node = self.expression()
+        node = ast.ReturnStatement(node)
+        return node
+
+    def continue_statement(self):
+        """
+
+        :return:
+        """
+        return None
+
+    def break_statement(self):
+        """
+
+        :return:
+        """
+        return None
 
     def print_statement(self):
         """print"""
@@ -522,7 +534,10 @@ class Parser(object):
             self.next_token()
             if self.tok == token.tk_left_parenthesis:
                 self.skip(token.tk_left_parenthesis)
-                node2 = self.expression_list()
+                if self.tok == token.tk_right_parenthesis:
+                    node2 = None
+                else:
+                    node2 = self.expression_list()
                 node = ast.Call(node, node2)
                 self.skip(token.tk_right_parenthesis)
 

@@ -181,6 +181,7 @@
 
 ```bnf
 <小语句> ::= <表达式语句>  
+                |<return语句>
                 |<赋值语句>
                 | <print语句>
 <简单语句> ::= <小语句> {<分号><小语句>}[<分号>]
@@ -188,6 +189,7 @@
 
 ```bnf
 <small_statement> ::= <expression_statement>
+                    | <return_statement>
                     | <assignment_statement>
                     | <print_statement>
 <simple_statement> ::= <small_statement>{<tk_semicolon><small_statement>}[<tk_semicolon>]
@@ -199,6 +201,15 @@
 ```
 ```bnf
 <expression_statement> ::= <expression>
+```
+
+#### return语句
+```bnf
+<return语句> ::= <return关键字>[表达式]
+```
+
+```bnf
+<return_statement> ::= <kw_return>[expression]
 ```
 
 #### 赋值语句

@@ -205,15 +205,15 @@ class Call(Atom):
         return func(self.expression_list.execute())
 
     def to_bin(self, proto):
-
-        self.expression_list.to_bin(proto)
+        if self.expression_list:
+            self.expression_list.to_bin(proto)
 
         self.identifier.to_bin(proto)  # 加载了原型idx
 
         inst = instruction.LP()  # 加载原型到栈顶
         proto.add_code(inst)
-
-        inst = instruction.CALL(len(self.expression_list))
+        idx = len(self.expression_list) if self.expression_list else 0
+        inst = instruction.CALL(idx)
         proto.add_code(inst)
 
 
@@ -567,6 +567,24 @@ class SmallStatement(Statement):
     """SmallStatement"""
 
 
+class ReturnStatement(SmallStatement):
+    """return"""
+
+    def __init__(self, expression=None):
+        self.expression = expression
+
+    def execute(self):
+        """exe"""
+        raise NotImplemented()
+
+    def to_bin(self, proto):
+        if self.expression:
+            self.expression.to_bin(proto)
+        else:
+            proto.add_code(instruction.PUSH(None))
+        proto.add_code(instruction.RET())
+
+
 class PrintStatement(SimpleStatement):
     """print"""
 
@@ -621,9 +639,9 @@ class DefStatement(Statement):
     定义语句，函数定义
     """
 
-    def __init__(self, identifier, expression_list, block):
+    def __init__(self, identifier, param_list, block):
         self.identifier = identifier
-        self.expression_list = expression_list
+        self.param_list = param_list
         self.block = block
 
     def execute(self):
@@ -638,9 +656,13 @@ class DefStatement(Statement):
         p = ProtoType()
         p.name = self.identifier.lit
         p.proto = proto
-        self.expression_list.to_bin(p)
+        if self.param_list:
+            self.param_list.to_bin(p)
 
         self.block.to_bin(p)
+
+        if p.code_len == 0 or p.get_code(p.code_len - 1) != instruction.RET().opcode:
+            p.add_code(instruction.RET())
 
         idx = proto.add_sub_proto(p)
 
