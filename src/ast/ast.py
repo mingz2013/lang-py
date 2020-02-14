@@ -216,7 +216,6 @@ class PeriodForm(Atom):
     # self.atom.to_bin(proto)
     # proto.get
 
-
     def to_bin(self, proto):
         self.atom.to_bin(proto)
         idx = self.identifier.get_idx(proto)
@@ -795,6 +794,44 @@ class StatementBlock(Node):
             s.to_bin(proto)
 
 
+class BreakStatement(Statement):
+    """
+    break
+    """
+
+    def __init__(self):
+        pass
+
+    def execute(self):
+        """"""
+        raise NotImplemented()
+
+    def to_bin(self, proto):
+        jmp_to_end = instruction.J(0)
+        pc = proto.add_code(jmp_to_end)
+        jmp_to_end.fix_idx(pc)
+        proto.add_jmp_to_end_to_for_scopes(jmp_to_end)
+
+
+class ContinueStatement(Statement):
+    """
+    continue
+    """
+
+    def __init__(self):
+        pass
+
+    def execute(self):
+        """"""
+        raise NotImplemented()
+
+    def to_bin(self, proto):
+        jmp_to_begin = instruction.J(0)
+        pc = proto.add_code(jmp_to_begin)
+        jmp_to_begin.fix_idx(pc)
+        proto.add_jmp_to_begin_to_for_scopes(jmp_to_begin)
+
+
 class ForStatement(Statement):
     """
     for 循环语句
@@ -815,24 +852,35 @@ class ForStatement(Statement):
         print("to_bin<<", self)
 
         # 当前的pc
-        begin = proto.code_len
+        begin = proto.code_len - 1
 
         # 解析条件语句
         self.expression.to_bin(proto)
 
+        proto.enter_for_scopes()
+
         # 生成跳转语句， 如果False就跳转
         jmp_to_end = instruction.JIF(0)
+        proto.add_jmp_to_end_to_for_scopes(jmp_to_end)
         pc = proto.add_code(jmp_to_end)
+        jmp_to_end.fix_idx(pc)
 
         # 解析块
         self.block.to_bin(proto)
 
         # 跳转回begin
-        jmp_to_begin = instruction.J(begin - proto.code_len - 1)
-        proto.add_code(jmp_to_begin)
+        jmp_to_begin = instruction.J(0)
+        proto.add_jmp_to_begin_to_for_scopes(jmp_to_begin)
+        pc = proto.add_code(jmp_to_begin)
+        jmp_to_begin.fix_idx(pc)
 
-        # 修复跳转到结束的指令
-        jmp_to_end.fix(instruction.JIF(proto.code_len - pc - 1))
+        d = proto.pop_for_scopes()
+        for jmp_to_end in d['jmp_ends']:
+            # 修复跳转到结束的指令
+            jmp_to_end.fix_idx(proto.code_len - 1 - jmp_to_end.idx)
+
+        for jmp_to_begin in d['jmp_begins']:
+            jmp_to_begin.fix_idx(begin - jmp_to_begin.idx)
 
 
 class IfStatement(Statement):

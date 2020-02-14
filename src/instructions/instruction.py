@@ -312,6 +312,9 @@ class Instruction(object):
         assert isinstance(inst, Instruction)
         self._data = inst.data
 
+    def fix_idx(self, idx):
+        self._data = (idx << 8) + (self.opcode << 1) + self.type
+
     def execute(self, vm):
         # print("Instruction.execute <<", self)
         print("Instruction.execute <<", self.view_2(vm))

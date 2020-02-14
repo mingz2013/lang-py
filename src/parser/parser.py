@@ -258,6 +258,13 @@ class Parser(object):
             node = self.print_statement()
         elif self.tok == token.kw_return:
             node = self.return_statement()
+
+        elif self.tok == token.kw_break:
+
+            node = self.break_statement()
+
+        elif self.tok == token.kw_continue:
+            node = self.continue_statement()
         else:
 
             node = self.expression_statement()
@@ -290,14 +297,18 @@ class Parser(object):
 
         :return:
         """
-        return None
+        node = ast.ContinueStatement()
+        self.skip(token.kw_continue)
+        return node
 
     def break_statement(self):
         """
 
         :return:
         """
-        return None
+        node = ast.BreakStatement()
+        self.skip(token.kw_break)
+        return node
 
     def print_statement(self):
         """print"""

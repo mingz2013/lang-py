@@ -39,6 +39,23 @@ class ProtoType(object):
 
         self.protos = []  # 子函数原型表
 
+        self.for_scopes = []  # 用于生成代码阶段，记录for循环的作用域，用于处理break，continue
+
+    def enter_for_scopes(self):
+        self.for_scopes.append({
+            'jmp_ends': [],
+            'jmp_begins': []
+        })
+
+    def pop_for_scopes(self):
+        return self.for_scopes.pop()
+
+    def add_jmp_to_end_to_for_scopes(self, inst):
+        self.for_scopes[-1]['jmp_ends'].append(inst)
+
+    def add_jmp_to_begin_to_for_scopes(self, inst):
+        self.for_scopes[-1]['jmp_begins'].append(inst)
+
     def add_name(self, n, local_must=False):
         """
 

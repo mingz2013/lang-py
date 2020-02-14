@@ -194,16 +194,26 @@
 ```bnf
 <小语句> ::= <表达式语句>  
                 |<return语句>
+                |<break语句>
+                |<continue语句>
                 |<赋值语句>
                 | <print语句>
+<return语句> ::= <return关键字>[表达式]
+<break语句> ::= <break关键字>
+<continue语句> ::= <continue关键字>
 <简单语句> ::= <小语句> {<分号><小语句>}[<分号>]
 ```
 
 ```bnf
 <small_statement> ::= <expression_statement>
                     | <return_statement>
+                    | <break_statement>
+                    | <continue_statement>
                     | <assignment_statement>
                     | <print_statement>
+<return_statement> ::= <kw_return>[expression]
+<break_statement> ::= <kw_break>
+<continue_statement> ::= <kw_continue>
 <simple_statement> ::= <small_statement>{<tk_semicolon><small_statement>}[<tk_semicolon>]
 ```
 
@@ -215,14 +225,9 @@
 <expression_statement> ::= <expression>
 ```
 
-#### return语句
-```bnf
-<return语句> ::= <return关键字>[表达式]
-```
 
-```bnf
-<return_statement> ::= <kw_return>[expression]
-```
+
+
 
 #### 赋值语句
 
