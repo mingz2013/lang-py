@@ -828,11 +828,11 @@ class ForStatement(Statement):
         self.block.to_bin(proto)
 
         # 跳转回begin
-        jmp_to_begin = instruction.J(begin - proto.code_len)
+        jmp_to_begin = instruction.J(begin - proto.code_len - 1)
         proto.add_code(jmp_to_begin)
 
         # 修复跳转到结束的指令
-        jmp_to_end.fix(instruction.JIF(proto.code_len - pc))
+        jmp_to_end.fix(instruction.JIF(proto.code_len - pc - 1))
 
 
 class IfStatement(Statement):
@@ -886,14 +886,15 @@ class IfStatement(Statement):
             jmp_to_end_s.append((jmp_to_end, cur_pc))
 
             # 修复跳转到下一条语句
-            jmp_to_next.fix(instruction.JIF(proto.code_len - pc))
+            jmp_to_next.fix(instruction.JIF(proto.code_len - pc - 1))
 
         # 解析else块语句
-        self.else_block.to_bin(proto)
+        if self.else_block:
+            self.else_block.to_bin(proto)
 
         # 修复所有的跳转到结束的语句
         for jmp_to_end in jmp_to_end_s:
-            jmp_to_end[0].fix(instruction.J(proto.code_len - jmp_to_end[1]))
+            jmp_to_end[0].fix(instruction.J(proto.code_len - jmp_to_end[1] - 1))
 
 
 class File(Node):

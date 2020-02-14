@@ -101,7 +101,9 @@ class Frame(StackNode):
         self._pc += n
 
     def jif(self, n):
-        self._pc += n
+        a = self.stack.pop()
+        if not a:
+            self._pc += n
 
     def top(self):
         return self.stack.top()
