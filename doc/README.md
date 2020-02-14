@@ -8,6 +8,8 @@
 - [ast](./ast.md)
 - [prototype](./prototype.md)
 - [vm](./vm.md)
+- [closure](./closure.md)
+- [object](./object.md)
 - [opcode](./opcode.md)
 - [todos](./todos.md)
 - [reference](./reference.md)

@@ -33,7 +33,9 @@ class ProtoType(object):
         self.vars = []  # 变量 Var()
         # self.args = []  # 参数表
 
-        self.proto = proto  # 父级 ProtoType
+        self.members = []  # 成员，用于实现面向对象的属性名称 所有以this. 赋值的名称都存储到这里. 且这里的值可以被外部引用
+
+        self.proto = proto  # 父级 ProtoType, 目前在 代码生成阶段使用到
 
         self.protos = []  # 子函数原型表
 
@@ -149,6 +151,7 @@ class ProtoType(object):
         """
         clone
         """
+        # 这里其实是应该创建一个闭包对象
 
     def parse(self, reader):
         """
