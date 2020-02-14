@@ -3,8 +3,14 @@ self
 
 
 def A(){
-
+print("AAAA")
 }
 
 
-A.a = ""
+A.a = "23333"
+print(A.a)
+
+A()
+
+A.a = A
+A.a()

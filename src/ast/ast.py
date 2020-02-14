@@ -216,11 +216,12 @@ class PeriodForm(Atom):
     # self.atom.to_bin(proto)
     # proto.get
 
+
     def to_bin(self, proto):
         self.atom.to_bin(proto)
         idx = self.identifier.get_idx(proto)
         # idx = self.get_member_idx(proto)
-        # proto.add_code(instruction.LM(idx))
+        proto.add_code(instruction.LM(idx))
         return idx
 
 
@@ -241,15 +242,15 @@ class Call(Atom):
             self.expression_list.to_bin(proto)
 
         if isinstance(self.caller, Identifier):
-            self.caller.to_bin(proto)  # 加载了原型idx
+            self.caller.to_bin(proto)  # 加载了原型
 
         elif isinstance(self.caller, PeriodForm):
             idx = self.caller.to_bin(proto)
-            proto.add_code(instruction.LM(idx))
+            # proto.add_code(instruction.LM(idx))
         else:
             raise Exception('unexcept caller', self.caller)
 
-        proto.add_code(instruction.LP())  # 加载原型到栈顶
+        # proto.add_code(instruction.LP())  # 加载原型到栈顶
         idx = len(self.expression_list) if self.expression_list else 0
 
         proto.add_code(instruction.CALL(idx))
@@ -688,7 +689,10 @@ class AssignmentStatement(SimpleStatement):
             # TODO
             # 给成员赋值，需要3个参数，值，调用者，成员，分别进行压栈，然后调用SM
             self.expression.to_bin(proto)
-            idx = self.receiver.to_bin(proto)
+            # idx = self.receiver.to_bin(proto)
+            # proto.add_code(instruction.SM(idx))
+            self.receiver.atom.to_bin(proto)
+            idx = self.receiver.identifier.get_idx(proto)
             proto.add_code(instruction.SM(idx))
             pass
         else:
@@ -739,8 +743,10 @@ class DefStatement(Statement):
 
         proto.add_code(instruction.PUSH(idx))
         # proto.add_code(instruction.MF(idx))
+        proto.add_code(instruction.LP())
 
         idx = proto.add_name(p.name)
+
         proto.add_code(instruction.SN(idx))
 
 

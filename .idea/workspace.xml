@@ -3,13 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="58ef0169-3695-48bb-af48-b938189a6b03" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/todos.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/todos.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ast/ast.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/ast.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/instructions/instruction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/instructions/instruction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/prototype/prototype.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/prototype/prototype.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vm/closure.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/vm/closure.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vm/frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/vm/frame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vm/vm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/vm/vm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/0.8.script" beforeDir="false" afterPath="$PROJECT_DIR$/test/0.8.script" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,8 +48,8 @@
       <recent name="$PROJECT_DIR$/src/call_stack" />
     </key>
   </component>
-  <component name="RunManager" selected="Makefile.Makefile">
-    <configuration name="Makefile (2)" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+  <component name="RunManager" selected="Makefile.Makefile (1)">
+    <configuration name="Makefile (1)" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/Makefile" target="" workingDirectory="" arguments="">
         <envs />
       </makefile>
@@ -120,10 +115,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Makefile.Makefile (1)" />
         <item itemvalue="Makefile.Makefile" />
         <item itemvalue="Makefile.Makefile" />
         <item itemvalue="Python.instruction" />
-        <item itemvalue="Makefile.Makefile" />
         <item itemvalue="Makefile.Makefile" />
       </list>
     </recent_temporary>
@@ -166,14 +161,7 @@
       <workItem from="1581607053708" duration="92000" />
       <workItem from="1581607153550" duration="72000" />
       <workItem from="1581647718525" duration="7296000" />
-      <workItem from="1581662022317" duration="4805000" />
-    </task>
-    <task id="LOCAL-00016" summary="lang">
-      <created>1581403980197</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1581403980197</updated>
+      <workItem from="1581662022317" duration="6629000" />
     </task>
     <task id="LOCAL-00017" summary="lang">
       <created>1581404539470</created>
@@ -511,7 +499,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581662247664</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="lang">
+      <created>1581667664161</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1581667664161</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -574,40 +569,40 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="437" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1581563541117" />
-    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1581662247542">
+    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1581667663976">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1581662247542" />
+    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1581667663976" />
     <state x="303" y="52" key="CommitChangelistDialog2/67.23.1373.877@67.23.1373.877" timestamp="1581590706231" />
     <state x="38" y="79" width="1152" height="720" key="DiffContextDialog" timestamp="1581607145814">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="38" y="79" width="1152" height="720" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1581607145814" />
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/64.23.1376.877@64.23.1376.877" timestamp="1581332931471" />
-    <state width="1398" height="148" key="GridCell.Tab.0.bottom" timestamp="1581667622041">
+    <state width="1398" height="188" key="GridCell.Tab.0.bottom" timestamp="1581669468501">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="148" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581667622041" />
-    <state width="1398" height="148" key="GridCell.Tab.0.center" timestamp="1581667622039">
+    <state width="1398" height="188" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581669468501" />
+    <state width="1398" height="188" key="GridCell.Tab.0.center" timestamp="1581669468500">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="148" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1581667622039" />
-    <state width="1398" height="148" key="GridCell.Tab.0.left" timestamp="1581667622039">
+    <state width="1398" height="188" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1581669468500" />
+    <state width="1398" height="188" key="GridCell.Tab.0.left" timestamp="1581669468499">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="148" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1581667622039" />
-    <state width="1398" height="148" key="GridCell.Tab.0.right" timestamp="1581667622040">
+    <state width="1398" height="188" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1581669468499" />
+    <state width="1398" height="188" key="GridCell.Tab.0.right" timestamp="1581669468500">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="148" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581667622040" />
+    <state width="1398" height="188" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581669468500" />
     <state x="542" y="168" key="RollbackChangesDialog" timestamp="1581561234359">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="542" y="168" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1581561234359" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1581662253212">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1581667669823">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1581662253212" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1581667669823" />
     <state x="550" y="191" key="VcsDiffUtil.ChangesDialog" timestamp="1581605782659">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -616,10 +611,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1581558134969" />
-    <state x="378" y="212" width="837" height="540" key="find.popup" timestamp="1581657695361">
+    <state x="378" y="212" width="837" height="540" key="find.popup" timestamp="1581668406105">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="378" y="212" width="837" height="540" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1581657695361" />
+    <state x="378" y="212" width="837" height="540" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1581668406105" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/lang_py$ast.coverage" NAME="ast Coverage Results" MODIFIED="1581350998739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/ast" />
