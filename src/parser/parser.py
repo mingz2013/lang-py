@@ -262,7 +262,7 @@ class Parser(object):
 
             node = self.expression_statement()
 
-            if isinstance(node, ast.Identifier):
+            if isinstance(node, ast.Identifier) or isinstance(node, ast.PeriodForm):
 
                 if self.tok == token.tk_assign:
                     self.skip(token.tk_assign)
@@ -532,6 +532,7 @@ class Parser(object):
         elif self.tok == token.tk_identifier:  #
             node = ast.Identifier(self.pos, self.tok, self.lit)
             self.next_token()
+
             if self.tok == token.tk_left_parenthesis:
                 self.skip(token.tk_left_parenthesis)
                 if self.tok == token.tk_right_parenthesis:
@@ -560,6 +561,23 @@ class Parser(object):
         else:
             node = None
             self.error('atom unexcept >>', self.pos, self.tok, self.lit, node)
+
+        if self.tok == token.tk_period:  # .
+            self.skip(token.tk_period)
+            if self.tok == token.tk_identifier:
+                node = ast.PeriodForm(node, ast.Identifier(self.pos, self.tok, self.lit))
+                self.next_token()
+                if self.tok == token.tk_left_parenthesis:
+                    self.skip(token.tk_left_parenthesis)
+                    if self.tok == token.tk_right_parenthesis:
+                        node2 = None
+                    else:
+                        node2 = self.expression_list()
+                    node = ast.Call(node, node2)
+                    self.skip(token.tk_right_parenthesis)
+            else:
+                node = None
+                self.error('atom unexcept parse periodform >>', self.pos, self.tok, self.lit, node)
 
         return node
 

@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58ef0169-3695-48bb-af48-b938189a6b03" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test/0.9.script" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/doc/parser.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/parser.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/token.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/token.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ast/ast.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/ast.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/parser/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scanner/scanner.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/scanner/scanner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/token/token.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/token/token.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/0.8.script" beforeDir="false" afterPath="$PROJECT_DIR$/test/0.8.script" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,14 +161,7 @@
       <workItem from="1581605559674" duration="245000" />
       <workItem from="1581607053708" duration="92000" />
       <workItem from="1581607153550" duration="72000" />
-      <workItem from="1581647718525" duration="4929000" />
-    </task>
-    <task id="LOCAL-00012" summary="lang">
-      <created>1581358480316</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1581358480316</updated>
+      <workItem from="1581647718525" duration="7019000" />
     </task>
     <task id="LOCAL-00013" summary="lang">
       <created>1581387543694</created>
@@ -512,7 +499,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581657271068</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="lang">
+      <created>1581659090095</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1581659090095</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -575,40 +569,40 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="437" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1581563541117" />
-    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1581657270902">
+    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1581659089953">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1581657270902" />
+    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1581659089953" />
     <state x="303" y="52" key="CommitChangelistDialog2/67.23.1373.877@67.23.1373.877" timestamp="1581590706231" />
     <state x="38" y="79" width="1152" height="720" key="DiffContextDialog" timestamp="1581607145814">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="38" y="79" width="1152" height="720" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1581607145814" />
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/64.23.1376.877@64.23.1376.877" timestamp="1581332931471" />
-    <state width="1398" height="217" key="GridCell.Tab.0.bottom" timestamp="1581659059669">
+    <state width="1398" height="147" key="GridCell.Tab.0.bottom" timestamp="1581661212043">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="217" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581659059669" />
-    <state width="1398" height="217" key="GridCell.Tab.0.center" timestamp="1581659059668">
+    <state width="1398" height="147" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581661212043" />
+    <state width="1398" height="147" key="GridCell.Tab.0.center" timestamp="1581661212043">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="217" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1581659059668" />
-    <state width="1398" height="217" key="GridCell.Tab.0.left" timestamp="1581659059646">
+    <state width="1398" height="147" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1581661212043" />
+    <state width="1398" height="147" key="GridCell.Tab.0.left" timestamp="1581661212042">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="217" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1581659059646" />
-    <state width="1398" height="217" key="GridCell.Tab.0.right" timestamp="1581659059669">
+    <state width="1398" height="147" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1581661212042" />
+    <state width="1398" height="147" key="GridCell.Tab.0.right" timestamp="1581661212043">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="217" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581659059669" />
+    <state width="1398" height="147" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581661212043" />
     <state x="542" y="168" key="RollbackChangesDialog" timestamp="1581561234359">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="542" y="168" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1581561234359" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1581657279442">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1581659097984">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1581657279442" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1581659097984" />
     <state x="550" y="191" key="VcsDiffUtil.ChangesDialog" timestamp="1581605782659">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

@@ -196,6 +196,16 @@ class ParenthForm(Atom):
         return self.expression.to_bin(proto)
 
 
+class PeriodForm(Atom):
+    """
+    点号形式
+    """
+
+    def __init__(self, atom, identifier):
+        self.atom = atom
+        self.identifier = identifier
+
+
 class Call(Atom):
     """调用"""
 

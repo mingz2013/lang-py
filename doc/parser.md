@@ -31,20 +31,12 @@
 
 ### 调用
 ```bnf
-<调用> ::= <标识符><左小括号>[<表达式列表>]<右小括号>
+<调用> ::= (<点号形式> | <标识符>)<左小括号>[<表达式列表>]<右小括号>
 ```
 ```bnf
-<call> ::= <identifier><tk_left_parenthesis>[<expression_list>]<tk_right_parenthesis>
+<call> ::= (<period_form> | <identifier>)<tk_left_parenthesis>[<expression_list>]<tk_right_parenthesis>
 ```
 
-### self
-```bnf
-<self> ::= <self关键字>
-```
-
-```bnf
-<self> ::= <kw_self>
-```
 
 
 ### 原子
@@ -56,9 +48,14 @@
             | <字面值> 
             | <列表显示> 
             | <圆括号形式>
-            | <调用>
+            | <点号形式>
             | <self>
+            | <调用>
+            | <self>           
+
 <圆括号形式> ::= <左小括号><布尔运算表达式><右小括号>
+<点号形式> ::= <原子><点号><标识符>
+<self> ::= <self关键字>
 ```
 
 ```bnf
@@ -66,11 +63,15 @@
             | <literal>
             | <list_display>
             | <parenth_form>
-            | <call>
+            | <period_form>
             | <self>
-<parenth_form> ::= <tk_left_parenthesis><boolean_expression><tk_right_parenthesis>
+            | <call>
 
+<parenth_form> ::= <tk_left_parenthesis><boolean_expression><tk_right_parenthesis>
+<period_form> ::= <atom><tk_period><identifier>
+<self> ::= <kw_self>
 ```
+
 
 
 ### 一元运算符
@@ -228,10 +229,10 @@
 目前，赋值语句，只支持单个的赋值，不支持多个的同时赋值
 
 ```bnf
-<赋值语句> ::= <标识符> <赋值等号> <表达式>
+<赋值语句> ::= (<点号形式> | <标识符>) <赋值等号> <表达式>
 ```
 ```bnf
-<assignment_statement> ::= <identifier><tk_assign><expression>
+<assignment_statement> ::= (<period_form> | <identifier>)<tk_assign><expression>
 ```
 
 #### print语句
