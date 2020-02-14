@@ -541,6 +541,10 @@ class Parser(object):
                 node = ast.Call(node, node2)
                 self.skip(token.tk_right_parenthesis)
 
+        elif self.tok == token.kw_self:  # self
+            node = ast.Self()
+            self.skip(token.kw_self)
+
         elif self.tok == token.tk_string:
             node = ast.StringLiteral(self.pos, self.tok, self.lit)
             self.next_token()

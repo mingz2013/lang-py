@@ -19,15 +19,17 @@ kw_none = "kw_none"  # None
 
 kw_print = "kw_print"  # print
 
-kw_def = "kw_def"  # def
 kw_if = "kw_if"  # if
 kw_elif = "kw_elif"  # elif
 kw_else = "kw_else"  # else
-kw_return = "kw_return"  # return
 
 kw_for = "kw_for"  # for
 kw_continue = "kw_continue"  # continue
 kw_break = "kw_break"  # break
+
+kw_def = "kw_def"  # def
+kw_return = "kw_return"  # return
+kw_self = "kw_self"  # self
 
 # 标识符
 tk_identifier = "tk_identifier"  # 标识符

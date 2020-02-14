@@ -37,6 +37,15 @@
 <call> ::= <identifier><tk_left_parenthesis>[<expression_list>]<tk_right_parenthesis>
 ```
 
+### self
+```bnf
+<self> ::= <self关键字>
+```
+
+```bnf
+<self> ::= <kw_self>
+```
+
 
 ### 原子
 
@@ -47,7 +56,8 @@
             | <字面值> 
             | <列表显示> 
             | <圆括号形式>
-            | 调用
+            | <调用>
+            | <self>
 <圆括号形式> ::= <左小括号><布尔运算表达式><右小括号>
 ```
 
@@ -57,6 +67,7 @@
             | <list_display>
             | <parenth_form>
             | <call>
+            | <self>
 <parenth_form> ::= <tk_left_parenthesis><boolean_expression><tk_right_parenthesis>
 
 ```

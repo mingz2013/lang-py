@@ -19,6 +19,7 @@
 
 <def关键字> ::= "def"
 <return关键字> ::= "return"
+<self关键字> ::= "self"
 
 <if关键字> ::= "if"
 <elif关键字> ::= "elif"
@@ -44,6 +45,7 @@
 
 <kw_def> ::= "def"
 <kw_return> ::= "return"
+<kw_self> ::= "self"
 
 <kw_if> ::= "if"
 <kw_elif> ::= "elif"

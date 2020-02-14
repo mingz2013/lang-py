@@ -42,13 +42,14 @@ kw_map = {
     'if': token.kw_if,
     'elif': token.kw_elif,
     'else': token.kw_else,
-    'return': token.kw_return,
 
     'for': token.kw_for,
     'continue': token.kw_continue,
     'break': token.kw_break,
 
     'def': token.kw_def,
+    'return': token.kw_return,
+    'self': token.kw_self,
 
 }
 

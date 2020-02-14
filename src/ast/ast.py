@@ -221,6 +221,25 @@ class Call(Atom):
         proto.add_code(inst)
 
 
+class Self(Atom):
+    """
+    self
+    """
+
+    def __init__(self):
+        pass
+
+    def execute(self):
+        """
+
+        """
+        raise NotImplemented()
+
+    def to_bin(self, proto):
+        """"""
+        # proto.add_code(instruction.)
+
+
 class Expression(Node):
     """表达式"""
 
