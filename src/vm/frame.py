@@ -276,5 +276,6 @@ class Frame(StackNode):
         """"""""
         print("print<< ", idx)
         args = [self.stack.pop() for i in range(idx)]
-        reversed(args)
+        # print("print<< args: ", args)
+        args.reverse()
         print(*args)

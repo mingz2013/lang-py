@@ -562,7 +562,7 @@ class Parser(object):
             node = None
             self.error('atom unexcept >>', self.pos, self.tok, self.lit, node)
 
-        if self.tok == token.tk_period:  # .
+        while self.tok == token.tk_period:  # .
             self.skip(token.tk_period)
             if self.tok == token.tk_identifier:
                 node = ast.PeriodForm(node, ast.Identifier(self.pos, self.tok, self.lit))

@@ -6,13 +6,27 @@ print(A.a)
 
 
 
+def new_A(a, b){
+    def this(){}
 
-def new_A(){
-    def A(){}
-    A.a = 1
-    return A
+    def f(a){
+        print(a)
+    }
+
+    this.a = a + b
+    this.f = f
+
+
+
+    return this
 }
 
 
-a = new_A()
+a = new_A(10, 20)
 print(a.a)
+
+a.a = 2
+
+a.f(a.a)
+
+

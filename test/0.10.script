@@ -1,36 +1,35 @@
 def Man(){
 
+    def this(){}
+
     def say(word){
-        print(word)
+        print(this.name, "say:", word)
     }
 
-    this.name = ""
+    this.name = "Man"
     this.age = 11
     this.say = say
+
+    return this
 
 }
 
 
 def Child(){
-    this.super = Man
+    def this(){}
+    this.super = Man()
     this.age = 1
+
+    return this
 }
 
-a = Child
+a = Child()
 
 
-a.say()
+a.super.say(111111)
 
 
 
 
-def new_obj(){
 
-    def Obj(){
-
-    }
-
-    return Obj.clone()
-
-}
 
