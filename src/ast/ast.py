@@ -209,20 +209,20 @@ class PeriodForm(Atom):
 class Call(Atom):
     """调用"""
 
-    def __init__(self, identifier, expression_list):
-        self.identifier = identifier
+    def __init__(self, caller, expression_list):
+        self.caller = caller  # identifer or PeriodForm
         self.expression_list = expression_list
 
     def execute(self):
         """exe"""
-        func = self.identifier.execute()
+        func = self.caller.execute()
         return func(self.expression_list.execute())
 
     def to_bin(self, proto):
         if self.expression_list:
             self.expression_list.to_bin(proto)
 
-        self.identifier.to_bin(proto)  # 加载了原型idx
+        self.caller.to_bin(proto)  # 加载了原型idx
 
         inst = instruction.LP()  # 加载原型到栈顶
         proto.add_code(inst)
@@ -639,13 +639,13 @@ class PrintStatement(SimpleStatement):
 class AssignmentStatement(SimpleStatement):
     """赋值语句"""
 
-    def __init__(self, identifier, expression):
-        self.identifier = identifier
+    def __init__(self, receiver, expression):
+        self.receiver = receiver  # identifier or periodForm
         self.expression = expression
 
     def execute(self):
         """execute"""
-        context.Symtab.add_var(self.identifier.lit, self.expression.execute())
+        context.Symtab.add_var(self.receiver.lit, self.expression.execute())
         return None
 
     def to_bin(self, proto):
@@ -655,7 +655,7 @@ class AssignmentStatement(SimpleStatement):
         # print("to_bin<<", self)
         self.expression.to_bin(proto)
 
-        idx = self.identifier.get_idx(proto)
+        idx = self.receiver.get_idx(proto)
 
         proto.add_code(instruction.SN(idx))
 
