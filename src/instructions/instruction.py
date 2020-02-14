@@ -64,6 +64,12 @@ class Executes(object):
     def sn(self, inst, vm):
         vm.sn(inst.idx)
 
+    def lm(self, inst, vm):
+        vm.lm(inst.idx)
+
+    def sm(self, inst, vm):
+        vm.sm(inst.idx)
+
     def lp(self, inst, vm):
         vm.lp()
 
@@ -185,6 +191,9 @@ opcodes = [
     (0b00000000, 0b0011101, 0b0, 'not', e.not_, 'not', ''),
 
     (0b00000000, 0b0011110, 0b1, 'print', e.print, 'print', ''),
+
+    (0b00000000, 0b0011111, 0b1, 'sm', e.sm, 'store member', 'member'),
+    (0b00000000, 0b0100000, 0b1, 'lm', e.lm, 'load member', 'member'),
 ]
 
 opcode_map = {opcode[1]: opcode for opcode in opcodes}
@@ -396,7 +405,21 @@ def SN(idx):
     return builder.sn(idx)
 
 
+def LM(idx):
+    return builder.lm(idx)
+
+
+def SM(idx):
+    """
+    store member
+    """
+    return builder.sm(idx)
+
+
 def LP():
+    """
+    load prototype
+    """
     return builder.lp()
 
 

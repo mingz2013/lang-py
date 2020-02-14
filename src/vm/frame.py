@@ -8,8 +8,8 @@ Module Description
 
 """
 
-from vm.stack import StackNode
 from vm.closure import Closure
+from vm.stack import StackNode
 
 
 class Stack(object):
@@ -149,6 +149,30 @@ class Frame(StackNode):
         """"""
         a = self.stack.pop()
         self.closure.store_name(idx, a)
+
+    def lm(self, idx):
+        """
+        load member
+        """
+        name = self.closure.get_name(idx)
+
+        closure = self.stack.pop()
+
+        idx = closure.get_member_idx(name)
+        data = closure.load_member(idx)
+        self.stack.push(data)
+
+    def sm(self, idx):
+        """
+        store member
+        """
+        name = self.closure.get_name(idx)
+
+        closure = self.stack.pop()
+        data = self.stack.pop()
+
+        idx = closure.get_member_idx(name)
+        closure.store_member(idx, data)
 
     def lp(self):
         idx = self.stack.pop()

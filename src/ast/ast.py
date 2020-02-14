@@ -205,6 +205,24 @@ class PeriodForm(Atom):
         self.atom = atom
         self.identifier = identifier
 
+    def execute(self):
+        """"""
+        raise NotImplemented()
+
+    # def get_member_idx(self, proto):
+    #     """
+    #
+    #     """
+    # self.atom.to_bin(proto)
+    # proto.get
+
+    def to_bin(self, proto):
+        self.atom.to_bin(proto)
+        idx = self.identifier.get_idx(proto)
+        # idx = self.get_member_idx(proto)
+        # proto.add_code(instruction.LM(idx))
+        return idx
+
 
 class Call(Atom):
     """调用"""
@@ -222,13 +240,19 @@ class Call(Atom):
         if self.expression_list:
             self.expression_list.to_bin(proto)
 
-        self.caller.to_bin(proto)  # 加载了原型idx
+        if isinstance(self.caller, Identifier):
+            self.caller.to_bin(proto)  # 加载了原型idx
 
-        inst = instruction.LP()  # 加载原型到栈顶
-        proto.add_code(inst)
+        elif isinstance(self.caller, PeriodForm):
+            idx = self.caller.to_bin(proto)
+            proto.add_code(instruction.LM(idx))
+        else:
+            raise Exception('unexcept caller', self.caller)
+
+        proto.add_code(instruction.LP())  # 加载原型到栈顶
         idx = len(self.expression_list) if self.expression_list else 0
-        inst = instruction.CALL(idx)
-        proto.add_code(inst)
+
+        proto.add_code(instruction.CALL(idx))
 
 
 class Self(Atom):
@@ -653,11 +677,22 @@ class AssignmentStatement(SimpleStatement):
 
         """
         # print("to_bin<<", self)
-        self.expression.to_bin(proto)
+        if isinstance(self.receiver, Identifier):
+            self.expression.to_bin(proto)
 
-        idx = self.receiver.get_idx(proto)
+            idx = self.receiver.get_idx(proto)
 
-        proto.add_code(instruction.SN(idx))
+            proto.add_code(instruction.SN(idx))
+
+        elif isinstance(self.receiver, PeriodForm):
+            # TODO
+            # 给成员赋值，需要3个参数，值，调用者，成员，分别进行压栈，然后调用SM
+            self.expression.to_bin(proto)
+            idx = self.receiver.to_bin(proto)
+            proto.add_code(instruction.SM(idx))
+            pass
+        else:
+            raise Exception('unexcept reveiver', self.receiver)
 
 
 class ExpressionStatement(SimpleStatement):

@@ -8,7 +8,7 @@ Module Description
 
 """
 from prototype.var import Var
-
+from prototype.member import Member
 
 class ProtoType(object):
 
@@ -114,8 +114,32 @@ class ProtoType(object):
     def get_name(self, idx):
         """
         用于调试打印，
+        用于设置name store member
         """
         return self.vars[idx].name
+
+    def add_member(self, n):
+        """
+        添加属性
+        """
+        idx = self.find_member(n)
+        if idx >= 0:
+            return idx
+        member = Member()
+        member.name = n
+        self.members.append(member)
+        idx = len(self.members) - 1
+        member.idx = idx
+        return idx
+
+    def find_member(self, n):
+        """
+        查找属性
+        """
+        for i, member in enumerate(self.members):
+            if member.name == n:
+                return i
+        return -1
 
     def add_constant(self, c):
         if c in self.constants:

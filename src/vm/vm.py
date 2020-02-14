@@ -150,6 +150,12 @@ class VM(object):
     def sn(self, idx):
         self.frame.sn(idx)
 
+    def lm(self, idx):
+        self.frame.lm(idx)
+
+    def sm(self, idx):
+        self.frame.sm(idx)
+
     def lp(self):
         self.frame.lp()
 

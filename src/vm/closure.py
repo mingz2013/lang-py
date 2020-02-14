@@ -12,7 +12,7 @@ Module Description
 """
 
 import copy
-
+from prototype.member import Member
 
 class Closure(object):
 
@@ -40,9 +40,28 @@ class Closure(object):
         else:
             raise Exception("un except type", var.store_type)
 
+    def get_name(self, idx):
+        """
+        用于调试打印，
+        用于设置name store member
+        """
+        return self.vars[idx].name
+
     def store_member(self, idx, a):
         member = self.members[idx]
         member.data = a
 
     def load_member(self, idx):
         return self.members[idx].data
+
+    def get_member_idx(self, name):
+        for idx, member in enumerate(self.members):
+            if member.name == name:
+                return idx
+        member = Member()
+        member.name = name
+        member.data = None
+        self.members.append(member)
+        idx = len(self.members) - 1
+        member.idx = idx
+        return idx
