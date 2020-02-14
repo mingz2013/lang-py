@@ -31,5 +31,29 @@ a.super.say(111111)
 
 
 
+def new_Obj(name){
+    def this(){}
+
+    def init(){
+        this.name = name
+        this.say = say
+    }
+
+    def say(){
+        print("my name is ", this.name)
+    }
+
+    this.init = init
+    return this
+}
+
+
+a = new_Obj("AAAA")
+a.init()
+a.say()
+
+
+
+
 
 
