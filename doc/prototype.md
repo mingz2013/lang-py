@@ -1,2 +1,3 @@
 # prototype
 
+定义了bytecode的类。用于构建bytecode和读取bytecode
