@@ -18,7 +18,7 @@ def is_letter(ch):
     print("is_letter", ch)
     if ch == -1:
         return False
-    return ord('a') <= ord(ch) <= ord('z') or ord('A') <= ord(ch) <= ord('Z') or ch == ord('_')
+    return ord('a') <= ord(ch) <= ord('z') or ord('A') <= ord(ch) <= ord('Z') or ord(ch) == ord('_')
 
 
 def is_digit(ch):
