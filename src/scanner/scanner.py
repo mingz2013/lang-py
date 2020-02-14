@@ -214,8 +214,8 @@ class Scanner(object):
                     tok = token.tk_equal
                     lit = self.src[pos: self.offset]
 
-            # elif ch == '.':
-            #     tok = token.tk_period
+            elif ch == '.':
+                tok = token.tk_period
 
             elif ch == '(':
                 tok = token.tk_left_parenthesis
