@@ -10,6 +10,7 @@ Module Description
 from prototype.var import Var
 from prototype.member import Member
 
+
 class ProtoType(object):
 
     def __get_d(self):
@@ -197,4 +198,9 @@ class ProtoType(object):
     def parse(self, reader):
         """
         用于解析数据
+        """
+
+    def dump(self, writer):
+        """
+        用于写入文件
         """
