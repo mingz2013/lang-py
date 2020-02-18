@@ -1,0 +1,25 @@
+print("module m")
+
+
+
+
+def new_man(){
+    def this(){}
+
+
+    this.name = "man"
+    this.age = 19
+
+
+    def say(){
+        print("my name is ", this.name)
+    }
+
+    this.say = say
+
+    return this
+}
+
+
+
+return new_man
