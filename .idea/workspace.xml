@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="58ef0169-3695-48bb-af48-b938189a6b03" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/todos.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/todos.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,14 +168,7 @@
       <workItem from="1581741019699" duration="1611000" />
       <workItem from="1581946740468" duration="203000" />
       <workItem from="1581990813667" duration="5157000" />
-      <workItem from="1581999654487" duration="9495000" />
-    </task>
-    <task id="LOCAL-00035" summary="lang">
-      <created>1581518095186</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1581518095186</updated>
+      <workItem from="1581999654487" duration="9860000" />
     </task>
     <task id="LOCAL-00036" summary="lang">
       <created>1581554507005</created>
@@ -512,7 +506,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582010052484</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="lang">
+      <created>1582010208161</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1582010208161</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -579,13 +580,13 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="437" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1581563541117" />
-    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1582010052325">
+    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1582010208062">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1581946792826" />
     <state x="303" y="52" key="CommitChangelistDialog2/67.23.1373.877@67.23.1373.877" timestamp="1581590706231" />
     <state x="303" y="52" key="CommitChangelistDialog2/683.-1057.1920.1057/-1237.-1057.1920.1057/67.23.1373.877@67.23.1373.877" timestamp="1582009020480" />
-    <state x="303" y="52" key="CommitChangelistDialog2/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582010052325" />
+    <state x="303" y="52" key="CommitChangelistDialog2/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582010208062" />
     <state x="38" y="79" width="1152" height="720" key="DiffContextDialog" timestamp="1581683720030">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -615,11 +616,11 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="542" y="168" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1581561234359" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1582010058278">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1582010213984">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1581946799738" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582010058278" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582010213984" />
     <state x="550" y="191" key="VcsDiffUtil.ChangesDialog" timestamp="1581683718590">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
