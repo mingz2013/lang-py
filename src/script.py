@@ -5,43 +5,29 @@ main
 __date__ = "14/12/2017"
 __author__ = "zhaojm"
 
-import codecs
 import os
 import sys
 
+from vm.env import ENV
+
 sys.path.append(os.path.dirname("."))
 
-from parser.parser import Parser
-from prototype.prototype import ProtoType
 from vm.vm import VM
 
 
 def script(filename):
     """script"""
-    with codecs.open(filename, encoding='utf-8') as f:
-        print('=' * 100)
+    env = ENV()
 
-        ast = Parser(filename, f.read()).parse_file()
+    env.compile_file(filename)
 
-        print('=' * 100)
+    print('=' * 100)
 
-        # print('ast.execute result: >>', ast.execute())
+    vm = VM()
+    vm.env = env
+    vm.filename = filename
 
-        print('=' * 100)
-
-        proto = ProtoType(None, filename)
-        proto.name = filename
-
-        ast.to_bin(proto)
-
-        print("proto-->>", proto)
-
-        print('=' * 100)
-
-        vm = VM(filename)
-        vm.proto = proto
-
-        vm.init([])
+    vm.init([])
 
 
 def print_help():

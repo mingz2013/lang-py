@@ -13,6 +13,7 @@ from prototype.prototype import ProtoType
 from vm.closure import Closure
 from vm.frame import Frame
 from vm.stack import Stack
+from vm.env import ENV
 
 
 class VM(object):
@@ -33,8 +34,10 @@ class VM(object):
     def __repr__(self):
         return repr(self.__get_d())
 
-    def __init__(self, filename):
-        self.proto = ProtoType(filename)  # 二进制文件解析后的数据
+    def __init__(self):
+        self.env = None
+        self.filename = None
+        # self.proto = ProtoType(filename)  # 二进制文件解析后的数据
         self.stack = Stack()  # callstack
 
     def init(self, args):
@@ -42,7 +45,8 @@ class VM(object):
         vm call, 初始执行
         """
 
-        c = Closure(None, self.proto)
+        c = Closure(None, self.env.get_proto(self.filename))
+        self.env.set_module(self.filename, c)
 
         f = Frame(c)
         for a in args:
