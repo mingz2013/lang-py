@@ -32,17 +32,17 @@ class Parser(object):
 
     def skip(self, tok):
         """跳过"""
-        print("skip....", tok)
+        print("parser.skip....", tok)
         if self.tok == tok:
             self.next_token()
         else:
-            self.error("bad skip...", self.tok, tok)  # 非预期
+            self.error("parser.skip  bad skip...", self.tok, tok)  # 非预期
 
     def next_token(self):
         """获取下一个token"""
         print("next_token...")
         self.pos, self.tok, self.lit = self.scanner.scan()
-        print('next_token--------------------', self.pos, self.tok, self.lit)
+        print('parser.next_token--------------------', self.pos, self.tok, self.lit)
         # if self.tok == token.EOF:
         #     pass
         # else:
@@ -256,6 +256,8 @@ class Parser(object):
 
         if self.tok == token.kw_print:
             node = self.print_statement()
+        elif self.tok == token.kw_import:
+            node = self.import_statement()
         elif self.tok == token.kw_return:
             node = self.return_statement()
 
@@ -278,6 +280,43 @@ class Parser(object):
 
         print("small_statement...>>", node)
         return node
+
+    def import_statement(self):
+        """
+        import
+        """
+        print("import statement...")
+        self.skip(token.kw_import)
+        node = self.path_statement()
+        if self.tok == token.kw_as:
+            self.skip(token.kw_as)
+            if self.tok == token.tk_identifier:
+                identifier = ast.Identifier(self.pos, self.tok, self.lit)
+            else:
+                self.error("as error")
+                return
+        else:
+            identifier = None
+        print("import statement ....>>")
+        return ast.ImportStatement(node, identifier)
+
+    def path_statement(self):
+        print("path statement....")
+        identifier_list = []
+        identifier = ast.Identifier(self.pos, self.tok, self.lit)
+        identifier_list.append(identifier)
+        self.next_token()
+
+        while self.tok == token.tk_period:
+            self.skip(token.tk_period)
+            if self.tok == token.tk_identifier:
+                identifier = ast.Identifier(self.pos, self.tok, self.lit)
+                identifier_list.append(identifier)
+                self.next_token()
+            else:
+                self.error("path statement...")
+        print("path statement....>>")
+        return ast.PathStatement(identifier_list)
 
     def return_statement(self):
         """

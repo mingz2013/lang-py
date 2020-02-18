@@ -31,6 +31,10 @@ kw_def = "kw_def"  # def
 kw_return = "kw_return"  # return
 kw_self = "kw_self"  # self
 
+kw_import = "kw_import"  # import
+kw_from = "kw_from"  # from
+kw_as = "kw_as"  # as
+
 # 标识符
 tk_identifier = "tk_identifier"  # 标识符
 

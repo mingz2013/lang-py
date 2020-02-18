@@ -7,7 +7,6 @@
 Module Description
 
 """
-
 from instructions.instruction import Instruction
 from prototype.prototype import ProtoType
 from vm.closure import Closure
@@ -36,7 +35,7 @@ class VM(object):
 
     def __init__(self):
         self.env = None
-        self.filename = None
+        # self.filename = None
         # self.proto = ProtoType(filename)  # 二进制文件解析后的数据
         self.stack = Stack()  # callstack
 
@@ -45,8 +44,8 @@ class VM(object):
         vm call, 初始执行
         """
 
-        c = Closure(None, self.env.get_proto(self.filename))
-        self.env.set_module(self.filename, c)
+        c = Closure(None, self.env.get_proto(0))
+        self.env.set_module(c)
 
         f = Frame(c)
         for a in args:
@@ -172,6 +171,13 @@ class VM(object):
 
     def sm(self, idx):
         self.frame.sm(idx)
+
+    def lmd(self, idx):
+        # self.frame.lmd(idx)
+        proto = self.env.get_proto(idx)
+        c = Closure(None, proto)
+        idx = self.env.set_module(c)
+        self.frame.stack.push(c)
 
     def lp(self):
         self.frame.lp()

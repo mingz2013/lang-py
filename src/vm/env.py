@@ -16,13 +16,19 @@ from prototype.prototype import ProtoType
 
 class ENV(object):
     def __init__(self):
-        self.modules = {}  # path: closure
-        self.protos = {}
+        self.modules = []  # path: closure
+        self.protos = []
 
     def compile_file(self, filename):
         """
 
         """
+        print("compile file...<<", filename)
+
+        idx = self.find_proto(filename)
+        if idx >= 0:
+            return idx
+
         with codecs.open(filename, encoding='utf-8') as f:
             print('=' * 100)
 
@@ -41,19 +47,33 @@ class ENV(object):
             ast.to_bin(proto)
 
             print("proto-->>", proto)
-            self.add_proto(filename, proto)
+            idx = self.add_proto(filename, proto)
+            return idx
+
+    def find_proto(self, filename):
+        for idx, proto in enumerate(self.protos):
+            if proto.name == filename:
+                return idx
+        return -1
 
     def add_proto(self, filename, proto):
-        self.protos[filename] = proto
+        idx = self.find_proto(filename)
+        if idx >= 0:
+            self.protos[idx] = proto
+        else:
+            self.protos.append(proto)
+            idx = len(self.protos) - 1
+        return idx
 
-    def get_proto(self, filename):
-        return self.protos[filename]
+    def get_proto(self, idx):
+        return self.protos[idx]
 
-    def set_module(self, path, closure):
+    def set_module(self, closure):
         """
 
         """
-        self.modules[path] = closure
+        self.modules.append(closure)
+        return len(self.modules) - 1
 
     def get_module(self, path):
         """

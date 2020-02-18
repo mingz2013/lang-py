@@ -972,6 +972,42 @@ class File(Node):
             s.to_bin(proto)
 
 
+class ImportStatement(Statement):
+    """
+    import
+    """
+
+    def __init__(self, path, name):
+        self.path = path
+        self.name = name
+
+    def to_bin(self, proto):
+        idx = self.path.to_bin(proto)
+        proto.add_code(instruction.LMD(idx))
+
+        if self.name:
+            name = self.name
+        else:
+            name = self.path[-1]
+        idx = name.get_idx(proto)
+        proto.add_code(instruction.SN(idx))
+
+
+class PathStatement(Statement):
+    def __init__(self, identifier_list):
+        self.identifier_list = identifier_list
+
+    def get_path(self):
+        l = [node.lit for node in self.identifier_list]
+        s = '/'.join(l)
+        s += '.script'
+        return s
+
+    def to_bin(self, proto):
+        idx = proto.env.compile_file(self.get_path())
+        return idx
+
+
 if __name__ == '__main__':
     f = File()
     # print(str(f.__dict__))

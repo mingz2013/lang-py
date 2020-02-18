@@ -51,6 +51,10 @@ kw_map = {
     'return': token.kw_return,
     'self': token.kw_self,
 
+    'import': token.kw_import,
+    'as': token.kw_as,
+    'from': token.kw_from,
+
 }
 
 

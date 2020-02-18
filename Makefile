@@ -1,5 +1,5 @@
 run:
-	python src/script.py test/0.12.script
+	python src/script.py test/0.13.script
 test:
 	python src/script.py test/0.0.script
 	python src/script.py test/0.1.script

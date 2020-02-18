@@ -202,6 +202,9 @@ class Frame(StackNode):
         idx = closure.get_member_idx(name)
         closure.store_member(idx, data)
 
+    # def lmd(self, idx):
+    #     pass
+
     def lp(self):
         idx = self.stack.pop()
         p = self.proto.load_sub_proto(idx)

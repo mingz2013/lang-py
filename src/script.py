@@ -25,7 +25,7 @@ def script(filename):
 
     vm = VM()
     vm.env = env
-    vm.filename = filename
+    # vm.filename = filename
 
     vm.init([])
 

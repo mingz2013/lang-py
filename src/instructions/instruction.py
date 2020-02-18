@@ -70,6 +70,9 @@ class Executes(object):
     def sm(self, inst, vm):
         vm.sm(inst.idx)
 
+    def lmd(self, inst, vm):
+        vm.lmd(inst.idx)
+
     def lp(self, inst, vm):
         vm.lp()
 
@@ -194,6 +197,8 @@ opcodes = [
 
     (0b00000000, 0b0011111, 0b1, 'sm', e.sm, 'store member', 'member'),
     (0b00000000, 0b0100000, 0b1, 'lm', e.lm, 'load member', 'member'),
+
+    (0b00000000, 0b0100001, 0b1, 'lmd', e.lmd, 'load module', 'module'),
 ]
 
 opcode_map = {opcode[1]: opcode for opcode in opcodes}
@@ -424,6 +429,13 @@ def LP():
     load prototype
     """
     return builder.lp()
+
+
+def LMD(idx):
+    """
+    load module
+    """
+    return builder.lmd(idx)
 
 
 def J(idx):
