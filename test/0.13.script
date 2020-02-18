@@ -3,4 +3,4 @@ import test.m as m
 
 print("11111111")
 
-m()
+m()().say()

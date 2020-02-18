@@ -36,6 +36,7 @@ class VM(object):
     def __init__(self):
         self.env = None
         # self.filename = None
+        self.idx = None
         # self.proto = ProtoType(filename)  # 二进制文件解析后的数据
         self.stack = Stack()  # callstack
 
@@ -44,7 +45,7 @@ class VM(object):
         vm call, 初始执行
         """
 
-        c = Closure(None, self.env.get_proto(0))
+        c = Closure(None, self.env.get_proto(self.idx))
         self.env.set_module(c)
 
         f = Frame(c)
@@ -56,6 +57,7 @@ class VM(object):
         self.loop()
 
     def loop(self):
+        print("vm.loop.....")
         while True:
             data = self.frame.fetch()
             if data == -1:

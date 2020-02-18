@@ -2,21 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58ef0169-3695-48bb-af48-b938189a6b03" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/vm/1.1.python.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/0.13.script" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/m.script" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/doc/parser.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/parser.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ast/ast.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/ast.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/instructions/instruction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/instructions/instruction.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/parser/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scanner/scanner.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/scanner/scanner.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/script.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/script.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/token/token.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/token/token.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vm/env.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/vm/env.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vm/frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/vm/frame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/vm/vm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/vm/vm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/0.13.script" beforeDir="false" afterPath="$PROJECT_DIR$/test/0.13.script" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,14 +173,7 @@
       <workItem from="1581741019699" duration="1611000" />
       <workItem from="1581946740468" duration="203000" />
       <workItem from="1581990813667" duration="5157000" />
-      <workItem from="1581999654487" duration="8272000" />
-    </task>
-    <task id="LOCAL-00033" summary="lang">
-      <created>1581516483112</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1581516483112</updated>
+      <workItem from="1581999654487" duration="9197000" />
     </task>
     <task id="LOCAL-00034" summary="lang">
       <created>1581516757756</created>
@@ -526,7 +511,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582002182555</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="lang">
+      <created>1582009020632</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1582009020633</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -593,37 +585,38 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="437" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1581563541117" />
-    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1582002182411">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1582009020480">
+      <screen x="67" y="23" width="1373" height="877" />
     </state>
     <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1581946792826" />
     <state x="303" y="52" key="CommitChangelistDialog2/67.23.1373.877@67.23.1373.877" timestamp="1581590706231" />
+    <state x="303" y="52" key="CommitChangelistDialog2/683.-1057.1920.1057/-1237.-1057.1920.1057/67.23.1373.877@67.23.1373.877" timestamp="1582009020480" />
     <state x="303" y="52" key="CommitChangelistDialog2/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582002182411" />
     <state x="38" y="79" width="1152" height="720" key="DiffContextDialog" timestamp="1581683720030">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="38" y="79" width="1152" height="720" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1581683720030" />
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/64.23.1376.877@64.23.1376.877" timestamp="1581332931471" />
-    <state width="1398" height="278" key="GridCell.Tab.0.bottom" timestamp="1582008801878">
+    <state width="1398" height="91" key="GridCell.Tab.0.bottom" timestamp="1582010036022">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="235" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581681779669" />
-    <state width="1398" height="278" key="GridCell.Tab.0.bottom/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582008801878" />
-    <state width="1398" height="278" key="GridCell.Tab.0.center" timestamp="1582008801877">
+    <state width="1398" height="91" key="GridCell.Tab.0.bottom/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582010036022" />
+    <state width="1398" height="91" key="GridCell.Tab.0.center" timestamp="1582010036020">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="235" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1581681779668" />
-    <state width="1398" height="278" key="GridCell.Tab.0.center/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582008801877" />
-    <state width="1398" height="278" key="GridCell.Tab.0.left" timestamp="1582008801876">
+    <state width="1398" height="91" key="GridCell.Tab.0.center/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582010036020" />
+    <state width="1398" height="91" key="GridCell.Tab.0.left" timestamp="1582010036019">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="235" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1581681779667" />
-    <state width="1398" height="278" key="GridCell.Tab.0.left/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582008801876" />
-    <state width="1398" height="278" key="GridCell.Tab.0.right" timestamp="1582008801877">
+    <state width="1398" height="91" key="GridCell.Tab.0.left/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582010036019" />
+    <state width="1398" height="91" key="GridCell.Tab.0.right" timestamp="1582010036021">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="235" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581681779668" />
-    <state width="1398" height="278" key="GridCell.Tab.0.right/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582008801877" />
+    <state width="1398" height="91" key="GridCell.Tab.0.right/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582010036021" />
     <state x="542" y="168" key="RollbackChangesDialog" timestamp="1581561234359">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

@@ -240,14 +240,15 @@ class Call(Atom):
         if self.expression_list:
             self.expression_list.to_bin(proto)
 
-        if isinstance(self.caller, Identifier):
-            self.caller.to_bin(proto)  # 加载了原型
-
-        elif isinstance(self.caller, PeriodForm):
-            idx = self.caller.to_bin(proto)
-            # proto.add_code(instruction.LM(idx))
-        else:
-            raise Exception('unexcept caller', self.caller)
+        # if isinstance(self.caller, Identifier):
+        #     self.caller.to_bin(proto)  # 加载了原型
+        #
+        # elif isinstance(self.caller, PeriodForm):
+        #     idx = self.caller.to_bin(proto)
+        #     # proto.add_code(instruction.LM(idx))
+        # else:
+        #     raise Exception('unexcept caller', self.caller)
+        self.caller.to_bin(proto)
 
         # proto.add_code(instruction.LP())  # 加载原型到栈顶
         idx = len(self.expression_list) if self.expression_list else 0

@@ -583,15 +583,6 @@ class Parser(object):
             node = ast.Identifier(self.pos, self.tok, self.lit)
             self.next_token()
 
-            if self.tok == token.tk_left_parenthesis:
-                self.skip(token.tk_left_parenthesis)
-                if self.tok == token.tk_right_parenthesis:
-                    node2 = None
-                else:
-                    node2 = self.expression_list()
-                node = ast.Call(node, node2)
-                self.skip(token.tk_right_parenthesis)
-
         elif self.tok == token.kw_self:  # self
             node = ast.Self()
             self.skip(token.kw_self)
@@ -612,22 +603,30 @@ class Parser(object):
             node = None
             self.error('atom unexcept >>', self.pos, self.tok, self.lit, node)
 
-        while self.tok == token.tk_period:  # .
-            self.skip(token.tk_period)
-            if self.tok == token.tk_identifier:
-                node = ast.PeriodForm(node, ast.Identifier(self.pos, self.tok, self.lit))
-                self.next_token()
-                if self.tok == token.tk_left_parenthesis:
-                    self.skip(token.tk_left_parenthesis)
-                    if self.tok == token.tk_right_parenthesis:
-                        node2 = None
-                    else:
-                        node2 = self.expression_list()
-                    node = ast.Call(node, node2)
-                    self.skip(token.tk_right_parenthesis)
+        while self.tok == token.tk_left_parenthesis \
+                or self.tok == token.tk_period:
+
+            if self.tok == token.tk_left_parenthesis:
+                self.skip(token.tk_left_parenthesis)
+                if self.tok == token.tk_right_parenthesis:
+                    node2 = None
+                else:
+                    node2 = self.expression_list()
+                node = ast.Call(node, node2)
+                self.skip(token.tk_right_parenthesis)
+
+            elif self.tok == token.tk_period:
+
+                self.skip(token.tk_period)
+                if self.tok == token.tk_identifier:
+                    node = ast.PeriodForm(node, ast.Identifier(self.pos, self.tok, self.lit))
+                    self.next_token()
+                else:
+                    node = None
+                    self.error('atom unexcept parse periodform >>', self.pos, self.tok, self.lit, node)
+
             else:
-                node = None
-                self.error('atom unexcept parse periodform >>', self.pos, self.tok, self.lit, node)
+                self.error("atom unexcept, in while....>>")
 
         return node
 

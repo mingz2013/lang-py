@@ -19,13 +19,13 @@ def script(filename):
     """script"""
     env = ENV()
 
-    env.compile_file(filename)
+    idx = env.compile_file(filename)
 
     print('=' * 100)
 
     vm = VM()
     vm.env = env
-    # vm.filename = filename
+    vm.idx = idx
 
     vm.init([])
 

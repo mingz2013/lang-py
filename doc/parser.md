@@ -31,10 +31,10 @@
 
 ### 调用
 ```bnf
-<调用> ::= (<点号形式> | <标识符>)<左小括号>[<表达式列表>]<右小括号>
+<调用> ::= <原子><左小括号>[<表达式列表>]<右小括号>
 ```
 ```bnf
-<call> ::= (<period_form> | <identifier>)<tk_left_parenthesis>[<expression_list>]<tk_right_parenthesis>
+<call> ::= <原子><tk_left_parenthesis>[<expression_list>]<tk_right_parenthesis>
 ```
 
 
