@@ -11,6 +11,7 @@
 - [closure](./closure.md)
 - [object](./object.md)
 - [opcode](./opcode.md)
+- [module](./module.md)
 - [todos](./todos.md)
 - [reference](./reference.md)
 
