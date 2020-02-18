@@ -20,15 +20,29 @@ class Parser(object):
 
         self.scanner = Scanner(self.file, src)
 
-        self.pos = None
-        self.tok = None
-        self.lit = None
-
+        # self.pos = None
+        # self.tok = None
+        # self.lit = None
+        self.token = None
+        self.line_num = 0
         self.next_token()
+
+    @property
+    def pos(self):
+        return self.token.pos
+
+    @property
+    def tok(self):
+        return self.token.tok
+
+    @property
+    def lit(self):
+        return self.token.lit
 
     def skip_newlines(self):
         while self.tok == token.tk_newline:
             self.skip(token.tk_newline)
+            self.line_num += 1
 
     def skip(self, tok):
         """跳过"""
@@ -41,7 +55,8 @@ class Parser(object):
     def next_token(self):
         """获取下一个token"""
         print("next_token...")
-        self.pos, self.tok, self.lit = self.scanner.scan()
+        self.token = self.scanner.scan()
+        # self.pos, self.tok, self.lit = self.scanner.scan()
         print('parser.next_token--------------------', self.pos, self.tok, self.lit)
         # if self.tok == token.EOF:
         #     pass

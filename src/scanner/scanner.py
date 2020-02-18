@@ -64,7 +64,7 @@ class Scanner(object):
     """
 
     def __init__(self, nfile, src):
-        self.file = nfile
+        self.file = nfile  # token.File
         self.src = src
 
         self.ch = ' '
@@ -248,8 +248,9 @@ class Scanner(object):
                 self.error("Unknown lit", lit)
                 exit(1)
 
-        print(pos, tok, lit)
-        return pos, tok, lit
+        t = token.Token(pos, tok, lit)
+        print(t)
+        return t
 
     def error(self, *args):
         """error"""
@@ -315,7 +316,7 @@ cbd = 12
 
     s = Scanner(None, src)
     while True:
-        pos, tok, lit = s.scan()
-        if lit == -1:
+        t = s.scan()
+        if t.lit == -1:
             break
     pass

@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="58ef0169-3695-48bb-af48-b938189a6b03" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/todos.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/todos.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parser/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/parser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prototype/prototype.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/prototype/prototype.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scanner/scanner.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/scanner/scanner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/token/token.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/token/token.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,28 +64,6 @@
       </makefile>
       <method v="2" />
     </configuration>
-    <configuration name="ast" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="lang-py" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/ast" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/ast/ast.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="instruction" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="lang-py" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -104,6 +86,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="scanner" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="lang-py" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/scanner" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/scanner/scanner.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="setup.sh" type="ShConfigurationType" temporary="true">
       <option name="SCRIPT_PATH" value="$PROJECT_DIR$/setup.sh" />
       <option name="SCRIPT_OPTIONS" value="" />
@@ -115,10 +119,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Makefile.Makefile" />
+        <item itemvalue="Python.scanner" />
+        <item itemvalue="Makefile.Makefile" />
         <item itemvalue="Makefile.Makefile" />
         <item itemvalue="Makefile.Makefile (1)" />
-        <item itemvalue="Makefile.Makefile" />
-        <item itemvalue="Makefile.Makefile" />
       </list>
     </recent_temporary>
   </component>
@@ -168,14 +172,8 @@
       <workItem from="1581741019699" duration="1611000" />
       <workItem from="1581946740468" duration="203000" />
       <workItem from="1581990813667" duration="5157000" />
-      <workItem from="1581999654487" duration="9860000" />
-    </task>
-    <task id="LOCAL-00036" summary="lang">
-      <created>1581554507005</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1581554507005</updated>
+      <workItem from="1581999654487" duration="9898000" />
+      <workItem from="1582017841262" duration="2075000" />
     </task>
     <task id="LOCAL-00037" summary="lang">
       <created>1581558196185</created>
@@ -513,7 +511,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582010208161</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="lang">
+      <created>1582010573311</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1582010573311</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -580,62 +585,66 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="437" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1581563541117" />
-    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1582010208062">
+    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1582010573206">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1581946792826" />
     <state x="303" y="52" key="CommitChangelistDialog2/67.23.1373.877@67.23.1373.877" timestamp="1581590706231" />
     <state x="303" y="52" key="CommitChangelistDialog2/683.-1057.1920.1057/-1237.-1057.1920.1057/67.23.1373.877@67.23.1373.877" timestamp="1582009020480" />
-    <state x="303" y="52" key="CommitChangelistDialog2/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582010208062" />
-    <state x="38" y="79" width="1152" height="720" key="DiffContextDialog" timestamp="1581683720030">
+    <state x="303" y="52" key="CommitChangelistDialog2/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582010573206" />
+    <state x="38" y="79" width="1152" height="720" key="DiffContextDialog" timestamp="1582020328767">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="38" y="79" width="1152" height="720" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1581683720030" />
     <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/64.23.1376.877@64.23.1376.877" timestamp="1581332931471" />
-    <state width="1398" height="91" key="GridCell.Tab.0.bottom" timestamp="1582010036022">
+    <state x="38" y="79" width="1152" height="720" key="DiffContextDialog/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582020328767" />
+    <state width="1398" height="259" key="GridCell.Tab.0.bottom" timestamp="1582020260300">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="235" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581681779669" />
-    <state width="1398" height="91" key="GridCell.Tab.0.bottom/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582010036022" />
-    <state width="1398" height="91" key="GridCell.Tab.0.center" timestamp="1582010036020">
+    <state width="1398" height="259" key="GridCell.Tab.0.bottom/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582020260300" />
+    <state width="1398" height="259" key="GridCell.Tab.0.center" timestamp="1582020260297">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="235" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1581681779668" />
-    <state width="1398" height="91" key="GridCell.Tab.0.center/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582010036020" />
-    <state width="1398" height="91" key="GridCell.Tab.0.left" timestamp="1582010036019">
+    <state width="1398" height="259" key="GridCell.Tab.0.center/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582020260297" />
+    <state width="1398" height="259" key="GridCell.Tab.0.left" timestamp="1582020260296">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="235" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1581681779667" />
-    <state width="1398" height="91" key="GridCell.Tab.0.left/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582010036019" />
-    <state width="1398" height="91" key="GridCell.Tab.0.right" timestamp="1582010036021">
+    <state width="1398" height="259" key="GridCell.Tab.0.left/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582020260296" />
+    <state width="1398" height="259" key="GridCell.Tab.0.right" timestamp="1582020260299">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="235" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581681779668" />
-    <state width="1398" height="91" key="GridCell.Tab.0.right/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582010036021" />
+    <state width="1398" height="259" key="GridCell.Tab.0.right/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582020260299" />
     <state x="542" y="168" key="RollbackChangesDialog" timestamp="1581561234359">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="542" y="168" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1581561234359" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1582010213984">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1582010580574">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1581946799738" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582010213984" />
-    <state x="550" y="191" key="VcsDiffUtil.ChangesDialog" timestamp="1581683718590">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582010580574" />
+    <state x="550" y="191" key="VcsDiffUtil.ChangesDialog" timestamp="1582020058045">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="550" y="191" key="VcsDiffUtil.ChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1581683718590" />
+    <state x="550" y="191" key="VcsDiffUtil.ChangesDialog/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582020058045" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1581683720030">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1581683720030" />
-    <state x="378" y="212" width="837" height="540" key="find.popup" timestamp="1581668406105">
+    <state x="378" y="212" width="837" height="540" key="find.popup" timestamp="1582018387861">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="378" y="212" width="837" height="540" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1581668406105" />
+    <state x="378" y="212" width="837" height="540" key="find.popup/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582018387861" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/lang_py$ast.coverage" NAME="ast Coverage Results" MODIFIED="1581350998739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/ast" />
+    <SUITE FILE_PATH="coverage/lang_py$scanner.coverage" NAME="scanner Coverage Results" MODIFIED="1582019922728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/scanner" />
     <SUITE FILE_PATH="coverage/lang_py$instruction.coverage" NAME="instruction Coverage Results" MODIFIED="1581590944359" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/instructions" />
   </component>
 </project>

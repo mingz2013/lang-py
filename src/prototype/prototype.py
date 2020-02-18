@@ -27,6 +27,8 @@ class ProtoType(object):
         return repr(self.__get_d())
 
     def __init__(self, proto=None, name=None):
+        self.src = ""  # 源码，用于调试
+
         # bin code
         self.name = name  # 函数名, 或者文件名
         self.code = []  # 指令表
