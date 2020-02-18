@@ -249,9 +249,17 @@
 <print_statement> ::= <kw_print><tk_left_parenthesis><expression_list><tk_right_parenthesis>
 ```
 
+#### import语句
+```bnf
+<import语句> ::= <import关键字><路径>[<as语句>] 
+<from语句> ::= <from关键字><路径><import关键字><标识符>[<as语句>] 
+<as语句> ::= <as关键字><标识符>
+<路径> ::= [<标识符>]{<点号><标识符>}
+```
 
+```bnf
 
-
+```
 
 ### 复合语句
 

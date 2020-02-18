@@ -738,11 +738,11 @@ class DefStatement(Statement):
             p.add_code(instruction.LC(idx))
             p.add_code(instruction.RET())
 
-        idx = proto.add_sub_proto(p)
+        idx = proto.add_sub_proto(p)  # proto
 
         proto.add_code(instruction.PUSH(idx))
         # proto.add_code(instruction.MF(idx))
-        proto.add_code(instruction.LP())
+        proto.add_code(instruction.LP())  # load proto, 创建了闭包对象
 
         idx = proto.add_name(p.name)
 

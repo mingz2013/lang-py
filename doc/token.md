@@ -10,11 +10,15 @@
 <or关键字> ::= "or"
 <and关键字> ::= "and"
 <not关键字> ::= "not"
+
 <in关键字> ::= "in"
 <is关键字> ::= "is"
+
 <False关键字> ::= "False"
 <True关键字> ::= "True"
+
 <None关键字> ::= "None"
+
 <print关键字> ::= "print"
 
 <def关键字> ::= "def"
@@ -30,12 +34,18 @@
 <continue关键字> ::= "continue"
 <break关键字> ::= "break"
 
+
+<from关键字> ::= "from"
+<import关键字> ::= "import"
+<as关键字> ::= "as"
+
 ```
 
 ```bnf
 <kw_or> ::= "or"
 <kw_and> ::= "and"
 <kw_not> ::= "not"
+
 <kw_in> ::= "in"
 <kw_is> ::= "is"
 <kw_false> ::= "False"
@@ -54,6 +64,11 @@
 <kw_for> ::= "for"
 <kw_continue> ::= "continue"
 <kw_break> ::= "break"
+
+
+<kw_from> ::= "from"
+<kw_import> ::= "import"
+<kw_as> ::= "as"
 
 ```
 
