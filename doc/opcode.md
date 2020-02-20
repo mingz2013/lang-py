@@ -56,3 +56,6 @@ idx 8bit |opcode 7bit|type 1bit|name|do|desc|idx type
 0b00000000|0b0011100|0b0|and|vm|and|
 0b00000000|0b0011101|0b0|not|vm|not|
 0b00000000|0b0011110|0b1|print|vm|print|
+0b00000000|0b0011111|0b1|sm|vm|store member|member
+0b00000000|0b0100000|0b1|lm|vm|load member|member
+0b00000000|0b0100001|0b1|lmd|vm|load module|module

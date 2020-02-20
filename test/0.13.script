@@ -1,4 +1,4 @@
-import test.m as m
+import test.m
 import test.m.m.m as mm
 
 print("11111111")

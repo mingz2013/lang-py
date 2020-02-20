@@ -989,7 +989,7 @@ class ImportStatement(Statement):
         if self.name:
             name = self.name
         else:
-            name = self.path[-1]
+            name = self.path.identifier_list[-1]
         idx = name.get_idx(proto)
         proto.add_code(instruction.SN(idx))
 
