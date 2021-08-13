@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58ef0169-3695-48bb-af48-b938189a6b03" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/doc/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/0.14.script" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/0.15.script" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/0.16.script" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/lang-py.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lang-py.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ast/ast.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/ast.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prototype/prototype.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/prototype/prototype.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vm/closure.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/vm/closure.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vm/vm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/vm/vm.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +35,6 @@
   <component name="ProjectId" id="1XbZjL0Htqis2wrhfy4kzY1L2qC" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -46,7 +55,7 @@
       <recent name="$PROJECT_DIR$/src/call_stack" />
     </key>
   </component>
-  <component name="RunManager" selected="Makefile.Makefile">
+  <component name="RunManager" selected="Python.1">
     <configuration name="Makefile (1)" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/Makefile" target="" workingDirectory="" arguments="">
         <envs />
@@ -57,6 +66,28 @@
       <makefile filename="$PROJECT_DIR$/Makefile" target="" workingDirectory="" arguments="">
         <envs />
       </makefile>
+      <method v="2" />
+    </configuration>
+    <configuration name="1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="lang-py" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <configuration name="instruction" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -103,20 +134,10 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="setup.sh" type="ShConfigurationType" temporary="true">
-      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/setup.sh" />
-      <option name="SCRIPT_OPTIONS" value="" />
-      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="INTERPRETER_PATH" value="/usr/local/bin/zsh" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Makefile.Makefile" />
+        <item itemvalue="Python.1" />
         <item itemvalue="Python.instruction" />
-        <item itemvalue="Makefile.Makefile" />
-        <item itemvalue="Makefile.Makefile" />
         <item itemvalue="Python.scanner" />
       </list>
     </recent_temporary>
@@ -133,6 +154,7 @@
       </list>
     </option>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -171,6 +193,8 @@
       <workItem from="1582017841262" duration="5285000" />
       <workItem from="1582199752484" duration="1041000" />
       <workItem from="1582203649868" duration="267000" />
+      <workItem from="1628754574906" duration="680000" />
+      <workItem from="1628768071642" duration="9615000" />
     </task>
     <task id="LOCAL-00043" summary="lang">
       <created>1581569379985</created>
@@ -519,7 +543,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -561,11 +585,7 @@
         </entry>
       </map>
     </option>
-    <option name="OPEN_TABS">
-      <set>
-        <option value="1" />
-      </set>
-    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
@@ -573,75 +593,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="lang" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="320" y="115" key="#Notifications" timestamp="1581999579540">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="320" y="115" key="#Notifications/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1581999579540" />
-    <state x="437" y="260" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1581563541117">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="437" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1581563541117" />
-    <state x="303" y="52" key="CommitChangelistDialog2" timestamp="1582203843721">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="303" y="52" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1582203843721" />
-    <state x="303" y="52" key="CommitChangelistDialog2/67.23.1373.877@67.23.1373.877" timestamp="1581590706231" />
-    <state x="303" y="52" key="CommitChangelistDialog2/683.-1057.1920.1057/-1237.-1057.1920.1057/67.23.1373.877@67.23.1373.877" timestamp="1582009020480" />
-    <state x="303" y="52" key="CommitChangelistDialog2/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582023293407" />
-    <state x="38" y="79" width="1152" height="720" key="DiffContextDialog" timestamp="1582020328767">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="38" y="79" width="1152" height="720" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1581683720030" />
-    <state x="100" y="100" width="1240" height="700" key="DiffContextDialog/64.23.1376.877@64.23.1376.877" timestamp="1581332931471" />
-    <state x="38" y="79" width="1152" height="720" key="DiffContextDialog/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582020328767" />
-    <state width="1398" height="213" key="GridCell.Tab.0.bottom" timestamp="1582203829780">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="213" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1582203829780" />
-    <state width="1398" height="259" key="GridCell.Tab.0.bottom/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582023277944" />
-    <state width="1398" height="213" key="GridCell.Tab.0.center" timestamp="1582203829778">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="213" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1582203829778" />
-    <state width="1398" height="259" key="GridCell.Tab.0.center/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582023277942" />
-    <state width="1398" height="213" key="GridCell.Tab.0.left" timestamp="1582203829778">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="213" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1582203829778" />
-    <state width="1398" height="259" key="GridCell.Tab.0.left/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582023277941" />
-    <state width="1398" height="213" key="GridCell.Tab.0.right" timestamp="1582203829779">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="213" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1582203829779" />
-    <state width="1398" height="259" key="GridCell.Tab.0.right/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582023277943" />
-    <state x="542" y="168" key="RollbackChangesDialog" timestamp="1581561234359">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="542" y="168" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1581561234359" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1582203849256">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1582203849256" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582023440949" />
-    <state x="550" y="191" key="VcsDiffUtil.ChangesDialog" timestamp="1582020058045">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="550" y="191" key="VcsDiffUtil.ChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1581683718590" />
-    <state x="550" y="191" key="VcsDiffUtil.ChangesDialog/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582020058045" />
-    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1581683720030">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1440.900@0.0.1440.900" timestamp="1581683720030" />
-    <state x="378" y="212" width="837" height="540" key="find.popup" timestamp="1582018387861">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="378" y="212" width="837" height="540" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1581668406105" />
-    <state x="378" y="212" width="837" height="540" key="find.popup/683.-1080.1920.1080/-1237.-1080.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1582018387861" />
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/lang_py$ast.coverage" NAME="ast Coverage Results" MODIFIED="1581350998739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/ast" />
     <SUITE FILE_PATH="coverage/lang_py$scanner.coverage" NAME="scanner Coverage Results" MODIFIED="1582019922728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/scanner" />
     <SUITE FILE_PATH="coverage/lang_py$instruction.coverage" NAME="instruction Coverage Results" MODIFIED="1582203676115" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/instructions" />
+    <SUITE FILE_PATH="coverage/lang_py$1.coverage" NAME="1 Coverage Results" MODIFIED="1628772034260" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

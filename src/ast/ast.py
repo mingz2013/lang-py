@@ -729,6 +729,18 @@ class DefStatement(Statement):
         p = ProtoType()
         p.name = self.identifier.lit
         p.proto = proto
+
+        # 先把函数加入super prpto，再生成函数体，解决 递归问题
+        proto_idx = proto.add_sub_proto(p)  # proto
+
+        proto.add_code(instruction.PUSH(proto_idx))
+        # proto.add_code(instruction.MF(idx))
+        proto.add_code(instruction.LP())  # load proto, 创建了闭包对象
+
+        name_idx = proto.add_name(p.name)
+
+        proto.add_code(instruction.SN(name_idx))
+
         if self.param_list:
             self.param_list.to_bin_local(p)
 
@@ -739,15 +751,8 @@ class DefStatement(Statement):
             p.add_code(instruction.LC(idx))
             p.add_code(instruction.RET())
 
-        idx = proto.add_sub_proto(p)  # proto
 
-        proto.add_code(instruction.PUSH(idx))
-        # proto.add_code(instruction.MF(idx))
-        proto.add_code(instruction.LP())  # load proto, 创建了闭包对象
 
-        idx = proto.add_name(p.name)
-
-        proto.add_code(instruction.SN(idx))
 
 
 class ParamList(Node):

@@ -66,6 +66,7 @@ class ProtoType(object):
         :param n: 名称
         :param local_must: 是否一定要存储到本地
         """
+        print('Prototype.add_name <<', n, local_must)
 
         if local_must:
             if self.find_name(n) >= 0:

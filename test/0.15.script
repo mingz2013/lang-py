@@ -1,0 +1,20 @@
+
+
+def f(){
+
+
+
+    def f2(){
+        return x
+    }
+
+    return f2
+}
+
+x = 2
+
+
+print(f()())
+
+
+

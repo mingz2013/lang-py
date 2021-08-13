@@ -105,7 +105,8 @@ class VM(object):
         """
         print("vm.call.....", idx)
         closure = self.frame.pop()
-        # print("proto...", proto)
+        print('frame...', self.frame)
+        print("closure...", closure)
         # super_ = self.frame.closure
         # closure = Closure(super_, proto)
         f = Frame(closure)

@@ -38,6 +38,7 @@ class Closure(object):
 
     def store_name(self, idx, a):
         var = self.vars[idx]
+        print(self, 'closure.store_name << var:', var, "a", a)
         if var.store_type == var.TYPE_STORE_LOCAL:
             var.data = a
         elif var.store_type == var.TYPE_STORE_SUPER:
@@ -47,6 +48,7 @@ class Closure(object):
 
     def load_name(self, idx):
         var = self.vars[idx]
+        print(self, 'closure.load_name << var:', var)
         if var.store_type == var.TYPE_STORE_LOCAL:
             return self.vars[idx].data
         elif var.store_type == var.TYPE_STORE_SUPER:
