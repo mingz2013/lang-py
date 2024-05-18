@@ -20,7 +20,3 @@ def execute(filename):
     vm.idx = idx
 
     vm.init([])
-
-
-
-

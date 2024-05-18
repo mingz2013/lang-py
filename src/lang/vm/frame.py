@@ -5,9 +5,10 @@ Module Description
 
 """
 
+from lang import logger
 from lang.vm.closure import Closure
 from lang.vm.stack import StackNode
-from lang import logger
+
 
 class Stack(object):
     def __get_d(self):

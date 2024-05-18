@@ -1,8 +1,6 @@
-
-
+import argparse
 import os
 import sys
-import argparse
 
 from lang import logger, lang
 

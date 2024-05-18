@@ -5,11 +5,12 @@ ast相关定义
 
 """
 
+from lang import logger
 from lang.context import context
 from lang.instructions import instruction
 from lang.prototype.prototype import ProtoType
 from lang.token import token
-from lang import logger
+
 
 class Node(object):
     """节点基类"""
