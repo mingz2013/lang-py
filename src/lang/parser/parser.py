@@ -2,10 +2,10 @@
 """
 语法分析，生成抽象语法树
 """
-
-from ast import ast
-from scanner.scanner import Scanner
-from token import token
+from lang import logger
+from lang.ast import ast
+from lang.scanner.scanner import Scanner
+from lang.token import token
 
 
 class Parser(object):
@@ -44,7 +44,7 @@ class Parser(object):
 
     def skip(self, tok):
         """跳过"""
-        print("parser.skip....", tok)
+        logger.debug("<<", tok)
         if self.tok == tok:
             self.next_token()
         else:
@@ -52,10 +52,10 @@ class Parser(object):
 
     def next_token(self):
         """获取下一个token"""
-        print("next_token...")
+        logger.debug("<<")
         self.token = self.scanner.scan()
         # self.pos, self.tok, self.lit = self.scanner.scan()
-        print('parser.next_token--------------------', self.pos, self.tok, self.lit)
+        logger.debug('--------------------', self.pos, self.tok, self.lit)
         # if self.tok == token.EOF:
         #     pass
         # else:
@@ -65,12 +65,12 @@ class Parser(object):
 
     def error(self, *args):
         """error"""
-        print("Parser.error >>", self.pos, ", ", self.tok, ", ", self.lit, ",", *args)
+        logger.error(">>", self.pos, ", ", self.tok, ", ", self.lit, ",", *args)
         exit(1)
 
     def parse_file(self):
         """parse_file"""
-        print('parse_file.....')
+        logger.debug('<<')
 
         file_node = ast.File()
 
@@ -85,20 +85,20 @@ class Parser(object):
         if self.tok != token.EOF:
             self.error("parse_file >> bad end...")  # 解析完一个完整的表达式后，没有结束
 
-        print("File... >>", file_node)
+        logger.debug("File... >>", file_node)
 
         return file_node
 
     def statement(self):
         """语句"""
-        print("statement...")
+        logger.debug("<<")
         node = self.compound_statement()
         # print("statement...>>", node)
         return node
 
     def compound_statement(self):
         """复合语句"""
-        print("compound_statement...")
+        logger.debug("<<")
 
         self.skip_newlines()
 
@@ -121,7 +121,7 @@ class Parser(object):
         """
         function_def_statement
         """
-        print("function_def_statement....", self.tok, self.lit)
+        logger.debug("<<", self.tok, self.lit)
         self.skip(token.kw_def)
 
         # ident = self.tok
@@ -143,14 +143,14 @@ class Parser(object):
 
         node = ast.DefStatement(ident, param_list, block)
 
-        print("function_def_statement....>>", node)
+        logger.debug(">>", node)
         return node
 
     def param_list(self):
         """
         param list, 函数形参列表
         """
-        print("param_list....", self.tok, self.lit)
+        logger.debug("<<", self.tok, self.lit)
         node = ast.ParamList()
 
         if self.tok == token.tk_identifier:
@@ -167,14 +167,14 @@ class Parser(object):
                     # self.error("param error")
         else:
             pass
-        print("param_list...>", node)
+        logger.debug(">>", node)
         return node
 
     def statement_block(self):
         """
         语句块
         """
-        print("statement_block....", self.tok, self.lit)
+        logger.debug("<<", self.tok, self.lit)
 
         self.skip(token.tk_left_braces)
 
@@ -195,7 +195,7 @@ class Parser(object):
 
         :return:
         """
-        print("for_statement....", self.tok, self.lit)
+        logger.debug("<<", self.tok, self.lit)
 
         self.skip(token.kw_for)
 
@@ -209,7 +209,7 @@ class Parser(object):
 
         :return:
         """
-        print("if_statement....", self.tok, self.lit)
+        logger.debug("<<", self.tok, self.lit)
         self.skip(token.kw_if)
 
         node = ast.IfStatement()
@@ -236,7 +236,7 @@ class Parser(object):
         简单语句
         :return:
         """
-        print("simple_statement...")
+        logger.debug("<<")
 
         node = ast.SimpleStatement()
 
@@ -257,7 +257,7 @@ class Parser(object):
             node1 = self.small_statement()
             node.append_small_statement(node1)
 
-        print("simple_statement...>>", node)
+        logger.debug(">>", node)
         return node
 
     def small_statement(self):
@@ -265,7 +265,7 @@ class Parser(object):
         小语句
         :return:
         """
-        print("small_statement...")
+        logger.debug("<<")
 
         if self.tok == token.kw_print:
             node = self.print_statement()
@@ -291,14 +291,14 @@ class Parser(object):
                     node2 = self.expression_statement()
                     node = ast.AssignmentStatement(node, node2)
 
-        print("small_statement...>>", node)
+        logger.debug(">>", node)
         return node
 
     def import_statement(self):
         """
         import
         """
-        print("import statement...")
+        logger.debug("<<")
         self.skip(token.kw_import)
         node = self.path_statement()
         if self.tok == token.kw_as:
@@ -310,11 +310,11 @@ class Parser(object):
                 return
         else:
             identifier = None
-        print("import statement ....>>")
+        logger.debug(">>")
         return ast.ImportStatement(node, identifier)
 
     def path_statement(self):
-        print("path statement....")
+        logger.debug("<<")
         identifier_list = []
         identifier = ast.Identifier(self.pos, self.tok, self.lit)
         identifier_list.append(identifier)
@@ -328,7 +328,7 @@ class Parser(object):
                 self.next_token()
             else:
                 self.error("path statement...")
-        print("path statement....>>")
+        logger.debug(">>")
         return ast.PathStatement(identifier_list)
 
     def return_statement(self):
@@ -391,9 +391,9 @@ class Parser(object):
         表达式语句
         :return:
         """
-        print("expression_statement...")
+        logger.debug("<<")
         node = self.expression()
-        print("expression_statement...>>", node)
+        logger.debug(">>", node)
         return node
 
     def expression(self):
@@ -465,7 +465,7 @@ class Parser(object):
         比较运算表达式
         :return:
         """
-        print("comparison_expression...")
+        logger.debug("<<")
         node = self.binary_operation_expression()
 
         while self.tok in (
@@ -479,9 +479,9 @@ class Parser(object):
                 token.kw_in,):
             tok2 = self.tok
             self.skip(tok2)
-            print('tok2', tok2)
+            logger.debug('tok2', tok2)
             node2 = self.binary_operation_expression()
-            print('tok2', tok2)
+            logger.debug('tok2', tok2)
             if tok2 == token.tk_equal:
                 node = ast.EqualExpression(node, node2)
             elif tok2 == token.tk_not_equal:
@@ -501,7 +501,7 @@ class Parser(object):
             else:
                 self.error("comparison_expression unexcept tok", tok2)
 
-        print("comparison_expression...>>", node)
+        logger.debug(">>", node)
         return node
 
     def binary_operation_expression(self):
@@ -509,14 +509,14 @@ class Parser(object):
         二元操作运算符
         :return:
         """
-        print("binary_operation_expression...")
+        logger.debug("<<")
         node = self.relational_expression()
-        print("binary_operation_expression...>>", node)
+        logger.debug(">>", node)
         return node
 
     def relational_expression(self):
         """加减类表达式"""
-        print("relational_expression....")
+        logger.debug("<<")
         node = self.multiplicative_expression()
 
         while self.tok == token.tk_plus or self.tok == token.tk_minus_sign:
@@ -533,12 +533,12 @@ class Parser(object):
             else:
                 Exception("")
 
-        print("relational_expression...>", node)
+        logger.debug(">>", node)
         return node
 
     def multiplicative_expression(self):
         """乘除类表达式"""
-        print("multiplicative_expression....")
+        logger.debug("<<")
         node = self.unary_expression()
 
         while self.tok == token.tk_divide or self.tok == token.tk_star:
@@ -554,12 +554,12 @@ class Parser(object):
             else:
                 Exception("multiplicative_expression unexcept tok1 ", tok1)
 
-        print("multiplicative_expression...>", node)
+        logger.debug(">>", node)
         return node
 
     def unary_expression(self):
         """一元表达式"""
-        print("unary_expression....")
+        logger.debug("<<")
 
         # node = self.atom()
         if self.tok == token.tk_plus or self.tok == token.tk_minus_sign:  # + -
@@ -573,12 +573,12 @@ class Parser(object):
         else:
             node = self.atom()
 
-        print("unary_expression...>", node)
+        logger.debug(">>", node)
         return node
 
     def atom(self):
         """原子"""
-        print("atom....", self.tok, self.lit)
+        logger.debug("<<", self.tok, self.lit)
 
         if self.tok == token.tk_left_parenthesis:  # (
             self.skip(token.tk_left_parenthesis)
@@ -650,5 +650,5 @@ if __name__ == '__main__':
     filename = '1.script'
     with codecs.open(filename, encoding='utf-8') as f:
         ast = Parser(filename, f.read()).parse_file()
-        print('ast-->>>', ast)
-        print('ast.execute-->>', ast.execute())
+        logger.debug('ast-->>>', ast)
+        logger.debug('ast.execute-->>', ast.execute())

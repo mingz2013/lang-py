@@ -5,11 +5,11 @@ ast相关定义
 
 """
 
-from context import context
-from instructions import instruction
-from prototype.prototype import ProtoType
-from token import token
-
+from lang.context import context
+from lang.instructions import instruction
+from lang.prototype.prototype import ProtoType
+from lang.token import token
+from lang import logger
 
 class Node(object):
     """节点基类"""
@@ -35,7 +35,7 @@ class Node(object):
         """
         to bin
         """
-        print(self)
+        logger.debug(self)
         raise NotImplemented()
 
 
@@ -650,7 +650,7 @@ class PrintStatement(SimpleStatement):
 
     def execute(self):
         """exe"""
-        print("PrintStatement.execute print >>>", self.expression_list.execute())
+        logger.info(" print >>>", self.expression_list.execute())
         return None
 
     def to_bin(self, proto):
@@ -850,7 +850,7 @@ class ForStatement(Statement):
 
     def to_bin(self, proto):
         """"""
-        print("to_bin<<", self)
+        logger.debug("<<", self)
 
         # 当前的pc
         begin = proto.code_len - 1
@@ -913,7 +913,7 @@ class IfStatement(Statement):
         """
 
         """
-        print("to_bin<<", self)
+        logger.debug("<<", self)
 
         jmp_to_end_s = []
 
@@ -1012,4 +1012,4 @@ class PathStatement(Statement):
 if __name__ == '__main__':
     f = File()
     # print(str(f.__dict__))
-    print(f)
+    logger.debug(f)

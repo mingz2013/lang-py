@@ -4,8 +4,9 @@
 Module Description
 
 """
-from prototype.member import Member
-from prototype.var import Var
+from lang import logger
+from lang.prototype.member import Member
+from lang.prototype.var import Var
 
 
 class ProtoType(object):
@@ -63,7 +64,7 @@ class ProtoType(object):
         :param n: 名称
         :param local_must: 是否一定要存储到本地
         """
-        print('Prototype.add_name <<', n, local_must)
+        logger.debug('Prototype.add_name <<', n, local_must)
 
         if local_must:
             if self.find_name(n) >= 0:
@@ -177,7 +178,7 @@ class ProtoType(object):
         return self.protos[idx]
 
     def add_code(self, code):
-        print("add code<<", code)
+        logger.debug("<<", code)
         self.code.append(code)
         return len(self.code) - 1
 

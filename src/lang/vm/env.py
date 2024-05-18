@@ -7,8 +7,9 @@ Module Description
 
 import codecs
 
-from parser.parser import Parser
-from prototype.prototype import ProtoType
+from lang import logger
+from lang.parser.parser import Parser
+from lang.prototype.prototype import ProtoType
 
 
 class ENV(object):
@@ -20,22 +21,22 @@ class ENV(object):
         """
 
         """
-        print("compile file...<<", filename)
+        logger.debug("<<", filename)
 
         idx = self.find_proto(filename)
         if idx >= 0:
             return idx
 
         with codecs.open(filename, encoding='utf-8') as f:
-            print('=' * 100)
+            logger.debug('=' * 100)
 
             ast = Parser(filename, f.read()).parse_file()
 
-            print('=' * 100)
+            logger.debug('=' * 100)
 
             # print('ast.execute result: >>', ast.execute())
 
-            print('=' * 100)
+            logger.debug('=' * 100)
 
             proto = ProtoType(None, filename)
             proto.name = filename
@@ -43,7 +44,7 @@ class ENV(object):
 
             ast.to_bin(proto)
 
-            print("proto-->>", proto)
+            logger.debug("proto-->>", proto)
             idx = self.add_proto(filename, proto)
             return idx
 

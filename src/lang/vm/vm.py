@@ -4,10 +4,11 @@
 Module Description
 
 """
-from instructions.instruction import Instruction
-from vm.closure import Closure
-from vm.frame import Frame
-from vm.stack import Stack
+from lang import logger
+from lang.instructions.instruction import Instruction
+from lang.vm.closure import Closure
+from lang.vm.frame import Frame
+from lang.vm.stack import Stack
 
 
 class VM(object):
@@ -52,11 +53,11 @@ class VM(object):
         self.loop()
 
     def loop(self):
-        print("vm.loop.....")
+        logger.debug("<<")
         while True:
             data = self.frame.fetch()
             if data == -1:
-                print("loop.over...")
+                logger.debug("loop.over...")
                 break
             inst = Instruction.from_inst(data)
             inst.execute(self)
@@ -98,10 +99,10 @@ class VM(object):
         3 调用结束，最后执行ret指令
 
         """
-        print("vm.call.....", idx)
+        logger.debug("vm.call.....", idx)
         closure = self.frame.pop()
-        print('frame...', self.frame)
-        print("closure...", closure)
+        logger.debug('frame...', self.frame)
+        logger.debug("closure...", closure)
         # super_ = self.frame.closure
         # closure = Closure(super_, proto)
         f = Frame(closure)

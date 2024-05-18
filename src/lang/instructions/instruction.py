@@ -18,6 +18,8 @@ idx 8-15 8
 import functools
 import struct
 
+from lang import logger
+
 
 class Executes(object):
     def __init__(self):
@@ -318,7 +320,7 @@ class Instruction(object):
 
     def execute(self, vm):
         # print("Instruction.execute <<", self)
-        print("Instruction.execute <<", self.view_2(vm))
+        logger.debug("<<", self.view_2(vm))
         return opcode_map[self.opcode][4](self, vm)
 
 

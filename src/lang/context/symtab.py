@@ -2,6 +2,7 @@
 """
 符号表管理
 """
+from lang import logger
 
 
 class Var(object):
@@ -68,7 +69,7 @@ class SymTab(object):
 
     def enter(self):
         """作用域管理，进入作用域"""
-        print("enter...")
+        logger.debug("enter...")
         self.scope_id += 1
         self.scope_path.append(self.scope_id)
 
@@ -76,7 +77,7 @@ class SymTab(object):
 
     def leave(self):
         """离开作用域"""
-        print("leave...")
+        logger.debug("<<")
         # , 回收变量
         path_len = len(self.scope_path)
         for name, vlist in self.var_tab.items():
@@ -94,7 +95,7 @@ class SymTab(object):
 
     def add_var(self, name, init_data):
         """保存变量对象"""
-        print("add_var...", name, init_data)
+        logger.debug("<<", name, init_data)
 
         var = Var(name, self.scope_path[:], init_data)
 
@@ -122,7 +123,7 @@ class SymTab(object):
 
     def get_var(self, name):
         """获取变量对象"""
-        print("get_var...", name)
+        logger.debug("<<", name)
         # 匹配name，匹配最长当前路径scopePath
 
         select = None
@@ -140,7 +141,7 @@ class SymTab(object):
                         select = v
 
         if not select:
-            print("error...select...", name)
+            logger.error("error...select...", name)
             exit(1)
 
         return select
@@ -148,26 +149,26 @@ class SymTab(object):
 
 if __name__ == "__main__":
     s = SymTab()
-    print(s)
+    logger.debug(s)
     s.add_var('a', 'a')
-    print(s)
+    logger.debug(s)
     s.add_var('b', 'b')
-    print(s)
+    logger.debug(s)
     s.enter()
-    print(s)
+    logger.debug(s)
     s.add_var('c', 'c')
-    print(s)
+    logger.debug(s)
     s.add_var('d', 'd')
-    print(s)
+    logger.debug(s)
     s.enter()
-    print(s)
+    logger.debug(s)
     s.add_var('e', 'e')
-    print(s)
+    logger.debug(s)
     s.add_var('f', 'f')
-    print(s)
+    logger.debug(s)
     s.leave()
-    print(s)
+    logger.debug(s)
     s.add_var('g', 'g')
-    print(s)
+    logger.debug(s)
     s.add_var('h', 'h')
-    print(s)
+    logger.debug(s)

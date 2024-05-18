@@ -5,9 +5,9 @@ Module Description
 
 """
 
-from vm.closure import Closure
-from vm.stack import StackNode
-
+from lang.vm.closure import Closure
+from lang.vm.stack import StackNode
+from lang import logger
 
 class Stack(object):
     def __get_d(self):
@@ -115,7 +115,7 @@ class Frame(StackNode):
         b = self.stack.pop()
         a = self.stack.pop()
         if type(a) != type(b):
-            print("not type equal", a, b)
+            logger.debug("not type equal", a, b)
             # raise Exception(a, b, 'not type equal')
             # return
         c = a + b
@@ -125,7 +125,7 @@ class Frame(StackNode):
         b = self.stack.pop()
         a = self.stack.pop()
         if type(a) != type(b):
-            print("not type equal", a, b)
+            logger.debug("not type equal", a, b)
             # raise Exception(a, b, 'not type equal')
             # return
         c = a - b
@@ -302,7 +302,7 @@ class Frame(StackNode):
 
     def print(self, idx):
         """"""""
-        print("print<< ", idx)
+        logger.debug("print<< ", idx)
         args = [self.stack.pop() for i in range(idx)]
         # print("print<< args: ", args)
         args.reverse()

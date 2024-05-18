@@ -7,13 +7,13 @@
 逐个字符walk，拆出来是 标识符，还是 数字，生成token
 
 """
-
-from token import token
+from lang import logger
+from lang.token import token
 
 
 def is_letter(ch):
     """is letter"""
-    print("is_letter", ch)
+    logger.debug("<<", ch)
     if ch == -1:
         return False
     return ord('a') <= ord(ch) <= ord('z') or ord('A') <= ord(ch) <= ord('Z') or ord(ch) == ord('_')
@@ -68,14 +68,14 @@ class Scanner(object):
         self.ch = ' '
         self.offset = -1
 
-        print("src->", self.src)
-        print("=========")
+        logger.debug("src->", self.src)
+        logger.debug("=========")
 
         self.next_ch()
 
     def next_ch(self):
         """next char"""
-        print("next_ch", self.offset, self.ch)
+        logger.debug("<<", self.offset, self.ch)
         self.offset += 1
 
         if self.offset < len(self.src):
@@ -247,12 +247,12 @@ class Scanner(object):
                 exit(1)
 
         t = token.Token(pos, tok, lit)
-        print(t)
+        logger.debug(">>", t)
         return t
 
     def error(self, *args):
         """error"""
-        print("Scanner.error >>", *args)
+        logger.error(">>", *args)
         exit(1)
 
 

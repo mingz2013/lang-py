@@ -10,7 +10,8 @@ Module Description
 
 import copy
 
-from prototype.member import Member
+from lang import logger
+from lang.prototype.member import Member
 
 
 class Closure(object):
@@ -35,7 +36,7 @@ class Closure(object):
 
     def store_name(self, idx, a):
         var = self.vars[idx]
-        print(self, 'closure.store_name << var:', var, "a", a)
+        logger.debug(self, 'closure.store_name << var:', var, "a", a)
         if var.store_type == var.TYPE_STORE_LOCAL:
             var.data = a
         elif var.store_type == var.TYPE_STORE_SUPER:
@@ -45,7 +46,7 @@ class Closure(object):
 
     def load_name(self, idx):
         var = self.vars[idx]
-        print(self, 'closure.load_name << var:', var)
+        logger.debug(self, 'closure.load_name << var:', var)
         if var.store_type == var.TYPE_STORE_LOCAL:
             return self.vars[idx].data
         elif var.store_type == var.TYPE_STORE_SUPER:
