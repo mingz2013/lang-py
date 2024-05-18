@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-@FileName: frame
-@Time: 2020/2/4 14:14
-@Author: zhaojm
 
 Module Description
 

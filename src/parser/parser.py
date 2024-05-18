@@ -2,8 +2,6 @@
 """
 语法分析，生成抽象语法树
 """
-__date__ = "14/12/2017"
-__author__ = "zhaojm"
 
 from ast import ast
 from scanner.scanner import Scanner

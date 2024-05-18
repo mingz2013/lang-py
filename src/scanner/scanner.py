@@ -7,8 +7,6 @@
 逐个字符walk，拆出来是 标识符，还是 数字，生成token
 
 """
-__date__ = "14/12/2017"
-__author__ = "zhaojm"
 
 from token import token
 

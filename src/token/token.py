@@ -4,8 +4,6 @@
 token定义
 
 """
-__date__ = "14/12/2017"
-__author__ = "zhaojm"
 
 # 关键字
 kw_or = "kw_or"  # or

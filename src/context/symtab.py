@@ -2,8 +2,6 @@
 """
 符号表管理
 """
-__date__ = "2018/7/8"
-__author__ = "zhaojm"
 
 
 class Var(object):

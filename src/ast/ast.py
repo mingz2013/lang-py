@@ -4,8 +4,6 @@
 ast相关定义
 
 """
-__date__ = "16/12/2017"
-__author__ = "zhaojm"
 
 from context import context
 from instructions import instruction
@@ -750,9 +748,6 @@ class DefStatement(Statement):
             idx = p.add_constant(None)
             p.add_code(instruction.LC(idx))
             p.add_code(instruction.RET())
-
-
-
 
 
 class ParamList(Node):

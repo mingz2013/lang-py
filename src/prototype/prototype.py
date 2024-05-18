@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-@FileName: prototype
-@Time: 2020/2/7 15:16
-@Author: zhaojm
 
 Module Description
 
 """
-from prototype.var import Var
 from prototype.member import Member
+from prototype.var import Var
 
 
 class ProtoType(object):

@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-@FileName: env
-@Time: 2020/2/18 12:26
-@Author: zhaojm
 
 Module Description
 

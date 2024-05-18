@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-@FileName: instruction
-@Time: 2020/2/4 15:37
-@Author: zhaojm
-
 Module Description
 
 

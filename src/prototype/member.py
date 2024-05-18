@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-@FileName: member
-@Time: 2020/2/14 12:19
-@Author: zhaojm
 
 Module Description
 

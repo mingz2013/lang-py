@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-@FileName: stack
-@Time: 2020/2/4 14:18
-@Author: zhaojm
 
 Module Description
 

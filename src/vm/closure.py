@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-@FileName: closure
-@Time: 2020/2/12 18:09
-@Author: zhaojm
 
 Module Description
 

@@ -1,18 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-@FileName: vm
-@Time: 2020/2/4 14:13
-@Author: zhaojm
 
 Module Description
 
 """
 from instructions.instruction import Instruction
-from prototype.prototype import ProtoType
 from vm.closure import Closure
 from vm.frame import Frame
 from vm.stack import Stack
-from vm.env import ENV
 
 
 class VM(object):
