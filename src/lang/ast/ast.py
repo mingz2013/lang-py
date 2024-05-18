@@ -1,4 +1,3 @@
-# -*- coding:utf-8 -*-
 """
 
 ast相关定义
@@ -647,6 +646,7 @@ class PrintStatement(SimpleStatement):
     """print"""
 
     def __init__(self, expression_list):
+        super().__init__()
         self.expression_list = expression_list
 
     def execute(self):
@@ -664,6 +664,7 @@ class AssignmentStatement(SimpleStatement):
     """赋值语句"""
 
     def __init__(self, receiver, expression):
+        super().__init__()
         self.receiver = receiver  # identifier or periodForm
         self.expression = expression
 

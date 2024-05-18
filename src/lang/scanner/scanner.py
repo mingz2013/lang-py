@@ -1,4 +1,3 @@
-# -*- coding:utf-8 -*-
 """
 
 词法分析,生成token序列
@@ -293,6 +292,7 @@ cbd = 12
     
     
     '''
+    print(src)
 
     src = u'''
     
@@ -306,6 +306,7 @@ cbd = 12
     "
     
     '''
+    print(src)
 
     import codecs
 
