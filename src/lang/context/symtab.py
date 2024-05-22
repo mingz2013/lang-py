@@ -7,6 +7,12 @@ from lang import logger
 class Var(object):
     """变量"""
 
+    def __str__(self):
+        return f"{self.__class__.__name__}<{self.__dict__}>"
+
+    def __repr__(self):
+        return repr(self.__str__())
+
     def __init__(self, name, scope_path, init_data):
         self.scope_path = scope_path  # 作用域路径
         self.name = name  # 变量名称
@@ -31,40 +37,21 @@ class Var(object):
         #     else:
         #         print("var error...")
 
-    def __str__(self):
-        return str(self.__class__.__name__ + "(" + str(self.scope_path) + str(self.name) + str(self.init_data) + ")")
-
-    def __repr__(self):
-        return repr(
-            self.__class__.__name__ + "(" + repr(self.scope_path) + repr(self.name) + repr(self.init_data) + ")")
-
 
 class SymTab(object):
     """符号表管理"""
+
+    def __str__(self):
+        return f"{self.__class__.__name__}<{self.__dict__}>"
+
+    def __repr__(self):
+        return repr(self.__str__())
 
     def __init__(self):
         self.var_tab = {}  # 变量表 {var_name: [Var()...]}
         self.cur_func = None  # 当前分析的函数
         self.scope_id = 0  # 当前作用域编号
         self.scope_path = []  # 作用域路径 [0, 1, 2...]
-
-    def __str__(self):
-        return str({
-            "name": self.__class__.__name__,
-            "var_tab": self.var_tab,
-            "cur_func": self.cur_func,
-            "scope_id": self.scope_id,
-            "scope_path": self.scope_path
-        })
-
-    def __repr__(self):
-        return repr({
-            "name": self.__class__.__name__,
-            "var_tab": self.var_tab,
-            "cur_func": self.cur_func,
-            "scope_id": self.scope_id,
-            "scope_path": self.scope_path
-        })
 
     def enter(self):
         """作用域管理，进入作用域"""

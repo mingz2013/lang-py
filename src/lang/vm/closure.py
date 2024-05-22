@@ -15,18 +15,12 @@ from lang.prototype.member import Member
 
 
 class Closure(object):
-    # def __get_d(self):
-    #     d = self.__dict__
-    #
-    #     d['__class_name__'] = self.__class__.__name__
-    #
-    #     return d
-    #
-    # def __str__(self):
-    #     return str(self.__get_d())
-    #
-    # def __repr__(self):
-    #     return repr(self.__get_d())
+
+    def __str__(self):
+        return f"{self.__class__.__name__}<{self.__dict__}>"
+
+    def __repr__(self):
+        return repr(self.__str__())
 
     def __init__(self, super, proto):
         self.super = super  # 调用链的实现，有了这条调用链，就可以找到往上所有的环境，从而找到对应的数据。用于实现闭包的变量捕获。

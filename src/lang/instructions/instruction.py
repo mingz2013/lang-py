@@ -281,7 +281,7 @@ class Instruction(object):
         if self.type == 0b0:
             return self.name
         elif self.type == 0b1:
-            return "{name} {idx}".format(name=self.name, idx=self.idx)
+            return f"{self.name} {self.idx}"
 
     @property
     def idx_type(self):
@@ -294,18 +294,18 @@ class Instruction(object):
 
             if self.name == 'lc':
                 a = vm.frame.proto.load_constant(self.idx)
-                return "{name} {idx}({a})".format(name=self.name, idx=self.idx, a=a)
+                return f"{self.name} {self.idx}({a})"
 
             elif self.name == 'sn':
                 n = vm.frame.proto.get_name(self.idx)
                 a = vm.frame.top()
-                return "{name} {idx}({n}) (top {a})".format(name=self.name, idx=self.idx, a=a, n=n)
+                return f"{self.name} {self.idx}({n}) (top {a})"
             elif self.name == 'ln':
                 n = vm.frame.proto.get_name(self.idx)
                 a = vm.frame.closure.load_name(self.idx)
-                return "{name} {idx}({n} {a}) (top)".format(name=self.name, idx=self.idx, a=a, n=n)
+                return f"{self.name} {self.idx}({n} {a}) (top)"
 
-            return "{name} {idx}".format(name=self.name, idx=self.idx)
+            return f"{self.name} {self.idx}"
 
     @property
     def data(self):

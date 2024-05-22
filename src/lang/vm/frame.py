@@ -11,18 +11,11 @@ from lang.vm.stack import StackNode
 
 
 class Stack(object):
-    def __get_d(self):
-        d = self.__dict__
-
-        d['__class_name__'] = self.__class__.__name__
-
-        return d
-
     def __str__(self):
-        return str(self.__get_d())
+        return f"{self.__class__.__name__}<{self.__dict__}>"
 
     def __repr__(self):
-        return repr(self.__get_d())
+        return repr(self.__str__())
 
     def __init__(self):
         self.data = []
@@ -55,18 +48,11 @@ class Frame(StackNode):
 
     """
 
-    def __get_d(self):
-        d = self.__dict__
-
-        d['__class_name__'] = self.__class__.__name__
-
-        return d
-
     def __str__(self):
-        return str(self.__get_d())
+        return f"{self.__class__.__name__}<{self.__dict__}>"
 
     def __repr__(self):
-        return repr(self.__get_d())
+        return repr(self.__str__())
 
     def __init__(self, closure):
         super(Frame, self).__init__()

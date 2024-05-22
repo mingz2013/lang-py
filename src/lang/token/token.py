@@ -79,18 +79,11 @@ EOF = "EOF"  # -1
 class Token(object):
     """token"""
 
-    def __get_d(self):
-        d = self.__dict__
-
-        d['__class_name__'] = self.__class__.__name__
-
-        return d
-
     def __str__(self):
-        return str(self.__get_d())
+        return f"{self.__class__.__name__}<{self.__dict__}>"
 
     def __repr__(self):
-        return repr(self.__get_d())
+        return repr(self.__str__())
 
     def __init__(self, pos, tok, lit):
         self.tok = tok
