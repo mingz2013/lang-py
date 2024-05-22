@@ -12,13 +12,13 @@ def main():
     parser = argparse.ArgumentParser(
         prog="lang-py",
         description="lang-py",
-        epilog='Text at the bottom of help')
+        epilog='Text at the bottom of help'
+    )
     parser.add_argument(
         '-d', '--debug',
         type=bool, default=False,
         required=False,
     )
-
     parser.add_argument(
         'path',
         type=str, default='',
