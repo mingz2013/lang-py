@@ -86,13 +86,13 @@ class Token(object):
         return repr(self.__str__())
 
     def __init__(self, pos, tok, lit):
-        self.tok = tok
-        self.pos = pos
-        self.lit = lit
+        self.tok: str = tok
+        self.pos: int = pos
+        self.lit: str = lit
 
 
 class File(object):
     """文件"""
 
-    def __init__(self, filename):
-        self.filename = filename
+    def __init__(self, filename: str):
+        self.filename: str = filename

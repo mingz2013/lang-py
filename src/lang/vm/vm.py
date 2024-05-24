@@ -4,9 +4,12 @@
 Module Description
 
 """
+from typing import List
+
 from lang import logger
 from lang.instructions.instruction import Instruction
 from lang.vm.closure import Closure
+from lang.vm.env import ENV
 from lang.vm.frame import Frame
 from lang.vm.stack import Stack
 
@@ -23,18 +26,18 @@ class VM(object):
         return repr(self.__str__())
 
     def __init__(self):
-        self.env = None
+        self.env: ENV = None
         # self.filename = None
-        self.idx = None
+        self.idx: int = None
         # self.proto = ProtoType(filename)  # 二进制文件解析后的数据
-        self.stack = Stack()  # callstack
+        self.stack: Stack = Stack()  # callstack
 
-    def init(self, args):
+    def init(self, args: List):
         """
         vm call, 初始执行
         """
 
-        c = Closure(None, self.env.get_proto(self.idx))
+        c: Closure = Closure(None, self.env.get_proto(self.idx))
         self.env.set_module(c)
 
         f = Frame(c)
@@ -56,17 +59,17 @@ class VM(object):
             inst.execute(self)
 
     @property
-    def frame(self):
+    def frame(self) -> Frame:
         return self.stack.top_node
 
     @property
-    def pc(self):
+    def pc(self) -> int:
         return self.frame.pc
 
     # def add_pc(self, n):
     #     self.frame.add_pc(n)
 
-    def call(self, idx):
+    def call(self, idx: int):
         """
 
         对于调用者函数：
@@ -107,7 +110,7 @@ class VM(object):
 
         self.stack.push(f)
 
-    def ret(self, idx):
+    def ret(self, idx: int):
         """
         函数返回的时候，
         1 取出结果列表
@@ -121,10 +124,10 @@ class VM(object):
             a = f.pop()
             self.frame.push(a)
 
-    def j(self, idx):
+    def j(self, idx: int):
         self.frame.j(idx)
 
-    def jif(self, idx):
+    def jif(self, idx: int):
         self.frame.jif(idx)
 
     def nop(self):
@@ -146,25 +149,25 @@ class VM(object):
     def rem(self):
         self.frame.rem()
 
-    def lc(self, idx):
+    def lc(self, idx: int):
         self.frame.lc(idx)
 
-    def sc(self, idx):
+    def sc(self, idx: int):
         self.frame.sc(idx)
 
-    def ln(self, idx):
+    def ln(self, idx: int):
         self.frame.ln(idx)
 
-    def sn(self, idx):
+    def sn(self, idx: int):
         self.frame.sn(idx)
 
-    def lm(self, idx):
+    def lm(self, idx: int):
         self.frame.lm(idx)
 
-    def sm(self, idx):
+    def sm(self, idx: int):
         self.frame.sm(idx)
 
-    def lmd(self, idx):
+    def lmd(self, idx: int):
         # self.frame.lmd(idx)
         proto = self.env.get_proto(idx)
         c = Closure(None, proto)
@@ -174,13 +177,13 @@ class VM(object):
     def lp(self):
         self.frame.lp()
 
-    def ml(self, idx):
+    def ml(self, idx: int):
         self.frame.ml(idx)
 
-    def mf(self, idx):
+    def mf(self, idx: int):
         self.frame.mf(idx)
 
-    def push(self, idx):
+    def push(self, idx: int):
         self.frame.push(idx)
 
     def pop(self):
@@ -219,5 +222,5 @@ class VM(object):
     def not_(self):
         self.frame.not_()
 
-    def print(self, idx):
+    def print(self, idx: int):
         self.frame.print(idx)

@@ -6,11 +6,13 @@
 逐个字符walk，拆出来是 标识符，还是 数字，生成token
 
 """
+from typing import Tuple
+
 from lang import logger
 from lang.token import token
 
 
-def is_letter(ch):
+def is_letter(ch: str) -> bool:
     """is letter"""
     logger.debug("<<", ch)
     if ch == -1:
@@ -18,7 +20,7 @@ def is_letter(ch):
     return ord('a') <= ord(ch) <= ord('z') or ord('A') <= ord(ch) <= ord('Z') or ord(ch) == ord('_')
 
 
-def is_digit(ch):
+def is_digit(ch: str) -> bool:
     """is digit"""
     if ch == -1:
         return False
@@ -60,12 +62,12 @@ class Scanner(object):
     Scanner
     """
 
-    def __init__(self, nfile, src):
-        self.file = nfile  # token.File
-        self.src = src
+    def __init__(self, nfile: token.File, src: str):
+        self.file: token.File = nfile  # token.File
+        self.src: str = src
 
-        self.ch = ' '
-        self.offset = -1
+        self.ch: str = ' '
+        self.offset: int = -1
 
         logger.debug("src->", self.src)
         logger.debug("=========")
@@ -92,7 +94,7 @@ class Scanner(object):
         while self.ch in (' ', '\t',):
             self.next_ch()
 
-    def scan_identifier(self):
+    def scan_identifier(self) -> str:
         """
         id
         :return:
@@ -105,7 +107,7 @@ class Scanner(object):
         # self.next_ch()
         return self.src[offs:self.offset]
 
-    def scan_number(self):
+    def scan_number(self) -> Tuple[str, str]:
         """scan number"""
         offs = self.offset
 
@@ -122,7 +124,7 @@ class Scanner(object):
 
         return tok, self.src[offs: self.offset]
 
-    def scan_string(self):
+    def scan_string(self) -> str:
         """scan string"""
         offs = self.offset
 
@@ -145,7 +147,7 @@ class Scanner(object):
 
         return self.src[offs:self.offset]
 
-    def scan(self):
+    def scan(self) -> token.Token:
         """scan"""
         self.skip_white_space()  # 跳过空白字符
         pos = self.offset

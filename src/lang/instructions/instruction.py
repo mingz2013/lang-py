@@ -17,6 +17,7 @@ idx 8-15 8
 """
 import functools
 import struct
+from typing import Tuple, Dict, Callable
 
 from lang import logger
 
@@ -25,124 +26,124 @@ class Executes(object):
     def __init__(self):
         pass
 
-    def nop(self, inst, vm):
+    def nop(self, inst: 'Instruction', vm: 'VM'):
         """"""
         vm.nop()
 
-    def add(self, inst, vm):
+    def add(self, inst: 'Instruction', vm: 'VM'):
         vm.add()
 
-    def sub(self, inst, vm):
+    def sub(self, inst: 'Instruction', vm: 'VM'):
         vm.sub()
 
-    def mul(self, inst, vm):
+    def mul(self, inst: 'Instruction', vm: 'VM'):
         vm.mul()
 
-    def div(self, inst, vm):
+    def div(self, inst: 'Instruction', vm: 'VM'):
         vm.div()
 
-    def rem(self, inst, vm):
+    def rem(self, inst: 'Instruction', vm: 'VM'):
         vm.rem()
 
-    def call(self, inst, vm):
+    def call(self, inst: 'Instruction', vm: 'VM'):
         vm.call(inst.idx)
 
-    def ret(self, inst, vm):
+    def ret(self, inst: 'Instruction', vm: 'VM'):
         vm.ret(inst.idx)
 
-    def lc(self, inst, vm):
+    def lc(self, inst: 'Instruction', vm: 'VM'):
         vm.lc(inst.idx)
 
-    def sc(self, inst, vm):
+    def sc(self, inst: 'Instruction', vm: 'VM'):
         vm.sc(inst.idx)
 
-    def ln(self, inst, vm):
+    def ln(self, inst: 'Instruction', vm: 'VM'):
         vm.ln(inst.idx)
 
-    def sn(self, inst, vm):
+    def sn(self, inst: 'Instruction', vm: 'VM'):
         vm.sn(inst.idx)
 
-    def lm(self, inst, vm):
+    def lm(self, inst: 'Instruction', vm: 'VM'):
         vm.lm(inst.idx)
 
-    def sm(self, inst, vm):
+    def sm(self, inst: 'Instruction', vm: 'VM'):
         vm.sm(inst.idx)
 
-    def lmd(self, inst, vm):
+    def lmd(self, inst: 'Instruction', vm: 'VM'):
         vm.lmd(inst.idx)
 
-    def lp(self, inst, vm):
+    def lp(self, inst: 'Instruction', vm: 'VM'):
         vm.lp()
 
-    def j(self, inst, vm):
+    def j(self, inst: 'Instruction', vm: 'VM'):
         vm.j(inst.idx)
 
-    def jif(self, inst, vm):
+    def jif(self, inst: 'Instruction', vm: 'VM'):
         vm.jif(inst.idx)
 
-    def ml(self, inst, vm):
+    def ml(self, inst: 'Instruction', vm: 'VM'):
         """
         make list
         """
         vm.ml(inst.idx)
 
-    def mf(self, inst, vm):
+    def mf(self, inst: 'Instruction', vm: 'VM'):
         """make function"""
         vm.mf(inst.idx)
 
-    def push(self, inst, vm):
+    def push(self, inst: 'Instruction', vm: 'VM'):
         """"""
         vm.push(inst.idx)
 
-    def pop(self, inst, vm):
+    def pop(self, inst: 'Instruction', vm: 'VM'):
         """"""
         vm.pop()
 
-    def eq(self, inst, vm):
+    def eq(self, inst: 'Instruction', vm: 'VM'):
         """"""
         vm.eq()
 
-    def neq(self, inst, vm):
+    def neq(self, inst: 'Instruction', vm: 'VM'):
         """"""
         vm.neq()
 
-    def lt(self, inst, vm):
+    def lt(self, inst: 'Instruction', vm: 'VM'):
         """"""
         vm.lt()
 
-    def lte(self, inst, vm):
+    def lte(self, inst: 'Instruction', vm: 'VM'):
         """"""
         vm.lte()
 
-    def gt(self, inst, vm):
+    def gt(self, inst: 'Instruction', vm: 'VM'):
         """"""
         vm.gt()
 
-    def gte(self, inst, vm):
+    def gte(self, inst: 'Instruction', vm: 'VM'):
         """"""
         vm.gte()
 
-    def is_(self, inst, vm):
+    def is_(self, inst: 'Instruction', vm: 'VM'):
         """"""
         vm.is_()
 
-    def in_(self, inst, vm):
+    def in_(self, inst: 'Instruction', vm: 'VM'):
         """"""
         vm.in_()
 
-    def or_(self, inst, vm):
+    def or_(self, inst: 'Instruction', vm: 'VM'):
         """"""
         vm.or_()
 
-    def and_(self, inst, vm):
+    def and_(self, inst: 'Instruction', vm: 'VM'):
         """"""
         vm.and_()
 
-    def not_(self, inst, vm):
+    def not_(self, inst: 'Instruction', vm: 'VM'):
         """"""
         vm.not_()
 
-    def print(self, inst, vm):
+    def print(self, inst: 'Instruction', vm: 'VM'):
         """"""
         vm.print(inst.idx)
 
@@ -199,17 +200,17 @@ opcodes = [
     (0b00000000, 0b0100001, 0b1, 'lmd', e.lmd, 'load module', 'module'),
 ]
 
-opcode_map = {opcode[1]: opcode for opcode in opcodes}
+opcode_map: Dict[int, Tuple[int, int, int, str, Callable, str, str]] = {opcode[1]: opcode for opcode in opcodes}
 
 
 # opcode_map_2 = {opcode[3]: opcode for opcode in opcodes}
 
 
 class Instruction(object):
-    def __init__(self, x):
+    def __init__(self, x: int):
         # print(type(x))
         assert isinstance(x, int)
-        self._data = x
+        self._data: int = x
 
     def __str__(self):
         return str(self.view)
@@ -217,17 +218,17 @@ class Instruction(object):
     def __repr__(self):
         return repr(self.view)
 
-    def bit_length(self):
+    def bit_length(self) -> int:
         return self._data.bit_length()
 
-    def to_bytearray(self):
+    def to_bytearray(self) -> bytearray:
         """"""
         bb = struct.pack('<i', self._data)
         bbb = bytearray(bb)
         return bbb
 
     @classmethod
-    def from_bytearray(cls, ba):
+    def from_bytearray(cls, ba: bytearray) -> 'Instruction':
         """"""
         assert isinstance(ba, bytearray)
         assert len(ba) == 2
@@ -238,20 +239,20 @@ class Instruction(object):
         return cls(i)
 
     @classmethod
-    def from_inst(cls, inst):
+    def from_inst(cls, inst: "Instruction"):
         assert isinstance(inst, Instruction)
         assert inst.bit_length() <= 16
         return cls(inst.data)
 
     @classmethod
-    def build_type_0(cls, opcode):
+    def build_type_0(cls, opcode: int) -> "Instruction":
         # print("build_type_0<<", opcode)
         assert isinstance(opcode, int)
         assert opcode.bit_length() <= 7
         return cls((opcode << 1) + 0b0)
 
     @classmethod
-    def build_type_1(cls, opcode, idx):
+    def build_type_1(cls, opcode: int, idx: int) -> "Instruction":
         # print("build_type_1<<", opcode, idx)
         assert isinstance(opcode, int)
         assert opcode.bit_length() <= 7
@@ -261,33 +262,33 @@ class Instruction(object):
         return cls((idx << 8) + (opcode << 1) + 0b1)
 
     @property
-    def type(self):
+    def type(self) -> int:
         return self._data & 0b1
 
     @property
-    def opcode(self):
+    def opcode(self) -> int:
         return (self._data >> 1) & 0b1111111
 
     @property
-    def idx(self):
+    def idx(self) -> int:
         return self._data >> 8
 
     @property
-    def name(self):
+    def name(self) -> str:
         return opcode_map[self.opcode][3]
 
     @property
-    def view(self):
+    def view(self) -> str:
         if self.type == 0b0:
             return self.name
         elif self.type == 0b1:
             return f"{self.name} {self.idx}"
 
     @property
-    def idx_type(self):
+    def idx_type(self) -> str:
         return opcode_map[self.opcode][6]
 
-    def view_2(self, vm):
+    def view_2(self, vm: 'VM') -> str:
         if self.type == 0b0:
             return self.name
         elif self.type == 0b1:
@@ -308,17 +309,17 @@ class Instruction(object):
             return f"{self.name} {self.idx}"
 
     @property
-    def data(self):
+    def data(self) -> int:
         return self._data
 
-    def fix(self, inst):
+    def fix(self, inst: 'Instruction'):
         assert isinstance(inst, Instruction)
         self._data = inst.data
 
-    def fix_idx(self, idx):
+    def fix_idx(self, idx: int):
         self._data = (idx << 8) + (self.opcode << 1) + self.type
 
-    def execute(self, vm):
+    def execute(self, vm: 'VM') -> None:
         # print("Instruction.execute <<", self)
         logger.debug("<<", self.view_2(vm))
         return opcode_map[self.opcode][4](self, vm)
@@ -326,7 +327,10 @@ class Instruction(object):
 
 class Builder(object):
     def __init__(self):
-        d = {opcode[3]: functools.partial(self.get_func(opcode[2]), opcode[1]) for opcode in opcodes}
+        d = {
+            opcode[3]: functools.partial(self.get_func(opcode[2]), opcode[1])
+            for opcode in opcodes
+        }
         self.__dict__.update(d)
 
     def __getitem__(self, item):
@@ -335,7 +339,7 @@ class Builder(object):
     def __getattr__(self, item):
         return self.__dict__[item]
 
-    def get_func(self, t):
+    def get_func(self, t: int) -> Callable:
         if t == 0b0:
             return self.build_type_0
         elif t == 0b1:
@@ -343,210 +347,210 @@ class Builder(object):
         else:
             raise Exception("error type", t)
 
-    def build_type_0(self, opcode):
+    def build_type_0(self, opcode: int) -> Instruction:
         return Instruction.build_type_0(opcode)
 
-    def build_type_1(self, opcode, idx):
+    def build_type_1(self, opcode: int, idx: int) -> Instruction:
         return Instruction.build_type_1(opcode, idx)
 
 
-builder = Builder()
+builder: Builder = Builder()
 
 
-def NOP():
+def NOP() -> Instruction:
     """"""
     return builder.nop()
 
 
-def ADD():
+def ADD() -> Instruction:
     return builder.add()
 
 
-def SUB():
+def SUB() -> Instruction:
     return builder.sub()
 
 
-def MUL():
+def MUL() -> Instruction:
     return builder.mul()
 
 
-def DIV():
+def DIV() -> Instruction:
     return builder.div()
 
 
-def REM():
+def REM() -> Instruction:
     return builder.rem()
 
 
-def CALL(length):
+def CALL(length: int) -> Instruction:
     """
 
     """
     return builder.call(length)
 
 
-def RET():
+def RET() -> Instruction:
     return builder.ret()
 
 
-def LC(idx):
+def LC(idx: int) -> Instruction:
     """
 
     """
     return builder.lc(idx)
 
 
-def SC(idx):
+def SC(idx: int) -> Instruction:
     return builder.SC(idx)
 
 
-def LN(idx):
+def LN(idx: int) -> Instruction:
     """
 
     """
     return builder.ln(idx)
 
 
-def SN(idx):
+def SN(idx: int) -> Instruction:
     return builder.sn(idx)
 
 
-def LM(idx):
+def LM(idx: int) -> Instruction:
     return builder.lm(idx)
 
 
-def SM(idx):
+def SM(idx: int) -> Instruction:
     """
     store member
     """
     return builder.sm(idx)
 
 
-def LP():
+def LP() -> Instruction:
     """
     load prototype
     """
     return builder.lp()
 
 
-def LMD(idx):
+def LMD(idx: int) -> Instruction:
     """
     load module
     """
     return builder.lmd(idx)
 
 
-def J(idx):
+def J(idx: int) -> Instruction:
     return builder.j(idx)
 
 
-def JIF(idx):
+def JIF(idx: int) -> Instruction:
     """
     jmp is false
     """
     return builder.jif(idx)
 
 
-def ML(length):
+def ML(length: int) -> Instruction:
     """
 
     """
     return builder.ml(length)
 
 
-def MF(idx):
+def MF(idx: int) -> Instruction:
     return builder.mf(idx)
 
 
-def PUSH(obj):
+def PUSH(obj: int) -> Instruction:
     """
 
     """
     return builder.push(obj)
 
 
-def POP():
+def POP() -> Instruction:
     return builder.pop()
 
 
-def EQ():
+def EQ() -> Instruction:
     """
     Equal
     """
     return builder.eq()
 
 
-def NEQ():
+def NEQ() -> Instruction:
     """
     not equal
     """
     return builder.neq()
 
 
-def LT():
+def LT() -> Instruction:
     """
     less than
     """
     return builder.lt()
 
 
-def LTE():
+def LTE() -> Instruction:
     """
     less than or equal
     """
     return builder.lte()
 
 
-def GT():
+def GT() -> Instruction:
     """
     greater than
     """
     return builder.gt()
 
 
-def GTE():
+def GTE() -> Instruction:
     """
-    greator than or equal
+    greater than or equal
     """
     return builder.gte()
 
 
-def IS():
+def IS() -> Instruction:
     """
     is
     """
     return builder['is']()
 
 
-def IN():
+def IN() -> Instruction:
     """
     in
     """
     return builder['in']()
 
 
-def OR():
+def OR() -> Instruction:
     """
     or
     """
     return builder['or']()
 
 
-def AND():
+def AND() -> Instruction:
     """
     And
     """
     return builder['and']()
 
 
-def NOT():
+def NOT() -> Instruction:
     """
     not
     """
     return builder['not']()
 
 
-def PRINT(length):
+def PRINT(length: int) -> Instruction:
     """
     print
     """

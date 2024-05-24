@@ -8,14 +8,14 @@ def set_debug():
     logging.getLogger().setLevel(logging.DEBUG)
 
 
-def is_debug():
+def is_debug() -> bool:
     """
     此处是根据日志等级判断的debug，和服务器本身的状态不一定一致
     """
     return logging.getLogger().isEnabledFor(logging.DEBUG)
 
 
-def _get_depth(kwargs):
+def _get_depth(kwargs) -> int:
     depth = 0
     if 'depth_' in kwargs:
         depth = kwargs['depth_']
@@ -39,7 +39,7 @@ def _get_class_from_frame(fr):
 get_frame = getattr(sys, "_getframe")
 
 
-def _get_prefix(depth=1):
+def _get_prefix(depth: int = 1):
     f = getattr(sys, '_getframe')(depth + 1)
     func_name = f.f_code.co_name
     lineno = f.f_lineno

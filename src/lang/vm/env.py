@@ -6,18 +6,20 @@ Module Description
 """
 
 import codecs
+from typing import List
 
 from lang import logger
 from lang.parser.parser import Parser
 from lang.prototype.prototype import ProtoType
+from lang.vm.closure import Closure
 
 
 class ENV(object):
     def __init__(self):
-        self.modules = []  # path: closure
-        self.protos = []
+        self.modules: List[Closure] = []  # path: closure
+        self.protos: List[ProtoType] = []
 
-    def compile_file(self, filename):
+    def compile_file(self, filename: str) -> int:
         """
 
         """
@@ -48,13 +50,13 @@ class ENV(object):
             idx = self.add_proto(filename, proto)
             return idx
 
-    def find_proto(self, filename):
+    def find_proto(self, filename: str) -> int:
         for idx, proto in enumerate(self.protos):
             if proto.name == filename:
                 return idx
         return -1
 
-    def add_proto(self, filename, proto):
+    def add_proto(self, filename: str, proto: ProtoType) -> int:
         idx = self.find_proto(filename)
         if idx >= 0:
             self.protos[idx] = proto
@@ -63,17 +65,17 @@ class ENV(object):
             idx = len(self.protos) - 1
         return idx
 
-    def get_proto(self, idx):
+    def get_proto(self, idx: int) -> ProtoType:
         return self.protos[idx]
 
-    def set_module(self, closure):
+    def set_module(self, closure: Closure) -> int:
         """
 
         """
         self.modules.append(closure)
         return len(self.modules) - 1
 
-    def get_module(self, path):
+    def get_module(self, path: int) -> Closure:
         """
 
         """

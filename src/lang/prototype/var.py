@@ -17,8 +17,8 @@ class Var(object):
         return repr(self.__str__())
 
     def __init__(self):
-        self.name = None
+        self.name: str = None
         self.data = None  # 数据
-        self.store_type = -1
-        self.value_type = -1
-        self.idx = -1  # 在上一级的位置，或者在本级的位置
+        self.store_type: int = -1
+        self.value_type: int = -1
+        self.idx: int = -1  # 在上一级的位置，或者在本级的位置

@@ -9,9 +9,12 @@ Module Description
 """
 
 import copy
+from typing import List
 
 from lang import logger
 from lang.prototype.member import Member
+from lang.prototype.prototype import ProtoType
+from lang.prototype.var import Var
 
 
 class Closure(object):
@@ -22,13 +25,13 @@ class Closure(object):
     def __repr__(self):
         return repr(self.__str__())
 
-    def __init__(self, super, proto):
-        self.super = super  # 调用链的实现，有了这条调用链，就可以找到往上所有的环境，从而找到对应的数据。用于实现闭包的变量捕获。
-        self.proto = proto  # 当前函数的原型
-        self.vars = copy.deepcopy(proto.vars)  # 局部变量表
-        self.members = copy.deepcopy(proto.members)  # 成员表，用于实现面向对象
+    def __init__(self, super: 'Closure', proto: ProtoType):
+        self.super: Closure = super  # 调用链的实现，有了这条调用链，就可以找到往上所有的环境，从而找到对应的数据。用于实现闭包的变量捕获。
+        self.proto: ProtoType = proto  # 当前函数的原型
+        self.vars: List[Var] = copy.deepcopy(proto.vars)  # 局部变量表
+        self.members: List[Member] = copy.deepcopy(proto.members)  # 成员表，用于实现面向对象
 
-    def store_name(self, idx, a):
+    def store_name(self, idx: int, a):
         var = self.vars[idx]
         logger.debug(self, 'closure.store_name << var:', var, "a", a)
         if var.store_type == var.TYPE_STORE_LOCAL:
@@ -38,7 +41,7 @@ class Closure(object):
         else:
             raise Exception("un except type", var.store_type)
 
-    def load_name(self, idx):
+    def load_name(self, idx: int):
         var = self.vars[idx]
         logger.debug(self, 'closure.load_name << var:', var)
         if var.store_type == var.TYPE_STORE_LOCAL:
@@ -48,21 +51,21 @@ class Closure(object):
         else:
             raise Exception("un except type", var.store_type)
 
-    def get_name(self, idx):
+    def get_name(self, idx: int) -> str:
         """
         用于调试打印，
         用于设置name store member
         """
         return self.vars[idx].name
 
-    def store_member(self, idx, a):
+    def store_member(self, idx: int, a):
         member = self.members[idx]
         member.data = a
 
-    def load_member(self, idx):
+    def load_member(self, idx: int):
         return self.members[idx].data
 
-    def get_member_idx(self, name):
+    def get_member_idx(self, name: str) -> int:
         for idx, member in enumerate(self.members):
             if member.name == name:
                 return idx

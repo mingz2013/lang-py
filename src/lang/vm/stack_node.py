@@ -1,12 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-
-Module Description
-
-"""
-
-
-class Member(object):
+class StackNode(object):
     def __str__(self):
         return f"{self.__class__.__name__}<{self.__dict__}>"
 
@@ -14,6 +6,5 @@ class Member(object):
         return repr(self.__str__())
 
     def __init__(self):
-        self.name: str = None
+        self.prev: StackNode = None
         self.data = None
-        self.idx: int = None

@@ -4,10 +4,13 @@
 Module Description
 
 """
+from typing import List, Any
 
 from lang import logger
+from lang.instructions.instruction import Instruction
+from lang.prototype.prototype import ProtoType
 from lang.vm.closure import Closure
-from lang.vm.stack import StackNode
+from lang.vm.stack_node import StackNode
 
 
 class Stack(object):
@@ -18,7 +21,7 @@ class Stack(object):
         return repr(self.__str__())
 
     def __init__(self):
-        self.data = []
+        self.data: List[Any] = []
 
     def pop(self):
         return self.data.pop()
@@ -54,26 +57,26 @@ class Frame(StackNode):
     def __repr__(self):
         return repr(self.__str__())
 
-    def __init__(self, closure):
+    def __init__(self, closure: Closure):
         super(Frame, self).__init__()
-        self._pc = 0  # program counter
+        self._pc: int = 0  # program counter
         # self.proto = proto  # ProtoType, 函数原型，用于从函数原型里面读取常量，指令等
-        self.closure = closure  # 闭包
+        self.closure: Closure = closure  # 闭包
 
-        self.stack = Stack()  # 栈
+        self.stack: Stack = Stack()  # 栈
 
         # self.args = []  # 参数
         # self.results = []  # 结果
 
     @property
-    def proto(self):
+    def proto(self) -> ProtoType:
         return self.closure.proto
 
     @property
-    def pc(self):
+    def pc(self) -> int:
         return self._pc
 
-    def fetch(self):
+    def fetch(self) -> Instruction:
         """
         取指
         """
@@ -81,10 +84,10 @@ class Frame(StackNode):
         self._pc += 1
         return i
 
-    def j(self, n):
+    def j(self, n: int):
         self._pc += n
 
-    def jif(self, n):
+    def jif(self, n: int):
         a = self.stack.pop()
         if not a:
             self._pc += n
@@ -137,7 +140,7 @@ class Frame(StackNode):
         c = a % b
         self.stack.push(c)
 
-    def lc(self, idx):
+    def lc(self, idx: int):
         """
         load const
         获取常量, 放到栈顶
@@ -145,24 +148,24 @@ class Frame(StackNode):
         a = self.proto.load_constant(idx)
         self.stack.push(a)
 
-    def sc(self, idx):
+    def sc(self, idx: int):
         """
 
         """
 
-    def ln(self, idx):
+    def ln(self, idx: int):
         """
 
         """
         a = self.closure.load_name(idx)
         self.stack.push(a)
 
-    def sn(self, idx):
+    def sn(self, idx: int):
         """"""
         a = self.stack.pop()
         self.closure.store_name(idx, a)
 
-    def lm(self, idx):
+    def lm(self, idx: int):
         """
         load member
         """
@@ -174,7 +177,7 @@ class Frame(StackNode):
         data = closure.load_member(idx)
         self.stack.push(data)
 
-    def sm(self, idx):
+    def sm(self, idx: int):
         """
         store member
         """
@@ -195,7 +198,7 @@ class Frame(StackNode):
         c = Closure(self.closure, p)
         self.stack.push(c)
 
-    def ml(self, idx):
+    def ml(self, idx: int):
         """
 
         """
@@ -206,7 +209,7 @@ class Frame(StackNode):
         l.reverse()
         self.stack.push(l)
 
-    def mf(self, idx):
+    def mf(self, idx: int):
         """"""
         raise Exception("un mf")
 
@@ -287,7 +290,7 @@ class Frame(StackNode):
         c = not a
         self.stack.push(c)
 
-    def print(self, idx):
+    def print(self, idx: int):
         """"""""
         logger.debug("print<< ", idx)
         args = [self.stack.pop() for i in range(idx)]

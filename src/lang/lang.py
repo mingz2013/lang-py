@@ -6,7 +6,7 @@ from lang.vm.env import ENV
 from lang.vm.vm import VM
 
 
-def execute(filename):
+def execute(filename: str):
     """script"""
     env = ENV()
 

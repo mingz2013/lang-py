@@ -4,4 +4,4 @@
 
 from lang.context import symtab
 
-Symtab = symtab.SymTab()  # 符号表
+Symtab: symtab.SymTab = symtab.SymTab()  # 符号表

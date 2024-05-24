@@ -1,6 +1,8 @@
 """
 符号表管理
 """
+from typing import Dict, List, Any
+
 from lang import logger
 
 
@@ -13,10 +15,10 @@ class Var(object):
     def __repr__(self):
         return repr(self.__str__())
 
-    def __init__(self, name, scope_path, init_data):
-        self.scope_path = scope_path  # 作用域路径
-        self.name = name  # 变量名称
-        self.init_data = init_data  # 初值数据
+    def __init__(self, name: str, scope_path: List[int], init_data: Any):
+        self.scope_path: List[int] = scope_path  # 作用域路径
+        self.name: str = name  # 变量名称
+        self.init_data: Any = init_data  # 初值数据
         # self.inited = False  # 是否初始化
         # self.offset = 0  # 变量的栈帧偏移
 
@@ -48,12 +50,12 @@ class SymTab(object):
         return repr(self.__str__())
 
     def __init__(self):
-        self.var_tab = {}  # 变量表 {var_name: [Var()...]}
+        self.var_tab: Dict[str, List[Var]] = {}  # 变量表 {var_name: [Var()...]}
         self.cur_func = None  # 当前分析的函数
-        self.scope_id = 0  # 当前作用域编号
-        self.scope_path = []  # 作用域路径 [0, 1, 2...]
+        self.scope_id: int = 0  # 当前作用域编号
+        self.scope_path: List[int] = []  # 作用域路径 [0, 1, 2...]
 
-    def enter(self):
+    def enter(self) -> 'SymTab':
         """作用域管理，进入作用域"""
         logger.debug("enter...")
         self.scope_id += 1
@@ -61,7 +63,7 @@ class SymTab(object):
 
         return self
 
-    def leave(self):
+    def leave(self) -> 'SymTab':
         """离开作用域"""
         logger.debug("<<")
         # , 回收变量
@@ -79,7 +81,7 @@ class SymTab(object):
 
         return self
 
-    def add_var(self, name, init_data):
+    def add_var(self, name: str, init_data: Any) -> 'SymTab':
         """保存变量对象"""
         logger.debug("<<", name, init_data)
 
@@ -107,7 +109,7 @@ class SymTab(object):
 
         return self
 
-    def get_var(self, name):
+    def get_var(self, name: str) -> Var:
         """获取变量对象"""
         logger.debug("<<", name)
         # 匹配name，匹配最长当前路径scopePath
